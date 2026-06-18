@@ -18,7 +18,7 @@ const values = [
   },
   {
     icon: ShieldCheck,
-    title: "Independence",
+    title: "Unbiased Recommendations",
   },
   {
     icon: Scale,

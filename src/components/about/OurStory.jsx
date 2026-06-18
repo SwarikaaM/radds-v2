@@ -17,16 +17,16 @@ export default function OurStory() {
 
               <p className="text-[#6B7E99] mb-6 leading-relaxed">
                 Radds Capital was founded with a simple belief:
-                financial planning should be accessible,
+                investing should be accessible,
                 transparent, and centered around the client.
               </p>
 
               <p className="text-[#6B7E99] mb-8 leading-relaxed">
                 We help individuals and families make
                 smarter financial decisions through
-                investments, insurance planning,
-                retirement strategies, and ongoing
-                advisory support.
+                mutual fund investments, insurance distribution,
+                retirement-focused SIPs, and ongoing
+                distributor support.
               </p>
 
               <div className="space-y-6">
@@ -45,14 +45,14 @@ export default function OurStory() {
                     Vision
                   </h3>
                   <p className="text-[#6B7E99]">
-                    Become the most trusted financial
-                    advisory partner for Indian families.
+                    Become the most trusted mutual fund
+                    distribution partner for Indian families.
                   </p>
                 </div>
               </div>
 
               <blockquote className="border-l-4 border-primary pl-5 mt-10 italic text-xl text-[#0D1B2E]">
-                “Financial advice should be transparent,
+                “Investment guidance should be transparent,
                 personal, and built around the life you want.”
               </blockquote>
             </div>

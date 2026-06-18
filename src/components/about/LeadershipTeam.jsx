@@ -2,20 +2,20 @@ import { FaLinkedin } from "react-icons/fa";
 
 const team = [
   {
-    name: "Rajesh Sharma",
+    name: "Deven Shah",
     designation: "Founder & Managing Director",
-    bio: "Over 15 years of experience in wealth management and advisory.",
+    bio: "Over 8 years of experience in mutual fund distribution and client relationship management.",
   },
-  {
-    name: "Priya Mehta",
-    designation: "Senior Financial Advisor",
-    bio: "Specializes in goal-based planning and retirement strategies.",
-  },
-  {
-    name: "Amit Verma",
-    designation: "Investment Specialist",
-    bio: "Focused on portfolio construction and mutual fund research.",
-  },
+  // {
+  //   name: "Priya Mehta",
+  //   designation: "Senior Relationship Manager",
+  //   bio: "Specializes in goal-based investment recommendations and retirement-focused SIPs.",
+  // },
+  // {
+  //   name: "Amit Verma",
+  //   designation: "Mutual Fund Specialist",
+  //   bio: "Focused on mutual fund scheme selection and market research.",
+  // },
 ];
 
 export default function LeadershipTeam() {

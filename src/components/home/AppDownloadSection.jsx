@@ -44,7 +44,7 @@ function PhoneMockup() {
             <p className="text-white font-bold font-mono-num text-base">₹24,60,000</p>
             <div className="flex items-center gap-1 mt-1">
               <div className="w-1.5 h-1.5 rounded-full bg-success" />
-              <span className="text-success text-[9px] font-mono-num">+18.4% this year</span>
+              <span className="text-success text-[9px] font-mono-num">On Track</span>
             </div>
             {/* Mini sparkline */}
             <svg viewBox="0 0 120 28" className="w-full h-6 mt-2" fill="none">
@@ -175,8 +175,8 @@ export default function AppDownloadSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              Track your portfolio, run SIP calculations, review your financial plan,
-              and connect with your advisor — all from one clean, secure app.
+              Track your portfolio, run SIP calculations, review your investment goals,
+              and connect with your distributor — all from one clean, secure app.
             </motion.p>
 
             {/* Feature pills */}
@@ -190,7 +190,7 @@ export default function AppDownloadSection() {
               {[
                 "Live Portfolio Tracking",
                 "SIP Calculator",
-                "Advisor Chat",
+                "Distributor Chat",
                 "Goal Progress",
               ].map((f, i) => (
                 <span

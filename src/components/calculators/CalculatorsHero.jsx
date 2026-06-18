@@ -5,7 +5,7 @@ import Badge from "../ui/Badge";
 import Button from "../ui/Button";
 
 const stats = [
-  { icon: BarChart2, label: "Planning Tools", value: "6" },
+  { icon: BarChart2, label: "Planning Tools", value: "9" },
   { icon: LineChart, label: "Real-time Graphs", value: "Live" },
   { icon: Table2, label: "Year-wise Tables", value: "Built-in" },
 ];

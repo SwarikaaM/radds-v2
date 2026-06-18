@@ -22,7 +22,7 @@ export default function FinalCTA() {
         <ScrollReveal>
           <div className="inline-flex items-center gap-2 bg-white/8 border border-white/12 rounded-full px-4 py-2 mb-8">
             <ShieldCheck size={14} className="text-accent" />
-            <span className="text-white/70 text-xs font-medium">SEBI Registered · Fee-Only Advisory · No Commissions</span>
+            <span className="text-white/70 text-xs font-medium">AMFI-Registered Mutual Fund Distributor · Transparent Commission Disclosure</span>
           </div>
         </ScrollReveal>
 
@@ -37,7 +37,7 @@ export default function FinalCTA() {
 
         <ScrollReveal delay={0.2}>
           <p className="text-white/55 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Start with a conversation, leave with clarity. Our advisors are ready to build a plan around{" "}
+            Start with a conversation, leave with clarity. Our team is ready to guide your investments around{" "}
             <span className="text-white/80">your</span> life, not a generic template.
           </p>
         </ScrollReveal>
@@ -53,7 +53,7 @@ export default function FinalCTA() {
             <Link to="/contact#book">
               <Button variant="ghost" size="lg" className="min-w-[200px] justify-center">
                 <PhoneCall size={16} />
-                Talk to an Expert
+                Talk to Our Team
               </Button>
             </Link>
           </div>
@@ -63,9 +63,9 @@ export default function FinalCTA() {
         <ScrollReveal delay={0.45}>
           <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
             {[
-              "First Consultation",
+              "No-Obligation First Call",
               "No Commitment Required",
-              "10,000+ Families Trust Us",
+              "600+ Families Trust Us",
             ].map((item, i) => (
               <span key={i} className="flex items-center gap-2 text-white/35 text-xs">
                 <span className="w-1.5 h-1.5 bg-accent/60 rounded-full flex-shrink-0" />
