@@ -10,7 +10,7 @@
 //             Book a Consultation
 //           </div>
 //           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#0D1B2E] mb-3">
-//             Schedule a Free Meeting
+//             Schedule a Meeting
 //           </h2>
 //           <p className="text-[#6B7E99] max-w-md mx-auto">
 //             Pick a time that works for you. You'll receive a confirmation email with meeting details automatically.
@@ -74,7 +74,7 @@ export default function ConsultationBooking() {
             Book a Consultation
           </div>
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#0D1B2E] mb-3">
-            Schedule a Free Meeting
+            Schedule a Meeting
           </h2>
           <p className="text-[#6B7E99] max-w-md mx-auto">
             Pick a time that works for you. You'll receive a confirmation email automatically.

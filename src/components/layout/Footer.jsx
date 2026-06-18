@@ -51,7 +51,7 @@ export default function Footer() {
               "Your Goals. Our Strategy. Your Growth."
             </p>
             <p className="text-white/40 text-xs leading-relaxed">
-              AMFI-Registered Mutual Fund Distributor | ARN-334716 | ARN-292158 | ARN- 124053. Transparent, client-first MF distribution.
+              AMFI-Registered Mutual Fund Distributor | ARN-334716 | ARN-292158 | ARN-124053. Transparent, client-first MF distribution.
             </p>
             <div className="flex items-center gap-3 pt-2">
               {[
@@ -136,7 +136,7 @@ export default function Footer() {
             </ul>
             <div className="mt-6 p-3 bg-white/5 border border-white/10 rounded-card">
               <p className="text-white/40 text-xs">
-                AMFI ARN: <span className="font-mono-num text-white/60">ARN-334716 | ARN-292158 | ARN- 124053</span>
+                AMFI ARN: <span className="font-mono-num text-white/60">ARN-334716 | ARN-292158 | ARN-124053</span>
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-8 pt-5 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/35 text-xs text-center sm:text-left">
-            © 2026 Radds Capital. All rights reserved. AMFI-Registered Mutual Fund Distributor | ARN-334716 | ARN-292158 | ARN- 124053
+            © 2026 Radds Capital. All rights reserved. AMFI-Registered Mutual Fund Distributor | ARN-334716 | ARN-292158 | ARN-124053
           </p>
           <div className="flex items-center gap-4">
             {["Privacy Policy", "Terms of Use", "Disclaimer"].map((item) => (

@@ -1057,7 +1057,7 @@ export default function HeroSection() {
               </Link>
               <Link to="/contact">
                 <Button variant="primary" size="lg">
-                  Book Free Consultation
+                  Book a Consultation
                 </Button>
               </Link>
             </motion.div>

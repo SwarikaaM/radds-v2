@@ -63,7 +63,7 @@ export default function FinalCTA() {
         <ScrollReveal delay={0.45}>
           <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
             {[
-              "Free First Consultation",
+              "First Consultation",
               "No Commitment Required",
               "10,000+ Families Trust Us",
             ].map((item, i) => (

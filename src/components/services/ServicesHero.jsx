@@ -23,7 +23,7 @@ export default function ServicesHero() {
 
             <div className="flex flex-wrap gap-4">
               <Button href="/contact#book" size="lg">
-                Book Free Consultation
+                Book a Consultation
                 <ArrowRight size={18} />
               </Button>
 

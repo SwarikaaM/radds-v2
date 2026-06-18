@@ -211,3 +211,6 @@ export const extraCalculators = [
     bestFor: "Term insurance holders who want to offset premium cost",
   },
 ];
+
+// ADD this line at the very end of the file:
+calculators.push(...extraCalculators);

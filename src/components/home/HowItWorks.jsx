@@ -7,7 +7,7 @@ const steps = [
   {
     number: "01",
     icon: CalendarDays,
-    title: "Book Free Consultation",
+    title: "Book a Consultation",
     description: "Schedule a no-obligation call with our AMFI-registered distributors. No sales pitch — just an honest conversation about your finances.",
   },
   {
@@ -19,7 +19,7 @@ const steps = [
   {
     number: "03",
     icon: FileBarChart,
-    title: "Get Custom Plan",
+    title: "Get Curated Recommendations",
     description: "Receive a curated set of mutual fund scheme recommendations matched to your risk profile, investment horizon, and goals — with full transparency on applicable commissions.",
   },
   {

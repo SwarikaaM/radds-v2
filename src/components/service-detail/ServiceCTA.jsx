@@ -13,7 +13,7 @@ export default function ServiceCTA() {
         </p>
 
         <Button href="/contact#book">
-          Book a Free Consultation
+          Book a Consultation
         </Button>
       </div>
     </section>

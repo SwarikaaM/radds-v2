@@ -29,26 +29,35 @@ export default function HomeLoanCalc() {
   const [rate, setRate] = useState(8.5);
 
   const calc = useMemo(() => {
+    // Actual interest = total EMI paid minus principal
     const totalPaid = emi * tenure * 12;
     const totalInterest = Math.max(0, totalPaid - loanAmt);
-    // SIP needed to build corpus = totalInterest in `tenure` years at 12%
+
+    // Monthly SIP needed so that SIP corpus at end of tenure = totalInterest
+    // FV of SIP = P * [((1+r)^n - 1) / r] * (1+r)
+    // Solving for P: P = FV * r / [((1+r)^n - 1) * (1+r)]
     const n = tenure * 12;
     const r = 0.12 / 12;
     const sipNeeded = totalInterest > 0 && n > 0
-      ? Math.ceil((totalInterest * r) / (Math.pow(1 + r, n) - 1))
+      ? Math.ceil((totalInterest * r) / ((Math.pow(1 + r, n) - 1) * (1 + r)))
       : 0;
     const annualSip = sipNeeded * 12;
 
-    // Build year-by-year SIP table
+    // Year-by-year table — matches backend logic exactly
     let sipOpen = 0;
     const rows = [];
     for (let yr = 1; yr <= tenure; yr++) {
+      const openingBalance = sipOpen;
+      // Monthly compounding — add sipNeeded each month and grow at 1%/month
+      for (let m = 0; m < 12; m++) {
+        sipOpen = (sipOpen + sipNeeded) * (1 + 0.12 / 12);
+      }
+      const close = sipOpen;
       const add = annualSip;
-      const growth = (sipOpen + add) * 0.12;
-      const close = sipOpen + add + growth;
-      rows.push({ yr, open: sipOpen, add, growth, close });
-      sipOpen = close;
+      const growth = close - openingBalance - add;
+      rows.push({ yr, open: openingBalance, add, growth, close });
     }
+
     const finalCorpus = sipOpen;
     const net = finalCorpus - totalInterest;
     return { totalPaid, totalInterest, sipNeeded, annualSip, rows, finalCorpus, net };

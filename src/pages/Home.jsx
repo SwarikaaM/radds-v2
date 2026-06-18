@@ -17,7 +17,7 @@ export default function Home() {
     document.title = "Radds Capital";
     const meta = document.querySelector('meta[name="description"]');
     const content =
-      "Radds Capital — SEBI Registered Investment Advisor offering expert-guided mutual funds, insurance, equity, SIP planning, and goal-based financial planning across India.";
+      "Radds Capital — AMFI-Registered Mutual Fund Distributor offering mutual funds, insurance distribution, SIP planning, and goal-based investment guidance across India.";
     if (meta) {
       meta.setAttribute("content", content);
     } else {

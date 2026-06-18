@@ -16,7 +16,7 @@ export const services = [
   {
     id: "equity",
     title: "Equity & Shares",
-    description: "Research-backed equity portfolios for long-term wealth creation.",
+    description: "Access to direct equity investment options for long-term wealth creation, through our broking partner.",
     icon: "BarChart2",
     slug: "equity-shares",
   },
@@ -51,21 +51,21 @@ export const services = [
   {
     id: "fd-bonds",
     title: "Fixed Deposits & Bonds",
-    description: "Safe, predictable returns from top-rated FDs and corporate bonds.",
+    description: "Stable income options from top-rated FDs and corporate bonds.",
     icon: "Lock",
     slug: "fixed-deposits-bonds",
   },
   {
     id: "goal-planning",
     title: "Goal-Based Planning",
-    description: "Financial roadmaps built around your life milestones.",
+    description: "Curated SIP and investment recommendations mapped to your life milestones.",
     icon: "Target",
     slug: "goal-based-planning",
   },
   {
     id: "portfolio-review",
     title: "Portfolio Review",
-    description: "In-depth analysis and rebalancing of your existing investments.",
+    description: "Periodic review of your mutual fund investments, with suggested changes based on your goals.",
     icon: "PieChart",
     slug: "portfolio-review",
   },

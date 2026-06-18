@@ -329,6 +329,9 @@ export default function FeaturedCalculator() {
 
           </div>
         </ScrollReveal>
+        <p className="text-textmuted text-[11px] text-center mt-3">
+          *Illustrative calculation based on the return rate you enter. Mutual Fund investments are subject to market risks; actual returns may vary.
+        </p>
       </div>
     </section>
   );

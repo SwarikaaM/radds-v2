@@ -58,7 +58,7 @@ export default function CalculatorFAQ() {
           </p>
 
           <Button href="/contact#book" size="lg">
-            Book a Free Consultation
+            Book a Consultation
           </Button>
         </div>
       </section>

@@ -28,7 +28,7 @@ export default function ServicesPreview() {
         <SectionHeader
           eyebrow="Our Services"
           title="Everything Financial, Under One Roof"
-          subtitle="Explore advice-led solutions for every stage of your financial life."
+          subtitle="Explore goal-based solutions for every stage of your financial life."
           className="mb-10"
         />
 

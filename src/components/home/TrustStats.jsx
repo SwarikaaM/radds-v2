@@ -8,7 +8,7 @@ const stats = [
   {
     icon: Users,
     prefix: "",
-    end: 10000,
+    end: 1000,
     suffix: "+",
     label: "Happy Clients",
     color: "text-primary",
@@ -17,16 +17,16 @@ const stats = [
   {
     icon: Wallet,
     prefix: "₹",
-    end: 500,
+    end: 60,
     suffix: " Cr+",
-    label: "Assets Managed",
+    label: "Assets Distributed",
     color: "text-secondary",
     bg: "bg-secondary/8",
   },
   {
     icon: Award,
     prefix: "",
-    end: 15,
+    end: 8,
     suffix: "+",
     label: "Years Market Experience",
     color: "text-accent",
@@ -89,10 +89,10 @@ export default function TrustStats() {
         <ScrollReveal>
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-textmuted text-base leading-relaxed">
-              We believe in independent advice.{" "}
+              We believe in transparent guidance.{" "}
               <span className="text-textprimary font-semibold">No hidden commissions.</span>{" "}
               <span className="text-textprimary font-semibold">No product-pushing.</span> Just
-              strategy designed around your life goals — whether you're just starting out or
+              recommendations designed around your life goals — whether you're just starting out or
               growing a significant corpus.
             </p>
           </div>

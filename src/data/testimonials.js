@@ -1,7 +1,7 @@
 export const testimonials = [
   {
     id: 1,
-    quote: "Radds Capital completely changed how I think about money. My SIP portfolio has grown 18% in 2 years, and I finally understand where every rupee goes.",
+    quote: "Radds Capital completely changed how I think about money. My SIP portfolio has grown steadily, and I finally understand where every rupee goes.",
     name: "Priya Sharma",
     city: "Mumbai",
     rating: 5,
@@ -9,7 +9,7 @@ export const testimonials = [
   },
   {
     id: 2,
-    quote: "Unlike other advisors who push random products, the team at Radds genuinely listened. My retirement plan now feels achievable, not just a dream.",
+    quote: "Unlike other distributors who push random products, the team at Radds genuinely listened to my goals. My retirement corpus now feels achievable, not just a dream.",
     name: "Rajesh Menon",
     city: "Bangalore",
     rating: 5,
@@ -17,7 +17,7 @@ export const testimonials = [
   },
   {
     id: 3,
-    quote: "The free consultation alone was worth it. They spotted three underperforming funds I'd been holding for years and helped me rebalance my portfolio.",
+    quote: "The consultation alone was worth it. They spotted three underperforming funds I'd been holding for years and helped me rebalance my portfolio.",
     name: "Anika Desai",
     city: "Pune",
     rating: 5,
@@ -33,7 +33,7 @@ export const testimonials = [
   },
   {
     id: 5,
-    quote: "Tax planning used to stress me out every March. With Radds Capital, it's built into my annual financial plan. No last-minute scrambling.",
+    quote: "Tax-saving used to stress me out every March. With Radds Capital, it's built into my annual investment routine. No last-minute scrambling.",
     name: "Sunita Agarwal",
     city: "Delhi",
     rating: 5,

@@ -117,13 +117,22 @@ export default function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Financial Planning CTA */}
+            {/* Financial Planning CTA - Fluid Liquid Border */}
             <Link
               to="/financial-planning"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-accent/40 text-accent hover:bg-accent/10 text-sm font-medium transition-all"
+              className="group relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-white text-sm font-semibold transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(239,68,68,0.4)]"
             >
-              <BarChart2 size={14} />
-              Financial Planning
+              {/* Ultra-bright rotating gradient element that spills out past the boundary */}
+              <span className="absolute inset-[-300%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff4500,#ff007f,#00f0ff,#ff4500)]" />
+              
+              {/* Dark Inner Mask - Keeps the center clean while revealing a thick glowing border track */}
+              <span className="absolute inset-[2px] bg-slate-950 rounded-[6px] group-hover:bg-slate-900 transition-colors" />
+
+              {/* Content explicitly layered above the background track */}
+              <BarChart2 size={14} className="relative z-10 text-cyan-400 group-hover:rotate-12 transition-transform" />
+              <span className="relative z-10 bg-gradient-to-r from-amber-200 to-rose-300 bg-clip-text text-transparent group-hover:from-white group-hover:to-white">
+                Goal & Budget Planner
+              </span>
             </Link>
             {/* Investwell login */}
             <Button variant="accent" size="sm" href="https://raddsenterprises.investwell.app/app/#/login">
@@ -200,17 +209,48 @@ export default function Navbar() {
                   );
                 })}
 
-                {/* Financial Planning in mobile nav */}
-                <motion.div initial={false} whileHover={{ x: 3 }} transition={{ duration: 0.15 }}>
+                {/* Financial Planning in mobile nav - Liquid Border Attention Magnet */}
+                <motion.div 
+                  initial={false} 
+                  whileHover={{ x: 6, scale: 1.02 }} 
+                  transition={{ duration: 0.15 }}
+                  className="mx-4 my-2" // Adds safe padding inside your mobile menu drawer
+                >
                   <Link
                     to="/financial-planning"
-                    className={`block px-6 py-3.5 text-sm font-medium transition-all duration-200 border-l-2 ${
-                      location.pathname === "/financial-planning"
-                        ? "text-accent border-accent bg-accent/5"
-                        : "text-accent/80 border-transparent hover:border-accent/40 hover:bg-accent/5"
+                    className={`group relative block p-[2px] rounded-xl overflow-hidden transition-all duration-300 shadow-[0_4px_25px_rgba(239,68,68,0.35)] ${
+                      location.pathname === "/financial-planning" 
+                        ? "scale-[1.02] shadow-[0_4px_30px_rgba(0,240,255,0.3)]" 
+                        : ""
                     }`}
                   >
-                    ✦ Financial Planning
+                    {/* Ultra-bright rotating gradient background frame */}
+                    <span className={`absolute inset-[-300%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,#ff4500,#ff007f,#00f0ff,#ff4500)] ${
+                      location.pathname === "/financial-planning" ? "[animation-duration:2s]" : ""
+                    }`} />
+                    
+                    {/* Dark Inner Mask - Isolates button container from mobile nav blending */}
+                    <div className={`relative px-6 py-3.5 rounded-[10px] flex items-center justify-between transition-colors duration-300 ${
+                      location.pathname === "/financial-planning"
+                        ? "bg-slate-900"
+                        : "bg-slate-950 group-hover:bg-slate-900"
+                    }`}>
+                      {/* Text Label with Dynamic Active State Highlighting */}
+                      <span className={`text-sm font-semibold transition-all bg-clip-text text-transparent ${
+                        location.pathname === "/financial-planning"
+                          ? "bg-gradient-to-r from-cyan-400 to-amber-200"
+                          : "bg-gradient-to-r from-amber-200 to-rose-300 group-hover:from-white group-hover:to-white"
+                      }`}>
+                        Goal & Budget Planner
+                      </span>
+
+                      {/* Dynamic indicator badge instead of just a flat left-border line */}
+                      <span className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                        location.pathname === "/financial-planning" 
+                          ? "bg-cyan-400 animate-ping shadow-[0_0_10px_#00f0ff]" 
+                          : "bg-rose-500 opacity-60 group-hover:opacity-100 group-hover:scale-125"
+                      }`} />
+                    </div>
                   </Link>
                 </motion.div>
               </div>

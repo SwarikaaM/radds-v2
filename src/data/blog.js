@@ -7,7 +7,7 @@ export const blogPosts = [
     category: "SIP Investing",
     title: "Why Starting Your SIP at 25 Can Make You a Crorepati by 45",
     excerpt:
-      "The power of compounding is most dramatic over long periods. We break down the math and show you exactly how early SIPs build extraordinary wealth.",
+      "The power of compounding is most dramatic over long periods. We break down the math and show you how early SIPs can build substantial wealth.",
     author: "Radds Research",
     date: "May 28, 2026",
     readTime: "5 min read",
@@ -156,7 +156,7 @@ export const blogPosts = [
   {
     id: 5,
     slug: "emergency-fund-guide",
-    category: "Financial Planning",
+    category: "Goal Planning",
     title: "How Much Emergency Fund Do You Really Need?",
     excerpt:
       "A practical framework to calculate your ideal emergency reserve.",
@@ -221,7 +221,7 @@ export const blogPosts = [
   {
     id: 7,
     slug: "goal-based-investing",
-    category: "Financial Planning",
+    category: "Goal Planning",
     title:
       "Why Goal-Based Investing Works Better Than Random Investing",
     excerpt:
@@ -287,7 +287,7 @@ export const blogPosts = [
   {
     id: 9,
     slug: "retirement-planning-early",
-    category: "Financial Planning",
+    category: "Goal Planning",
     title:
       "Why Retirement Planning Should Start Earlier Than You Think",
     excerpt:
