@@ -15,6 +15,7 @@ import BlogDetail from "./pages/BlogDetails";
 import Learning from "./pages/Learning";
 import FinancialPlanning from "./pages/FinancialPlanning";
 import ErrorPage from "./pages/ErrorPage";
+import Chatbot from "./components/ui/Chatbot";
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="*" element={<ErrorPage code={404} />} />
       </Routes>
       <Footer />
+      <Chatbot />
     </BrowserRouter>
   );
 }
