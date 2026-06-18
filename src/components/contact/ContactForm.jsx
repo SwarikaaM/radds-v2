@@ -90,24 +90,24 @@ export default function ContactForm() {
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Full Name *</label>
               <input type="text" autoComplete="name" placeholder="Your name" maxLength={100}
                 className={inputClass("name")} value={form.name}
-                onChange={e => set("name", e.target.value)} />
+                onChange={e => set("name", e.target.value)} required />
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
             <div>
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Email Address *</label>
               <input type="email" autoComplete="email" placeholder="you@example.com" maxLength={100}
                 className={inputClass("email")} value={form.email}
-                onChange={e => set("email", e.target.value)} />
+                onChange={e => set("email", e.target.value)} required/>
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
-              <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Mobile Number</label>
+              <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Mobile Number *</label>
               <input type="tel" inputMode="numeric" placeholder="9876543210" maxLength={10}
                 className={inputClass("phone")} value={form.phone}
-                onChange={e => set("phone", e.target.value.replace(/\D/g,"").slice(0,10))} />
+                onChange={e => set("phone", e.target.value.replace(/\D/g,"").slice(0,10))} required/>
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
             </div>
             <div>
@@ -119,7 +119,7 @@ export default function ContactForm() {
                 <option>Investment Query</option>
                 <option>Insurance</option>
                 <option>Complaint</option>
-                <option>Partnership</option>
+                {/* <option>Partnership</option> */}
               </select>
               {errors.subject && <p className="text-red-500 text-xs mt-1">{errors.subject}</p>}
             </div>
@@ -129,7 +129,7 @@ export default function ContactForm() {
             <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Message *</label>
             <textarea rows={5} placeholder="Tell us how we can help..." maxLength={2000}
               className={inputClass("message")} value={form.message}
-              onChange={e => set("message", e.target.value)} />
+              onChange={e => set("message", e.target.value)} required/>
             <div className="flex justify-between mt-1">
               {errors.message ? <p className="text-red-500 text-xs">{errors.message}</p> : <span />}
               <p className="text-xs text-[#6B7E99]">{form.message.length}/2000</p>

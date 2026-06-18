@@ -113,14 +113,14 @@ export default function CareerApplicationForm() {
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Full Name *</label>
               <input type="text" autoComplete="name" placeholder="Your name" maxLength={100}
                 className={inputClass("name")} value={form.name}
-                onChange={e => set("name", e.target.value)} />
+                onChange={e => set("name", e.target.value)} required/>
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
             <div>
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Email Address *</label>
               <input type="email" autoComplete="email" placeholder="you@example.com" maxLength={100}
                 className={inputClass("email")} value={form.email}
-                onChange={e => set("email", e.target.value)} />
+                onChange={e => set("email", e.target.value)} required/>
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
           </div>
@@ -130,13 +130,13 @@ export default function CareerApplicationForm() {
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Mobile Number *</label>
               <input type="tel" inputMode="numeric" placeholder="9876543210" maxLength={10}
                 className={inputClass("phone")} value={form.phone}
-                onChange={e => set("phone", e.target.value.replace(/\D/g,"").slice(0,10))} />
+                onChange={e => set("phone", e.target.value.replace(/\D/g,"").slice(0,10))} required/>
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
             </div>
             <div>
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Position Applying For *</label>
               <select className={inputClass("position")} value={form.position}
-                onChange={e => set("position", e.target.value)}>
+                onChange={e => set("position", e.target.value)} required>
                 <option value="">Select a position</option>
                 {POSITIONS.map(p => <option key={p}>{p}</option>)}
               </select>
@@ -148,7 +148,7 @@ export default function CareerApplicationForm() {
             <div>
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Years of Experience</label>
               <select className={inputClass("experience")} value={form.experience}
-                onChange={e => set("experience", e.target.value)}>
+                onChange={e => set("experience", e.target.value)} required>
                 <option value="">Select experience</option>
                 <option>Fresher (0 years)</option>
                 <option>1–2 years</option>
@@ -171,7 +171,7 @@ export default function CareerApplicationForm() {
             {resume ? (
               <div className="flex items-center gap-3 border border-[#22568F]/30 bg-[#EAF2FF] rounded-lg p-3">
                 <div className="w-8 h-8 bg-[#22568F]/10 rounded flex items-center justify-center flex-shrink-0">
-                  <Upload size={14} className="text-[#22568F]" />
+                  <Upload size={14} className="text-[#22568F]" required/>
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-[#0D1B2E] truncate">{resume.name}</p>
@@ -204,7 +204,7 @@ export default function CareerApplicationForm() {
             <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Cover Letter / Message</label>
             <textarea rows={4} placeholder="Tell us why you'd be a great fit..." maxLength={2000}
               className={inputClass("message")} value={form.message}
-              onChange={e => set("message", e.target.value)} />
+              onChange={e => set("message", e.target.value)} required/>
             <p className="text-xs text-[#6B7E99] mt-1 text-right">{form.message.length}/2000</p>
           </div>
 
