@@ -1,45 +1,46 @@
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
-function fmt(n) {
-  if (n >= 1e7) return (n / 1e7).toFixed(1) + "Cr";
-  if (n >= 1e5) return (n / 1e5).toFixed(1) + "L";
-  return (n / 1000).toFixed(0) + "K";
+function fmtY(n) {
+  if (Math.abs(n) >= 1e7) return (n / 1e7).toFixed(1) + " Cr";
+  if (Math.abs(n) >= 1e5) return (n / 1e5).toFixed(1) + " L";
+  if (Math.abs(n) >= 1000) return (n / 1000).toFixed(0) + "K";
+  return String(n);
 }
 
 export default function SIPGrowthChart({ data, inflationEnabled, years }) {
+  const visibleData = data.filter(d => d.year <= years);
+  const barSize = visibleData.length > 25 ? 14 : visibleData.length > 15 ? 11 : 14;
+
   return (
-    <ResponsiveContainer width="100%" height={220}>
-      <BarChart data={data} barSize={data.length > 20 ? 10 : 14} barGap={2}>
+    <ResponsiveContainer width="100%" height={260}>
+      <BarChart data={visibleData} barSize={barSize} barCategoryGap="25%">
+        <CartesianGrid vertical={false} stroke="#E8EFF6" strokeDasharray="3 0" />
         <XAxis
           dataKey="year"
-          tick={{ fontSize: 10, fill: "#6B7E99" }}
+          tick={{ fontSize: 10, fill: "#9BAAB8" }}
           tickFormatter={v => `${v}Y`}
-          interval={data.length > 20 ? 4 : 2}
-          axisLine={false} tickLine={false}
+          interval={0}
+          axisLine={false}
+          tickLine={false}
         />
         <YAxis
-          tick={{ fontSize: 10, fill: "#6B7E99" }}
-          tickFormatter={fmt}
-          axisLine={false} tickLine={false} width={44}
+          tick={{ fontSize: 10, fill: "#9BAAB8" }}
+          tickFormatter={fmtY}
+          axisLine={false}
+          tickLine={false}
+          width={62}
         />
         <Tooltip
           formatter={(value, name) => {
-            const labels = { invested: "Invested", total: "Maturity (Nominal)", real: "Maturity (Real)" };
+            const labels = { invested: "Invested", growth: "Growth", real_growth: "Growth (Adj.)" };
             return ["₹" + Number(value).toLocaleString("en-IN"), labels[name] || name];
           }}
           labelFormatter={l => `Year ${l}`}
-          contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid #E2EBF5" }}
+          contentStyle={{ fontSize: 12, borderRadius: 6, border: "1px solid #E2EBF5" }}
+          cursor={{ fill: "rgba(34,86,143,0.03)" }}
         />
-        <Bar dataKey="invested" radius={[3, 3, 0, 0]}>
-          {data.map((entry, i) => (
-            <Cell key={i} fill={entry.year <= years ? "#22568F" : "#C8DCF5"} fillOpacity={entry.year <= years ? 1 : 0.5} />
-          ))}
-        </Bar>
-        <Bar dataKey={inflationEnabled ? "real" : "total"} radius={[3, 3, 0, 0]}>
-          {data.map((entry, i) => (
-            <Cell key={i} fill={entry.year <= years ? "#F5A623" : "#FAD89B"} fillOpacity={entry.year <= years ? 1 : 0.5} />
-          ))}
-        </Bar>
+        <Bar dataKey="invested" stackId="s" fill="#B8D0EE" radius={[0, 0, 0, 0]} />
+        <Bar dataKey={inflationEnabled ? "real_growth" : "growth"} stackId="s" fill="#3B6FC4" radius={[2, 2, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );

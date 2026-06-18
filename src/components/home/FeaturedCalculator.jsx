@@ -117,7 +117,7 @@ function buildChartData({ lumpsum, monthly, rate, sipTopUp, years, compounding, 
   const periods = compounding === "monthly" ? 12 : compounding === "quarterly" ? 4 : 1;
   const rPerPeriod = rate / 100 / periods;
   const monthsPerPeriod = 12 / periods;
-  const maxYears = 30;
+  const maxYears = 50;
 
   return Array.from({ length: maxYears }, (_, i) => {
     const yr = i + 1;
@@ -145,7 +145,14 @@ function buildChartData({ lumpsum, monthly, rate, sipTopUp, years, compounding, 
       ? Math.round(nominal / Math.pow(1 + inflation / 100, yr))
       : nominal;
 
-    return { year: yr, invested, total: nominal, real };
+    return {
+      year: yr,
+      invested,
+      total: nominal,
+      real,
+      growth: nominal - invested,
+      real_growth: real - invested,
+    };
   });
 }
 
@@ -179,165 +186,147 @@ export default function FeaturedCalculator() {
   }));
 
   return (
-    <section className="bg-lightbg py-14">
+    <section className="bg-lightbg py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           eyebrow="Investment Calculator"
           title="See Your Money Grow"
           subtitle="Combine a one-time investment with monthly SIP, add step-up and inflation — see the full picture."
-          className="mb-8"
+          className="mb-6"
         />
 
         <ScrollReveal>
-          <div className="bg-white rounded-[16px] border border-[#E2EBF5] shadow-md overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] divide-y lg:divide-y-0 lg:divide-x divide-[#E2EBF5]">
+          <div className="bg-white rounded-xl border border-[#E2EBF5] shadow-sm overflow-hidden">
 
-              {/* ── Input Panel ── */}
-              <div className="p-7 space-y-6">
-                <div>
-                  <h3 className="text-textprimary font-semibold text-base mb-0.5">Configure Investment</h3>
-                  <p className="text-textmuted text-xs">Drag sliders or click values to type</p>
-                </div>
-
-                <SliderInput label="One-Time Investment" value={lumpsum} min={0} max={10000000} step={10000}
-                  onChange={setLumpsum} prefix="₹" />
-
-                <SliderInput label="Monthly SIP" value={monthly} min={0} max={100000} step={500}
-                  onChange={setMonthly} prefix="₹" />
-
-                <SliderInput label="Expected Annual Return" value={rate} min={4} max={30} step={0.5}
-                  onChange={setRate} suffix="%" formatDisplay={v => v.toFixed(1)} />
-
-                <SliderInput label="SIP Top-up (Annual)" value={sipTopUp} min={0} max={50} step={1}
-                  onChange={setSipTopUp} suffix="%" formatDisplay={v => v.toFixed(0)} />
-
-                <SliderInput label="Investment Period" value={years} min={1} max={30} step={1}
-                  onChange={setYears} suffix=" Yrs" formatDisplay={v => v} />
-
-                {/* Compounding toggle */}
-                <div>
-                  <p className="text-textmuted text-sm font-medium mb-2">Compounding</p>
-                  <div className="flex gap-1 bg-lightbg rounded-lg p-1">
-                    {["monthly", "quarterly", "yearly"].map(opt => (
-                      <button key={opt}
-                        onClick={() => setCompounding(opt)}
-                        className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-all capitalize ${
-                          compounding === opt
-                            ? "bg-white text-primary shadow-sm border border-[#E2EBF5]"
-                            : "text-textmuted hover:text-textprimary"
-                        }`}
-                      >
-                        {opt.charAt(0).toUpperCase() + opt.slice(1)}
-                      </button>
-                    ))}
+            {/* ── Row 1: Input fields (compact, single row) ── */}
+            <div className="flex flex-wrap items-end gap-3 px-5 pt-4 pb-3 border-b border-[#E2EBF5]">
+              {[
+                { label: "I want to invest One time", value: lumpsum, onChange: setLumpsum, prefix: "₹" },
+                { label: "I want to invest monthly", value: monthly, onChange: setMonthly, prefix: "₹" },
+                { label: "SIP Top up", value: sipTopUp, onChange: setSipTopUp, suffix: "%" },
+                { label: "Expected return", value: rate, onChange: setRate, suffix: "%" },
+              ].map(f => (
+                <div key={f.label} className="flex flex-col gap-1 min-w-[130px]">
+                  <span className="text-[11px] text-textmuted">{f.label}</span>
+                  <div className="flex items-center border-b border-[#CDD8E3] pb-0.5 gap-1">
+                    {f.prefix && <span className="text-textmuted text-sm">{f.prefix}</span>}
+                    <input
+                      type="text" inputMode="numeric"
+                      value={f.value === 0 ? "" : f.value.toLocaleString("en-IN").replace(/,/g, "")}
+                      onChange={e => { const v = e.target.value.replace(/,/g, ""); if (v === "" || /^\d*\.?\d*$/.test(v)) f.onChange(v === "" ? 0 : Number(v)); }}
+                      className="w-24 bg-transparent text-sm font-semibold text-textprimary outline-none"
+                    />
+                    {f.suffix && <span className="text-textmuted text-sm">{f.suffix}</span>}
                   </div>
                 </div>
+              ))}
 
-                {/* Inflation toggle */}
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setInflationEnabled(e => !e)}
-                      className={`relative w-10 h-5 rounded-full transition-colors duration-200 ${
-                        inflationEnabled ? "bg-primary" : "bg-gray-200"
+              {/* Compounding */}
+              <div className="flex flex-col gap-1">
+                <span className="text-[11px] text-textmuted">——Compounded——</span>
+                <div className="flex gap-1">
+                  {["Monthly", "Quarterly", "Yearly"].map(opt => (
+                    <button key={opt}
+                      onClick={() => setCompounding(opt.toLowerCase())}
+                      className={`px-3 py-1 text-xs rounded border transition-all ${
+                        compounding === opt.toLowerCase()
+                          ? "bg-[#22568F] text-white border-[#22568F]"
+                          : "bg-white text-textmuted border-[#D1DDE8] hover:border-[#22568F]"
                       }`}
-                    >
-                      <span className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 ${
-                        inflationEnabled ? "translate-x-5" : ""
-                      }`} />
-                    </button>
-                    <span className="text-sm text-textmuted font-medium">Inflation @</span>
-                  </div>
-                  {inflationEnabled && (
-                    <div className="flex items-center gap-1 bg-lightbg border border-[#E2EBF5] rounded-lg px-3 py-1 w-24">
-                      <input
-                        type="number" min={1} max={15} step={0.5}
-                        value={inflation}
-                        onChange={e => setInflation(Number(e.target.value))}
-                        className="w-full bg-transparent text-sm font-semibold text-textprimary outline-none text-center"
-                      />
-                      <span className="text-textmuted text-sm">%</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Quick presets */}
-                <div>
-                  <p className="text-textmuted text-xs mb-2 font-medium">Quick Presets</p>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      { label: "Starter", ls: 50000, m: 2000, r: 12, y: 10 },
-                      { label: "Growth", ls: 150000, m: 5000, r: 14, y: 15 },
-                      { label: "Wealth", ls: 500000, m: 10000, r: 15, y: 20 },
-                    ].map(p => (
-                      <button key={p.label}
-                        onClick={() => { setLumpsum(p.ls); setMonthly(p.m); setRate(p.r); setYears(p.y); setSipTopUp(0); }}
-                        className="px-3 py-1.5 text-xs rounded-full border border-[#E2EBF5] text-textmuted hover:border-primary hover:text-primary transition-colors"
-                      >
-                        {p.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* ── Output Panel ── */}
-              <div className="p-7 space-y-5 flex flex-col">
-
-                {/* Summary cards */}
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    { label: "Invested Amount", value: fmt(results.totalInvested), color: "text-textprimary" },
-                    { label: "Growth Earned", value: fmt(results.growth), color: "text-green-600" },
-                    { label: inflationEnabled ? "Maturity (Inflation Adj.)" : "Maturity Amount", value: fmt(inflationEnabled ? results.realTotal : results.nominalTotal), color: "text-primary" },
-                  ].map(c => (
-                    <div key={c.label} className="bg-lightbg rounded-xl p-4 text-center">
-                      <p className="text-[11px] text-textmuted font-medium mb-1">{c.label}</p>
-                      <p className={`text-lg font-bold ${c.color}`}>{c.value}</p>
-                    </div>
+                    >{opt}</button>
                   ))}
                 </div>
+              </div>
 
-                {/* Inflation note */}
-                {inflationEnabled && (
-                  <div className="text-xs text-textmuted bg-amber-50 border border-amber-100 rounded-lg px-3 py-2">
-                    Nominal maturity: <span className="font-semibold text-textprimary">{fmt(results.nominalTotal)}</span>
-                    {" "}→ adjusted to today's purchasing power at {inflation}% inflation over {years} yrs
+              {/* Reset */}
+              <button
+                onClick={() => { setLumpsum(150000); setMonthly(0); setRate(15); setSipTopUp(0); setYears(10); setCompounding("monthly"); setInflationEnabled(false); setInflation(6); }}
+                className="w-9 h-9 rounded-full bg-[#22568F] text-white flex items-center justify-center hover:bg-[#1a4070] transition-colors flex-shrink-0 ml-auto"
+                title="Reset"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                  <path d="M3 3v5h5"/>
+                </svg>
+              </button>
+            </div>
+
+            {/* ── Row 2: Year slider + summary + controls ── */}
+            <div className="flex flex-wrap items-center gap-6 px-5 py-3 border-b border-[#E2EBF5]">
+              {/* Year slider */}
+              <div className="flex items-center gap-3 flex-1 min-w-[260px]">
+                <span className="text-sm text-textprimary whitespace-nowrap">
+                  Invest for a period of: <strong>{years} Years</strong>
+                </span>
+                <div className="relative flex-1 h-5 flex items-center">
+                  <div className="w-full h-1 bg-[#E2EBF5] rounded-full">
+                    <div className="h-1 bg-[#22568F] rounded-full" style={{ width: `${((years - 1) / 49) * 100}%` }} />
                   </div>
-                )}
-
-                {/* Graph / Table toggle */}
-                <div className="flex items-center justify-between">
-                  <p className="text-textmuted text-xs font-medium uppercase tracking-wide">
-                    {years}-Year Projection (30-year view)
-                  </p>
-                  <div className="flex gap-1 bg-lightbg rounded-lg p-0.5">
-                    {["graph", "table"].map(m => (
-                      <button key={m}
-                        onClick={() => setViewMode(m)}
-                        className={`px-3 py-1 text-xs font-medium rounded-md transition-all capitalize ${
-                          viewMode === m
-                            ? "bg-white text-primary shadow-sm border border-[#E2EBF5]"
-                            : "text-textmuted hover:text-textprimary"
-                        }`}
-                      >
-                        {m.charAt(0).toUpperCase() + m.slice(1)}
-                      </button>
-                    ))}
+                  <input type="range" min={1} max={50} step={1} value={years}
+                    onChange={e => setYears(Number(e.target.value))}
+                    className="absolute inset-0 w-full opacity-0 cursor-pointer" />
+                  <div className="absolute flex flex-col items-center pointer-events-none"
+                    style={{ left: `calc(${((years - 1) / 49) * 100}% - 14px)` }}>
+                    <div className="bg-[#22568F] text-white text-[10px] font-bold px-1.5 py-0.5 rounded">{years}Yr</div>
                   </div>
-                </div>
-
-                {/* Chart or Table */}
-                <div className="flex-1">
-                  {viewMode === "graph" ? (
-                    <SIPGrowthChart data={chartDataWithHighlight} inflationEnabled={inflationEnabled} years={years} />
-                  ) : (
-                    <SIPYearlyTable data={chartData} inflationEnabled={inflationEnabled} years={years} />
-                  )}
                 </div>
               </div>
 
+              {/* Summary */}
+              <div className="flex gap-6">
+                <div>
+                  <p className="text-[11px] text-textmuted">Invested Amount</p>
+                  <p className="text-base font-bold text-textprimary">{fmt(results.totalInvested)}</p>
+                </div>
+                <div>
+                  <p className="text-[11px] text-textmuted">Growth Earned</p>
+                  <p className="text-base font-bold text-green-600">{fmt(results.growth)}</p>
+                </div>
+                <div>
+                  <p className="text-[11px] text-textmuted">{inflationEnabled ? "Maturity (Inflation Adj.)" : "Maturity Amount"}</p>
+                  <p className="text-base font-bold text-primary">{fmt(inflationEnabled ? results.realTotal : results.nominalTotal)}</p>
+                </div>
+              </div>
+
+              {/* Inflation + Graph/Table */}
+              <div className="flex items-center gap-4 ml-auto">
+                <div className="flex items-center gap-2">
+                  <button onClick={() => setInflationEnabled(e => !e)}
+                    className={`relative w-9 h-5 rounded-full transition-colors ${inflationEnabled ? "bg-[#22568F]" : "bg-gray-200"}`}>
+                    <span className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform ${inflationEnabled ? "translate-x-4" : ""}`} />
+                  </button>
+                  <span className="text-xs text-textmuted">Inflation @</span>
+                  {inflationEnabled && (
+                    <div className="flex items-center border-b border-[#CDD8E3] gap-0.5">
+                      <input type="number" min={1} max={20} step={0.5} value={inflation}
+                        onChange={e => setInflation(Number(e.target.value))}
+                        className="w-8 bg-transparent text-xs font-semibold outline-none text-center" />
+                      <span className="text-xs text-textmuted">%</span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex gap-1">
+                  {["Graph", "Table"].map(m => (
+                    <button key={m} onClick={() => setViewMode(m.toLowerCase())}
+                      className={`px-3 py-1 text-xs rounded border transition-all ${
+                        viewMode === m.toLowerCase()
+                          ? "bg-[#E8EFF6] text-textprimary border-[#D1DDE8] font-medium"
+                          : "bg-white text-textmuted border-[#E2EBF5] hover:border-[#D1DDE8]"
+                      }`}>{m}</button>
+                  ))}
+                </div>
+              </div>
             </div>
+
+            {/* ── Row 3: Chart / Table full width ── */}
+            <div className="px-4 py-4">
+              {viewMode === "graph" ? (
+                <SIPGrowthChart data={chartData} inflationEnabled={inflationEnabled} years={years} />
+              ) : (
+                <SIPYearlyTable data={chartData} inflationEnabled={inflationEnabled} years={years} />
+              )}
+            </div>
+
           </div>
         </ScrollReveal>
       </div>
