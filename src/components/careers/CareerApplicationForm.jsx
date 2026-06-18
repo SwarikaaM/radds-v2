@@ -44,6 +44,8 @@ export default function CareerApplicationForm() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = "Please enter a valid email address";
     if (!form.phone || !/^[6-9]\d{9}$/.test(form.phone)) e.phone = "Enter a valid 10-digit Indian mobile number";
     if (!form.position) e.position = "Please select a position";
+    if (!form.experience) e.experience = "Please select your years of experience";
+    if (!resume) e.resume = "Please upload your resume / CV";
     return e;
   }
 
@@ -113,14 +115,14 @@ export default function CareerApplicationForm() {
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Full Name *</label>
               <input type="text" autoComplete="name" placeholder="Your name" maxLength={100}
                 className={inputClass("name")} value={form.name}
-                onChange={e => set("name", e.target.value)} required/>
+                onChange={e => set("name", e.target.value)} />
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
             <div>
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Email Address *</label>
               <input type="email" autoComplete="email" placeholder="you@example.com" maxLength={100}
                 className={inputClass("email")} value={form.email}
-                onChange={e => set("email", e.target.value)} required/>
+                onChange={e => set("email", e.target.value)}  />
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
           </div>
@@ -130,13 +132,13 @@ export default function CareerApplicationForm() {
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Mobile Number *</label>
               <input type="tel" inputMode="numeric" placeholder="9876543210" maxLength={10}
                 className={inputClass("phone")} value={form.phone}
-                onChange={e => set("phone", e.target.value.replace(/\D/g,"").slice(0,10))} required/>
+                onChange={e => set("phone", e.target.value.replace(/\D/g,"").slice(0,10))}  />
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
             </div>
             <div>
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Position Applying For *</label>
               <select className={inputClass("position")} value={form.position}
-                onChange={e => set("position", e.target.value)} required>
+                onChange={e => set("position", e.target.value)}  >
                 <option value="">Select a position</option>
                 {POSITIONS.map(p => <option key={p}>{p}</option>)}
               </select>
@@ -146,9 +148,9 @@ export default function CareerApplicationForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
-              <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Years of Experience</label>
+              <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Years of Experience *</label>
               <select className={inputClass("experience")} value={form.experience}
-                onChange={e => set("experience", e.target.value)} required>
+                onChange={e => set("experience", e.target.value)}  >
                 <option value="">Select experience</option>
                 <option>Fresher (0 years)</option>
                 <option>1–2 years</option>
@@ -167,11 +169,11 @@ export default function CareerApplicationForm() {
 
           {/* Resume upload */}
           <div>
-            <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Resume / CV</label>
+            <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Resume / CV *</label>
             {resume ? (
               <div className="flex items-center gap-3 border border-[#22568F]/30 bg-[#EAF2FF] rounded-lg p-3">
                 <div className="w-8 h-8 bg-[#22568F]/10 rounded flex items-center justify-center flex-shrink-0">
-                  <Upload size={14} className="text-[#22568F]" required/>
+                  <Upload size={14} className="text-[#22568F]"  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-[#0D1B2E] truncate">{resume.name}</p>
@@ -204,7 +206,7 @@ export default function CareerApplicationForm() {
             <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Cover Letter / Message</label>
             <textarea rows={4} placeholder="Tell us why you'd be a great fit..." maxLength={2000}
               className={inputClass("message")} value={form.message}
-              onChange={e => set("message", e.target.value)} required/>
+              onChange={e => set("message", e.target.value)}  />
             <p className="text-xs text-[#6B7E99] mt-1 text-right">{form.message.length}/2000</p>
           </div>
 

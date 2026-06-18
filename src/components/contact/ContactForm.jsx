@@ -14,7 +14,11 @@ export default function ContactForm() {
     const e = {};
     if (!form.name.trim() || form.name.trim().length < 2) e.name = "Please enter your name (min 2 characters)";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = "Please enter a valid email address";
-    if (form.phone && !/^[6-9]\d{9}$/.test(form.phone)) e.phone = "Enter a valid 10-digit Indian mobile number";
+    if (!form.phone.trim()) {
+      e.phone = "Please enter your mobile number";
+    } else if (!/^[6-9]\d{9}$/.test(form.phone)) {
+      e.phone = "Enter a valid 10-digit Indian mobile number";
+    }
     if (!form.subject) e.subject = "Please select a subject";
     if (form.message.trim().length < 20) e.message = "Message must be at least 20 characters";
     return e;
@@ -90,14 +94,14 @@ export default function ContactForm() {
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Full Name *</label>
               <input type="text" autoComplete="name" placeholder="Your name" maxLength={100}
                 className={inputClass("name")} value={form.name}
-                onChange={e => set("name", e.target.value)} required />
+                onChange={e => set("name", e.target.value)}   />
               {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
             </div>
             <div>
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Email Address *</label>
               <input type="email" autoComplete="email" placeholder="you@example.com" maxLength={100}
                 className={inputClass("email")} value={form.email}
-                onChange={e => set("email", e.target.value)} required/>
+                onChange={e => set("email", e.target.value)}  />
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
           </div>
@@ -107,7 +111,7 @@ export default function ContactForm() {
               <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Mobile Number *</label>
               <input type="tel" inputMode="numeric" placeholder="9876543210" maxLength={10}
                 className={inputClass("phone")} value={form.phone}
-                onChange={e => set("phone", e.target.value.replace(/\D/g,"").slice(0,10))} required/>
+                onChange={e => set("phone", e.target.value.replace(/\D/g,"").slice(0,10))}  />
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
             </div>
             <div>
@@ -129,7 +133,7 @@ export default function ContactForm() {
             <label className="block mb-1.5 text-sm font-medium text-[#3D4F66]">Message *</label>
             <textarea rows={5} placeholder="Tell us how we can help..." maxLength={2000}
               className={inputClass("message")} value={form.message}
-              onChange={e => set("message", e.target.value)} required/>
+              onChange={e => set("message", e.target.value)}  />
             <div className="flex justify-between mt-1">
               {errors.message ? <p className="text-red-500 text-xs">{errors.message}</p> : <span />}
               <p className="text-xs text-[#6B7E99]">{form.message.length}/2000</p>
