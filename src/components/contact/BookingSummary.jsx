@@ -29,7 +29,7 @@ export default function BookingSummary({
         </p>
 
         <p>
-          <strong>Advisor:</strong>
+          <strong>Host:</strong>
           {" "}
           Radds Capital Team
         </p>

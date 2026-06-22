@@ -9,7 +9,7 @@ export default function ServiceCTA() {
         </h2>
 
         <p className="text-white/70 text-lg mb-8">
-          Speak with an advisor and understand your next best step.
+          Speak with our team and understand your next best step.
         </p>
 
         <Button href="/contact#book">

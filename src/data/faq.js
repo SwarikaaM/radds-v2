@@ -1,6 +1,6 @@
 export const faqCategories = [
   "All",
-  "Advisory",
+  "Getting Started",
   "Mutual Funds",
   "Insurance",
   "Calculators",
@@ -9,36 +9,36 @@ export const faqCategories = [
 ];
 
 export const faqs = [
-  // Advisory
+  // Getting Started
   {
-    category: "Advisory",
+    category: "Getting Started",
     question: "Is Radds Capital SEBI registered?",
     answer:
-      "Radds Capital operates in accordance with applicable regulations and advisory standards. Please verify current registration details directly with the firm.",
+      "No. Radds Capital is registered with AMFI as a Mutual Fund Distributor (ARN-334716 | ARN-292158 | ARN-124053). We are not a SEBI Registered Investment Adviser. We help clients invest in mutual funds and provide incidental guidance on scheme selection.",
   },
   {
-    category: "Advisory",
+    category: "Getting Started",
     question: "Do you earn commissions?",
     answer:
-      "Compensation structures depend on the services provided. Any applicable fees or commissions should be disclosed transparently before engagement.",
+      "Yes. We earn trail commission from the AMCs whose schemes you invest in — this is fully disclosed and doesn't change the cost to you. We don't charge separate advisory fees.",
   },
   {
-    category: "Advisory",
+    category: "Getting Started",
     question: "How do you recommend investments?",
     answer:
-      "Recommendations are based on goals, risk profile, investment horizon, cash flow requirements, and overall financial circumstances.",
+      "Recommendations are based on your goals, risk profile, investment horizon, cash flow requirements, and overall financial circumstances.",
   },
   {
-    category: "Advisory",
-    question: "Do I need a large portfolio to work with an advisor?",
+    category: "Getting Started",
+    question: "Do I need a large portfolio to start investing with you?",
     answer:
-      "No. Financial planning can be valuable regardless of portfolio size.",
+      "No. Goal-based investing can be valuable regardless of portfolio size — many of our clients started with a SIP as small as ₹500/month.",
   },
   {
-    category: "Advisory",
+    category: "Getting Started",
     question: "Can beginners use your services?",
     answer:
-      "Yes. Many clients start with basic planning and gradually build wealth over time.",
+      "Yes. Many clients start with basic guidance and gradually build wealth over time.",
   },
 
   // Mutual Funds
@@ -100,9 +100,9 @@ export const faqs = [
   },
   {
     category: "Insurance",
-    question: "Can insurance be part of financial planning?",
+    question: "Should insurance be part of my investment strategy?",
     answer:
-      "Yes. Insurance is a key component of a comprehensive financial plan.",
+      "Yes. Insurance is a key part of a well-rounded approach to your finances, alongside your mutual fund investments.",
   },
 
   // Calculators
@@ -140,9 +140,9 @@ export const faqs = [
   // Consultation
   {
     category: "Consultation",
-    question: "Is consultation free?",
+    question: "Is the first consultation free?",
     answer:
-      "Initial consultation availability depends on current service offerings and advisor availability.",
+      "Yes, an initial conversation to understand your goals comes at no cost. We earn trail commission from AMCs if you choose to invest through us — there's no separate advisory fee.",
   },
   {
     category: "Consultation",
@@ -160,7 +160,7 @@ export const faqs = [
     category: "Consultation",
     question: "Can consultations be done online?",
     answer:
-      "Yes. Many advisory discussions can be conducted virtually.",
+      "Yes. Many consultations can be conducted virtually.",
   },
   {
     category: "Consultation",
@@ -186,7 +186,7 @@ export const faqs = [
     category: "Privacy",
     question: "Is my financial information confidential?",
     answer:
-      "Confidentiality is a core principle of financial advisory relationships.",
+      "Confidentiality is a core principle of our client relationships.",
   },
   {
     category: "Privacy",

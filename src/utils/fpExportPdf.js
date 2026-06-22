@@ -61,7 +61,7 @@ export async function exportPDF(data) {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(18);
   doc.setTextColor(...DARK);
-  doc.text("Financial Profile Summary", 14, y);
+  doc.text("Client Profile Summary", 14, y);
   y += 6;
 
   // Subtitle
@@ -269,7 +269,7 @@ export async function exportPDF(data) {
   doc.text("RADDS CAPITAL", 14, 12);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8);
-  doc.text(`Financial Plan — ${userName} | ${planDate}`, LW - 14, 12, { align: "right" });
+  doc.text(`Budget Plan — ${userName} | ${planDate}`, LW - 14, 12, { align: "right" });
 
   const now = new Date();
   const monthLabels = Array.from({ length: 12 }, (_, i) => {
@@ -331,5 +331,5 @@ export async function exportPDF(data) {
   doc.setTextColor(...GREY);
   doc.text(doc.splitTextToSize(DISCLAIMER, LW - 16), 8, LH - 8);
 
-  doc.save(`Radds_${userName.replace(/\s+/g,"_")}_FinancialPlan_${Date.now()}.pdf`);
+  doc.save(`Radds_${userName.replace(/\s+/g,"_")}_BudgetPlan_${Date.now()}.pdf`);
 }

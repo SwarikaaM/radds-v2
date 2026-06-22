@@ -195,8 +195,8 @@ export const serviceDetails = {
     steps: [
       "Define investment objectives",
       "Open a trading account",
-      "Research investment opportunities",
-      "Monitor and rebalance holdings",
+      "Explore investment opportunities via our broking partner",
+      "Monitor your holdings",
     ],
 
     benefits: [
@@ -447,7 +447,7 @@ export const serviceDetails = {
     tagline: "Save taxes while building wealth.",
     icon: FileText,
     description:
-      "ELSS and tax-planning strategies help reduce taxable income while supporting long-term financial goals.",
+      "ELSS and tax-saving investments help reduce taxable income while supporting long-term financial goals.",
     steps: [
       "Review tax liabilities",
       "Identify eligible deductions",
@@ -458,7 +458,7 @@ export const serviceDetails = {
       { title: "Tax Savings", description: "Reduce tax burden legally." },
       { title: "Wealth Creation", description: "Invest while saving taxes." },
       { title: "Efficient Planning", description: "Better financial outcomes." },
-      { title: "Goal Support", description: "Align tax strategy with goals." },
+      { title: "Goal Support", description: "Align tax-saving choices with your goals." },
     ],
     audience: [
       { title: "Salary Earner", description: "Optimizing annual taxes." },
@@ -508,7 +508,7 @@ export const serviceDetails = {
 
   "fixed-deposits-bonds": {
     name: "Fixed Deposits & Bonds",
-    tagline: "Stability and predictable income.",
+    tagline: "Stability with steady income potential.",
     icon: Lock,
     description:
       "Fixed-income products provide relatively stable returns and are commonly used for capital preservation.",
@@ -551,7 +551,7 @@ export const serviceDetails = {
       "Track progress regularly",
     ],
     benefits: [
-      { title: "Clarity", description: "Clear financial roadmap." },
+      { title: "Clarity", description: "Clear investment roadmap." },
       { title: "Focus", description: "Avoid random investing." },
       { title: "Better Decisions", description: "Prioritize goals effectively." },
       { title: "Progress Tracking", description: "Measure advancement easily." },
@@ -584,7 +584,7 @@ export const serviceDetails = {
     ],
     benefits: [
       { title: "Risk Management", description: "Identify concentration risks." },
-      { title: "Better Allocation", description: "Optimize asset mix." },
+      { title: "Better Allocation", description: "Review your mutual fund mix." },
       { title: "Performance Review", description: "Evaluate progress." },
       { title: "Goal Alignment", description: "Stay on track." },
     ],

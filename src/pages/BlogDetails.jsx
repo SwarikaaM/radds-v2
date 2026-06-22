@@ -13,13 +13,24 @@ import StickyConsultationCTA from "../components/blog-post/StickyConsultationCTA
 export default function BlogDetails() {
   const { slug } = useParams();
 
-  const post = blogPosts.find(
+  const rawPost = blogPosts.find(
     (item) => item.slug === slug
   );
 
-  if (!post) {
+  if (!rawPost) {
     return <Navigate to="/blog" replace />;
   }
+
+  const slugify = (str) =>
+    str.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
+
+  const post = {
+    ...rawPost,
+    content: rawPost.content.map((section) => ({
+      ...section,
+      id: section.id || slugify(section.heading),
+    })),
+  };
 
   return (
     <main >

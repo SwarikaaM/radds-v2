@@ -19,9 +19,9 @@ const faqs = [
       "Currently the calculators are designed for planning and comparison. Download functionality may be added in future updates.",
   },
   {
-    question: "Why should I consult an advisor after calculating?",
+    question: "Why should I talk to a distributor after calculating?",
     answer:
-      "A calculator provides estimates. An advisor can help evaluate suitability, risk, tax implications, asset allocation, and goal alignment.",
+      "A calculator provides estimates. Our distributors can help you evaluate scheme suitability, risk, and goal alignment based on your profile.",
   },
   {
     question: "Are the calculators free?",
@@ -54,7 +54,7 @@ export default function CalculatorFAQ() {
           </h2>
 
           <p className="text-white/70 text-lg mb-8">
-            Talk to a Radds Capital advisor and turn projections into an actionable financial plan.
+            Talk to our team and turn projections into a clear investment approach.
           </p>
 
           <Button href="/contact#book" size="lg">

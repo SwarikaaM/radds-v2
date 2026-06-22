@@ -97,7 +97,7 @@ export const oneTimeConfig = {
     {
       question: "Should I invest the entire amount at once or spread it out?",
       answer:
-        "Research shows that lumpsum investing outperforms phased investing in rising markets approximately 66% of the time. However, if you're concerned about timing risk, consider a Systematic Transfer Plan (STP) — invest in a liquid fund and systematically move to equity over 6–12 months.",
+        "Studies suggest lumpsum investing tends to outperform phased investing in rising markets more often than not. However, if you're concerned about timing risk, consider a Systematic Transfer Plan (STP) — invest in a liquid fund and systematically move to equity over 6–12 months.",
     },
     {
       question: "How do I account for inflation in my projections?",

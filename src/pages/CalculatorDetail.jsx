@@ -76,7 +76,7 @@ export default function CalculatorDetail() {
         </div>
       </div>
 
-      <CalculatorHero title={config.title} subtitle={config.shortDescription} />
+      <CalculatorHero title={config.title} description={config.description} />
 
       <section className="bg-lightbg py-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

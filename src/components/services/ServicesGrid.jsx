@@ -41,7 +41,7 @@ const services = [
     benefits: [
       "Diversified investing",
       "Long-term wealth creation",
-      "Expert fund selection",
+      "Curated fund selection",
     ],
   },
   {
@@ -61,11 +61,11 @@ const services = [
     slug: "equity-shares",
     icon: "BarChart2",
     description:
-      "Research-backed investing opportunities for growth seekers.",
+      "Direct equity investment access for growth seekers, through our broking partner.",
     benefits: [
       "Direct equity exposure",
       "Growth potential",
-      "Market insights",
+      "Convenient market access",
     ],
   },
   {
@@ -85,7 +85,7 @@ const services = [
     slug: "sip-planning",
     icon: "Repeat",
     description:
-      "Disciplined investing strategies aligned with future goals.",
+      "Disciplined investing habits aligned with future goals.",
     benefits: [
       "Goal-focused planning",
       "Rupee cost averaging",
@@ -123,7 +123,7 @@ const services = [
     description:
       "Stable income products for conservative investors.",
     benefits: [
-      "Predictable returns",
+      "Stable income potential",
       "Capital preservation",
       "Lower volatility",
     ],
@@ -133,9 +133,9 @@ const services = [
     slug: "goal-based-planning",
     icon: "Target",
     description:
-      "Financial strategies built around life's major milestones.",
+      "Investment recommendations built around life's major milestones.",
     benefits: [
-      "Education planning",
+      "Education savings",
       "Home purchase goals",
       "Future readiness",
     ],

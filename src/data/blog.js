@@ -113,7 +113,7 @@ export const blogPosts = [
         heading: "Which One Is Better?",
 
         body:
-          "The answer depends on your risk tolerance, investment horizon, and overall financial plan.",
+          "The answer depends on your risk tolerance, investment horizon, and overall investment goals.",
 
         callout:
           "Fund selection should support your goals, not market trends."
@@ -170,7 +170,7 @@ export const blogPosts = [
       {
         heading: "Why Emergency Funds Matter",
         body:
-          "Unexpected expenses can disrupt even the best financial plans without adequate reserves."
+          "Unexpected expenses can disrupt even the best-laid plans without adequate reserves."
       },
       {
         heading: "How Much Should You Keep",

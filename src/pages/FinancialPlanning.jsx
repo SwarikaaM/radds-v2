@@ -170,7 +170,7 @@ export default function FinancialPlanning() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-3 mb-3">
             <BarChart2 size={28} className="text-accent" />
-            <h1 className="font-playfair text-3xl md:text-4xl font-bold">Financial Planning</h1>
+            <h1 className="font-playfair text-3xl md:text-4xl font-bold">Goal & Budget Planner</h1>
           </div>
           <p className="text-white/70 text-base max-w-xl">
             Fill in your income and expenses below. Your data is saved locally on your device. Export a personalised Excel or PDF report instantly — no login required.
@@ -298,8 +298,8 @@ export default function FinancialPlanning() {
 
         {/* Export again at bottom */}
         <div className="bg-white rounded-2xl border border-[#E2EBF5] p-6">
-          <h3 className="font-semibold text-[#0D1B2E] mb-2">Export Your Financial Plan</h3>
-          <p className="text-sm text-[#6B7E99] mb-4">Your report includes a 12-month financial planning sheet with income, expenses, and investment capacity breakdown.</p>
+          <h3 className="font-semibold text-[#0D1B2E] mb-2">Export Your Budget Plan</h3>
+          <p className="text-sm text-[#6B7E99] mb-4">Your report includes a 12-month budget planning sheet with income, expenses, and investment capacity breakdown.</p>
           <div className="flex flex-wrap gap-3">
             <button onClick={() => handleExport("xlsx")} disabled={!!exporting}
               className="flex items-center gap-2 bg-[#22568F] text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-[#1a4070] transition-colors text-sm disabled:opacity-60">

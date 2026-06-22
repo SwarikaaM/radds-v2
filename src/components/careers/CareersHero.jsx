@@ -17,7 +17,7 @@ export default function CareersHero() {
           animate={{ opacity: 1, y: 0 }}
           className="font-playfair text-5xl md:text-7xl font-bold mb-6"
         >
-          Build the Future of Financial Advice
+          Build the Future of Financial Guidance
         </motion.h1>
 
         <motion.p

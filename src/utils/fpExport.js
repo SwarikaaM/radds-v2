@@ -48,12 +48,12 @@ export async function exportXLSX(data) {
     return d.toLocaleDateString("en-IN", { month: "short", year: "2-digit" });
   });
 
-  // ── Sheet 1: Financial Planning ────────────────────────────────────
-  const ws1 = wb.addWorksheet("Financial Planning");
+  // ── Sheet 1: Budget Planner ────────────────────────────────────
+  const ws1 = wb.addWorksheet("Budget Planner");
   ws1.columns = [{ width: 22 }, ...Array(13).fill({ width: 12 }), { width: 14 }];
 
   // Logo rows
-  const r1 = ws1.addRow(["", "", "Financial Planning"]);
+  const r1 = ws1.addRow(["", "", "Budget Planner"]);
   // Embed logo image
   try {
     const imgResp = await fetch(logoUrl);
@@ -74,7 +74,7 @@ export async function exportXLSX(data) {
   ws1.addRow(["", "", `Date: ${planDate}`]).getCell(3).alignment = { horizontal: "right" };
   ws1.addRow([]);
 
-  const fpTitle = ws1.addRow(["Financial Plan For", userName, ...months.map(() => ""), "Total"]);
+  const fpTitle = ws1.addRow(["Prepared For", userName, ...months.map(() => ""), "Total"]);
   fpTitle.getCell(1).font = { bold: true, size: 11, name: "Arial" };
   fpTitle.getCell(2).font = { bold: true, size: 11, color: { argb: C_BLUE }, name: "Arial" };
 
@@ -130,7 +130,7 @@ export async function exportXLSX(data) {
   const ws2 = wb.addWorksheet("Profile Summary");
   ws2.columns = [{ width: 30 }, { width: 40 }];
   ws2.addRow(["Radds Capital", ""]).getCell(1).font = { bold: true, size: 14, color: { argb: C_BLUE }, name: "Arial" };
-  ws2.addRow(["Financial Profile Summary"]).getCell(1).font = { bold: true, size: 12, name: "Arial" };
+  ws2.addRow(["Client Profile Summary"]).getCell(1).font = { bold: true, size: 12, name: "Arial" };
   ws2.addRow([`Client: ${userName} | Date: ${planDate}`]).getCell(1).font = { italic: true, size: 9, name: "Arial" };
   ws2.addRow([]);
 
@@ -164,5 +164,5 @@ export async function exportXLSX(data) {
   // Save
   const buf = await wb.xlsx.writeBuffer();
   saveAs(new Blob([buf], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }),
-    `Radds_${userName.replace(/\s+/g,"_")}_FinancialPlan_${Date.now()}.xlsx`);
+    `Radds_${userName.replace(/\s+/g,"_")}_BudgetPlan_${Date.now()}.xlsx`);
 }

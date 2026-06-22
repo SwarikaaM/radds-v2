@@ -10,7 +10,7 @@ import SectionHeader from "../ui/SectionHeader";
 
 const jobs = [
   {
-    title: "Financial Advisor",
+    title: "Relationship Manager",
     department: "Finance",
     location: "Mumbai",
     type: "Full Time"
@@ -64,7 +64,7 @@ export default function OpenPositions() {
         <SectionHeader
           eyebrow="Open Roles"
           title="Join Radds Capital"
-          subtitle="Explore opportunities across advisory, operations, technology and growth."
+          subtitle="Explore opportunities across distribution, operations, technology and growth."
         />
 
         <div className="flex gap-3 overflow-x-auto mt-10 mb-10 justify-center">

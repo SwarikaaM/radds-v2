@@ -13,11 +13,11 @@ export default function ServicesHero() {
             </p>
 
             <h1 className="font-playfair text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Advice-Led Financial Services for Every Goal
+               Mutual Fund & Investment Services for Every Goal
             </h1>
 
             <p className="text-white/70 text-lg md:text-xl max-w-3xl mb-10">
-              From your first SIP to retirement income planning, Radds Capital
+              From your first SIP to retirement-focused investing, Radds Capital
               helps you make confident financial decisions.
             </p>
 

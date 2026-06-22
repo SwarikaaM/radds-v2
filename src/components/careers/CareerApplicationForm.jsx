@@ -4,9 +4,9 @@ import Button from "../ui/Button";
 import SectionHeader from "../ui/SectionHeader";
 
 const POSITIONS = [
-  "Mutual Fund Advisor",
-  "Insurance Advisor",
-  "Financial Planner",
+  "Mutual Fund Distribution Executive",
+  "Insurance Sales Executive",
+  "Client Relationship Executive",
   "Operations Executive",
   "Digital Marketing",
   "Other",

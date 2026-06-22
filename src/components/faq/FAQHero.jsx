@@ -18,7 +18,7 @@ export default function FAQHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
         >
-          Clear answers about advisory, investments, insurance,
+          Clear answers about getting started, investments, insurance,
           calculators, and consultations.
         </motion.p>
       </div>

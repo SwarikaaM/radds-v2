@@ -53,7 +53,7 @@ export const swpConfig = {
   title: "SWP Calculator",
   shortTitle: "SWP",
   description:
-    "Plan your regular monthly withdrawals from a mutual fund corpus while letting the remaining balance keep growing.",
+    "Plan your regular monthly withdrawals from a mutual fund corpus, with the remaining balance invested for potential growth.",
   inputs: [
     {
       key: "corpus",

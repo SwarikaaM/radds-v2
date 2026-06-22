@@ -27,7 +27,7 @@ export const calculators = [
       "Plan regular withdrawals from your mutual fund corpus.",
 
     shortDescription:
-      "Plan regular monthly withdrawals from a corpus while letting the remaining balance keep growing.",
+      "Plan regular monthly withdrawals from a corpus, with the remaining balance invested for potential growth.",
 
     icon: "ArrowDownCircle",
     category: "Withdrawals",
@@ -46,7 +46,7 @@ export const calculators = [
       "See how starting late impacts your wealth journey.",
 
     shortDescription:
-      "See exactly how much wealth you lose by delaying your SIP — even by just a few years.",
+      "See how much potential wealth you could miss out on by delaying your SIP — even by just a few years.",
 
     icon: "Clock",
     category: "Goal Planning",
@@ -121,6 +121,8 @@ export const calculatorCategories = [
   "Withdrawals",
   "Lumpsum",
   "Goal Planning",
+  "Loan Planning",
+  "Insurance",
 ];
 
 
@@ -177,9 +179,9 @@ export const extraCalculators = [
   {
     id: "home-loan-interest-free",
     slug: "home-loan-interest-free",
-    title: "Home Loan Interest Free",
+    title: "Home Loan Interest Offset",
     description: "See how a parallel SIP can offset the interest you pay on your home loan.",
-    shortDescription: "Run a SIP alongside your home loan — watch it grow to cover the total interest you pay, making your loan effectively interest-free.",
+    shortDescription: "Run a SIP alongside your home loan to see how it could grow and help offset the total interest you pay over time.",
     icon: "Home",
     category: "Loan Planning",
     route: "/calculators/home-loan-interest-free",
@@ -212,5 +214,5 @@ export const extraCalculators = [
   },
 ];
 
-// ADD this line at the very end of the file:
+
 calculators.push(...extraCalculators);

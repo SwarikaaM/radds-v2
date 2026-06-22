@@ -24,33 +24,41 @@ function inr(n) { return "₹" + Math.round(n).toLocaleString("en-IN"); }
 
 export default function HomeLoanCalc() {
   const [loanAmt, setLoanAmt] = useState(5000000);
-  const [emi, setEmi] = useState(45000);
   const [tenure, setTenure] = useState(20);
-  const [rate, setRate] = useState(8.5);
+  const [rate, setRate] = useState(8.5); // Home loan interest rate
 
   const calc = useMemo(() => {
-    // Actual interest = total EMI paid minus principal
-    const totalPaid = emi * tenure * 12;
+    // 1. Calculate actual Home Loan EMI dynamically based on user input
+    // Formula: EMI = [P x R x (1+R)^N]/[((1+R)^N)-1]
+    const monthlyLoanRate = (rate / 100) / 12;
+    const totalMonths = tenure * 12;
+    
+    let calculatedEmi = 0;
+    if (loanAmt > 0 && monthlyLoanRate > 0 && totalMonths > 0) {
+      calculatedEmi = Math.round(
+        (loanAmt * monthlyLoanRate * Math.pow(1 + monthlyLoanRate, totalMonths)) / 
+        (Math.pow(1 + monthlyLoanRate, totalMonths) - 1)
+      );
+    }
+
+    // 2. Total loan payments and total interest payable
+    const totalPaid = calculatedEmi * totalMonths;
     const totalInterest = Math.max(0, totalPaid - loanAmt);
 
-    // Monthly SIP needed so that SIP corpus at end of tenure = totalInterest
-    // FV of SIP = P * [((1+r)^n - 1) / r] * (1+r)
-    // Solving for P: P = FV * r / [((1+r)^n - 1) * (1+r)]
-    const n = tenure * 12;
-    const r = 0.12 / 12;
-    const sipNeeded = totalInterest > 0 && n > 0
-      ? Math.ceil((totalInterest * r) / ((Math.pow(1 + r, n) - 1) * (1 + r)))
+    // 3. SIP Math: Fixed 12% p.a. growth assumed for investment
+    const sipRate = 0.12 / 12; 
+    const sipNeeded = totalInterest > 0 && totalMonths > 0
+      ? Math.ceil((totalInterest * sipRate) / ((Math.pow(1 + sipRate, totalMonths) - 1) * (1 + sipRate)))
       : 0;
     const annualSip = sipNeeded * 12;
 
-    // Year-by-year table — matches backend logic exactly
+    // 4. Year-by-year accumulation table (at fixed 12%)
     let sipOpen = 0;
     const rows = [];
     for (let yr = 1; yr <= tenure; yr++) {
       const openingBalance = sipOpen;
-      // Monthly compounding — add sipNeeded each month and grow at 1%/month
       for (let m = 0; m < 12; m++) {
-        sipOpen = (sipOpen + sipNeeded) * (1 + 0.12 / 12);
+        sipOpen = (sipOpen + sipNeeded) * (1 + sipRate);
       }
       const close = sipOpen;
       const add = annualSip;
@@ -60,8 +68,9 @@ export default function HomeLoanCalc() {
 
     const finalCorpus = sipOpen;
     const net = finalCorpus - totalInterest;
-    return { totalPaid, totalInterest, sipNeeded, annualSip, rows, finalCorpus, net };
-  }, [loanAmt, emi, tenure, rate]);
+
+    return { calculatedEmi, totalPaid, totalInterest, sipNeeded, annualSip, rows, finalCorpus, net };
+  }, [loanAmt, tenure, rate]);
 
   return (
     <section className="bg-lightbg py-10">
@@ -71,9 +80,9 @@ export default function HomeLoanCalc() {
             <div className="w-10 h-10 bg-[#22568F]/10 rounded-xl flex items-center justify-center">
               <Home size={20} className="text-[#22568F]" />
             </div>
-            <h1 className="font-playfair text-3xl font-bold text-[#0D1B2E]">Home Loan Interest Free Plan</h1>
+            <h1 className="font-playfair text-3xl font-bold text-[#0D1B2E]">Home Loan Interest Offset Calculator</h1>
           </div>
-          <p className="text-[#6B7E99]">Run a parallel SIP to offset the total interest on your home loan — making it effectively interest-free.</p>
+          <p className="text-[#6B7E99]">See how a parallel mutual fund SIP growing at 12% p.a. could potentially offset the total interest burden of your home loan.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-6">
@@ -81,9 +90,14 @@ export default function HomeLoanCalc() {
           <div className="bg-white rounded-2xl border border-[#E2EBF5] p-6 space-y-5 h-fit">
             <h2 className="font-semibold text-[#0D1B2E]">Loan Parameters</h2>
             <NumInput label="Loan Amount" value={loanAmt} onChange={setLoanAmt} />
-            <NumInput label="Monthly EMI" value={emi} onChange={setEmi} />
+            <NumInput label="Home Loan Interest Rate (p.a.)" value={rate} onChange={setRate} prefix="" suffix="%" />
             <NumInput label="Loan Tenure" value={tenure} onChange={setTenure} prefix="" suffix=" years" />
-            <NumInput label="Interest Rate (p.a.)" value={rate} onChange={setRate} prefix="" suffix="%" />
+            
+            {/* Displaying Auto-Calculated EMI */}
+            <div className="pt-3 border-t border-dashed border-[#E2EBF5]">
+              <p className="text-xs font-medium text-[#6B7E99] mb-0.5">Calculated Monthly EMI</p>
+              <p className="text-xl font-bold text-[#0D1B2E]">{inr(calc.calculatedEmi)}</p>
+            </div>
           </div>
 
           {/* Results */}
@@ -111,14 +125,14 @@ export default function HomeLoanCalc() {
             <div className="bg-[#EAF2FF] border border-[#C8DCF5] rounded-xl p-4 flex gap-3">
               <TrendingUp size={18} className="text-[#22568F] flex-shrink-0 mt-0.5" />
               <p className="text-sm text-[#22568F]">
-                Invest just <strong>{inr(calc.sipNeeded)}/month</strong> in a mutual fund SIP at 12% p.a. alongside your loan. Over {tenure} years, the corpus covers your entire interest burden — your home loan becomes effectively interest-free.
+                By investing <strong>{inr(calc.sipNeeded)}/month</strong> at an assumed 12% p.a. equity return rate, your generated corpus can neutralize the interest costs generated by your <strong>{rate}%</strong> home loan.
               </p>
             </div>
 
             {/* Year-by-year table */}
             <div className="bg-white rounded-2xl border border-[#E2EBF5] overflow-hidden">
               <div className="px-5 py-4 border-b border-[#E2EBF5]">
-                <h3 className="font-semibold text-[#0D1B2E] text-sm">SIP Growth Table ({tenure} Years @ 12% p.a.)</h3>
+                <h3 className="font-semibold text-[#0D1B2E] text-sm">SIP Growth Table ({tenure} Years @ Fixed 12% p.a.)</h3>
               </div>
               <div className="overflow-auto max-h-72">
                 <table className="w-full text-xs">
@@ -144,10 +158,18 @@ export default function HomeLoanCalc() {
               </div>
             </div>
 
-            <p className="text-xs text-[#6B7E99] flex gap-1.5">
-              <AlertCircle size={13} className="flex-shrink-0 mt-0.5" />
-              SIP growth assumed at 12% p.a. compounded annually. Mutual fund returns are not guaranteed. Past performance is not indicative of future returns.
-            </p>
+            {/* Explicit Clear Disclaimers */}
+            <div className="text-xs text-[#6B7E99] space-y-2 bg-gray-50 border border-gray-200 rounded-xl p-4">
+              <p className="flex gap-1.5 font-medium text-gray-700">
+                <AlertCircle size={14} className="flex-shrink-0 mt-0.5 text-amber-600" />
+                Important Disclaimers:
+              </p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li><strong>Home Loan Rate vs. Investment Return:</strong> The Home Loan calculations dynamically adjust based on your current input parameter. The parallel mutual fund SIP growth rate is strictly simulated at a fixed benchmark rate of 12% p.a.</li>
+                <li><strong>No Guaranteed Outcomes:</strong> Real-world mutual fund products are subject to market risks. Actual investment returns fluctuate over time and are not guaranteed.</li>
+                <li><strong>Taxation Not Included:</strong> This calculation does not factor in components like Capital Gains Tax (LTCG) on investment withdrawals or Income Tax deductions under Section 24(b) for home loan interest payments.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -11,11 +11,11 @@ export default function ServicesCTA() {
           </h2>
 
           <p className="text-white/70 text-lg mb-8">
-            Talk to an advisor and get a clear next step.
+            Talk to our team and get a clear next step.
           </p>
 
           <Button href="/contact#book" size="lg">
-            Talk to an Expert
+            Talk to Our Team
           </Button>
         </ScrollReveal>
       </div>
