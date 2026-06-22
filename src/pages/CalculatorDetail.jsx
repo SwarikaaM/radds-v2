@@ -12,6 +12,8 @@ import CalculatorDetailFAQ from "../components/calculator-detail/CalculatorDetai
 import HomeLoanCalc from "../components/calculators/HomeLoanCalc";
 import NetWorthCalc from "../components/calculators/NetWorthCalc";
 import TermInsuranceCalc from "../components/calculators/TermInsuranceCalc";
+import { Download, FileText } from "lucide-react";
+import { exportCalcXLSX, exportCalcPDF } from "../utils/calcExport";
 
 const SPECIAL_SLUGS = {
   "home-loan-interest-free": HomeLoanCalc,
@@ -47,6 +49,7 @@ export default function CalculatorDetail() {
   const config = calculatorRegistry[slug];
 
   const [values, setValues] = useState(() => config ? getDefaultValues(config) : {});
+  const [exporting, setExporting] = useState(null); // "xlsx" | "pdf" | null
 
   useEffect(() => {
     if (!config) return;
@@ -62,6 +65,27 @@ export default function CalculatorDetail() {
 
   const results = useMemo(() => config.compute(values), [config, values]);
   const chartData = useMemo(() => config.buildChartData(values), [config, values]);
+
+  async function handleCalcExport(type) {
+    setExporting(type);
+    try {
+      const payload = {
+        title: config.title,
+        summaryKeys: config.summaryKeys,
+        results,
+        tableColumns: config.tableColumns,
+        tableRowKeys: config.tableRowKeys,
+        chartData,
+      };
+      if (type === "xlsx") await exportCalcXLSX(payload);
+      else await exportCalcPDF(payload);
+    } catch (e) {
+      console.error("Export error", e);
+      alert("Export failed. Please try again.");
+    } finally {
+      setExporting(null);
+    }
+  }
 
   return (
     <>
@@ -98,6 +122,26 @@ export default function CalculatorDetail() {
                   chartData={chartData}
                 />
                 <CalculatorAssumptions />
+
+                {/* Export buttons */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <button
+                    onClick={() => handleCalcExport("xlsx")}
+                    disabled={!!exporting}
+                    className="flex items-center gap-1.5 text-sm font-semibold border border-[#22568F] text-[#22568F] px-4 py-2 rounded-lg hover:bg-[#22568F] hover:text-white transition-colors disabled:opacity-50"
+                  >
+                    <Download size={14} />
+                    {exporting === "xlsx" ? "Generating..." : "Export Excel"}
+                  </button>
+                  <button
+                    onClick={() => handleCalcExport("pdf")}
+                    disabled={!!exporting}
+                    className="flex items-center gap-1.5 text-sm font-semibold border border-[#22568F] text-[#22568F] px-4 py-2 rounded-lg hover:bg-[#22568F] hover:text-white transition-colors disabled:opacity-50"
+                  >
+                    <FileText size={14} />
+                    {exporting === "pdf" ? "Generating..." : "Export PDF"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

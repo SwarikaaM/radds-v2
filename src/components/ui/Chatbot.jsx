@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import logoPNG from "../../assets/Logo.png"; 
 
 const WHATSAPP_NUMBER = ["91966", "415", "0986"].join("");
 
@@ -21,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Is my portfolio reviewed periodically?",
-    a: "Yes. We review your mutual fund portfolio from time to time based on market conditions and scheme performance, and may suggest changes based on your investment goals.",
+    a: "As an AMFI-registered MFD, we periodically review the mutual fund schemes we distribute and may bring relevant scheme-level updates to your attention. Any switch or redemption decision remains yours as the investor. We do not provide portfolio management services.",
   },
   {
     q: "What is an Execution Only transaction?",
@@ -150,7 +151,7 @@ export default function Chatbot() {
     } else {
       newMessages.push({
         from: "bot",
-        text: "I don't have a specific answer for that. Please connect with us on WhatsApp and our team will be happy to assist you.",
+        text: "I don't have a specific answer for that. Please connect with us on WhatsApp and our team will be happy to assist you. Radds Capital — AMFI-Registered MFD (ARN-334716 | ARN-292158 | ARN-124053).",
         type: "whatsapp",
       });
     }
@@ -223,11 +224,10 @@ export default function Chatbot() {
         >
           {/* Header */}
           <div className="px-4 py-3 flex items-center gap-3" style={{ background: "#22568F" }}>
-            <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">R</div>
-            <div>
-              <div className="text-white font-semibold text-sm font-dm">Radds Capital</div>
-              <div className="text-white/70 text-xs">AMFI-registered MFD</div>
+            <div className="bg-white rounded-md px-2 py-1.5 flex-shrink-0">
+              <img src={logoPNG} alt="Radds Capital" className="h-6 w-auto object-contain" />
             </div>
+            <div className="text-white/70 text-xs">AMFI-registered MFD</div>
           </div>
 
           {step === "name" ? (
@@ -327,7 +327,7 @@ export default function Chatbot() {
               {/* AMFI Disclaimer */}
               <div className="px-3 pb-2 text-center">
                 <p className="text-xs text-textmuted font-dm" style={{ fontSize: "10px" }}>
-                  Radds Capital — AMFI-registered Mutual Fund Distributor. Investments subject to market risk.
+                  Radds Capital — AMFI-registered Mutual Fund Distributor. Investments subject to market risk (ARN-334716 | ARN-292158 | ARN-124053).
                 </p>
               </div>
             </>

@@ -108,7 +108,12 @@ export async function exportPDF(data) {
     ["Email", data.email || "—"],
     ["Phone", data.phone || "—"],
     ["Age", data.age ? `${data.age} years` : "—"],
-    ["Risk Preference", (data.riskPreference || "Moderate").charAt(0).toUpperCase() + (data.riskPreference || "moderate").slice(1)],
+    ["Risk Profile", (data.riskPreference || "Moderate").charAt(0).toUpperCase() + (data.riskPreference || "moderate").slice(1)],
+    ["Risk Description",
+      data.riskPreference === "conservative" ? "Capital safety; debt/liquid funds recommended."
+      : data.riskPreference === "aggressive" ? "Growth-oriented; equity/small-cap funds recommended."
+      : "Balanced growth & safety; hybrid funds recommended."
+    ],
     ["Date of Plan", planDate],
   ];
 

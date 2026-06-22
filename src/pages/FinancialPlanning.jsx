@@ -4,6 +4,8 @@ import { exportXLSX } from "../utils/fpExport";
 import { exportPDF } from "../utils/fpExportPdf";
 import { useNavigate } from "react-router-dom";
 
+import RiskQuestionnaire from "../components/financial-planning/RiskQuestionnaire";
+
 const STORAGE_KEY = "radds_fp_data";
 
 const DISCLAIMER = "Mutual Fund investments are subject to market risks. Read all scheme related documents carefully. Past performance is not indicative of future returns. This report is for planning purposes only and does not constitute investment advice. Radds Capital is an AMFI-Registered Mutual Fund Distributor (ARN-334716 | ARN-292158 | ARN-124053).";
@@ -99,6 +101,7 @@ export default function FinancialPlanning() {
   const [saved, setSaved] = useState(false);
   const [exporting, setExporting] = useState(null); // "xlsx" | "pdf" | null
   const navigate = useNavigate();
+  const [riskScore, setRiskScore] = useState(null);
 
   const set = useCallback((field, value) => {
     setData(d => ({ ...d, [field]: value }));
@@ -229,6 +232,14 @@ export default function FinancialPlanning() {
             <Field label="Age">
               <TextInput value={data.age} onChange={v => set("age", v)} placeholder="35" />
             </Field>
+            {/* <Field label="Risk Preference">
+              <select value={data.riskPreference} onChange={e => set("riskPreference", e.target.value)}
+                className="w-full border border-[#D1DDE8] rounded-lg p-3 text-sm bg-white outline-none focus:border-[#22568F]">
+                <option value="conservative">Conservative</option>
+                <option value="moderate">Moderate</option>
+                <option value="aggressive">Aggressive</option>
+              </select>
+            </Field> */}
             <Field label="Risk Preference">
               <select value={data.riskPreference} onChange={e => set("riskPreference", e.target.value)}
                 className="w-full border border-[#D1DDE8] rounded-lg p-3 text-sm bg-white outline-none focus:border-[#22568F]">
@@ -236,6 +247,10 @@ export default function FinancialPlanning() {
                 <option value="moderate">Moderate</option>
                 <option value="aggressive">Aggressive</option>
               </select>
+              <RiskQuestionnaire
+                currentProfile={data.riskPreference}
+                onResult={v => { set("riskPreference", v); }}
+              />
             </Field>
           </div>
         </Section>
