@@ -7,14 +7,14 @@ import logoPNG from "../../assets/Logo.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
-  { label: "Services", path: "/services" },
   { label: "Calculators", path: "/calculators" },
-  { label: "FAQ", path: "/faq" },
-  { label: "About", path: "/about" },
-  { label: "Blog", path: "/blog" },
-  { label: "Learning", path: "/learning" },
-  { label: "Careers", path: "/careers" },
+  { label: "Services", path: "/services" },
   { label: "Contact", path: "/contact" },
+  { label: "Careers", path: "/careers" },
+  { label: "About", path: "/about" },
+  { label: "Learning", path: "/learning" },
+  { label: "Blog", path: "/blog" },
+  { label: "FAQ", path: "/faq" },
 ];
 
 function StoreBadge({ store, initial }) {
@@ -209,6 +209,10 @@ export default function Navbar() {
                   );
                 })}
 
+                
+              </div>
+
+              <div className="p-5 border-t border-white/10 flex flex-col gap-3">
                 {/* Financial Planning in mobile nav - Liquid Border Attention Magnet */}
                 <motion.div 
                   initial={false} 
@@ -253,9 +257,6 @@ export default function Navbar() {
                     </div>
                   </Link>
                 </motion.div>
-              </div>
-
-              <div className="p-5 border-t border-white/10 flex flex-col gap-3">
                 <StoreBadge store="android" initial={0.25} />
                 <StoreBadge store="ios" initial={0.32} />
                 <Button variant="ghost" size="md" href="https://raddsenterprises.investwell.app/app/#/login" className="w-full justify-center">

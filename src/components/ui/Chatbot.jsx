@@ -170,7 +170,7 @@ export default function Chatbot() {
       {/* Floating Button */}
         <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 shadow-lg focus:outline-none transition-all duration-300"
+        className="fixed bottom-6 left-6 lg:right-6 lg:left-auto z-50 flex items-center gap-2 shadow-lg focus:outline-none transition-all duration-300"
         style={{
             background: "linear-gradient(135deg, #22568F, #2389AF)",
             borderRadius: open ? "50%" : "50px",
@@ -218,7 +218,7 @@ export default function Chatbot() {
       {/* Chat Window */}
       {open && (
         <div
-          className="fixed bottom-24 right-6 z-50 w-80 rounded-card shadow-2xl flex flex-col overflow-hidden"
+          className="fixed bottom-24 left-6 lg:right-6 lg:left-auto z-50 w-80 rounded-card shadow-2xl flex flex-col overflow-hidden"
           style={{ maxHeight: "480px", border: "1px solid #e2e8f0", background: "#fff" }}
         >
           {/* Header */}
@@ -337,3 +337,4 @@ export default function Chatbot() {
     </>
   );
 }
+
