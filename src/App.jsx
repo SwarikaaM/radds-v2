@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
+import ScrollToTop from "./components/ui/ScrollToTop";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
 import Calculators from "./pages/Calculators";
@@ -20,6 +21,7 @@ import Chatbot from "./components/ui/Chatbot";
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

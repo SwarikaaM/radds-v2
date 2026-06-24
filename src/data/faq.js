@@ -18,12 +18,6 @@ export const faqs = [
   },
   {
     category: "Getting Started",
-    question: "Do you earn commissions?",
-    answer:
-      "Yes. We earn trail commission from the AMCs whose schemes you invest in — this is fully disclosed and doesn't change the cost to you. We don't charge separate advisory fees.",
-  },
-  {
-    category: "Getting Started",
     question: "How do you recommend investments?",
     answer:
       "Recommendations are based on your goals, risk profile, investment horizon, cash flow requirements, and overall financial circumstances.",
@@ -199,5 +193,11 @@ export const faqs = [
     question: "How is website information secured?",
     answer:
       "Security measures are implemented to help protect user information and website activity.",
+  },
+  {
+    category: "Getting Started",
+    question: "Do you earn commissions?",
+    answer:
+      "Yes. We earn trail commission from the AMCs whose schemes you invest in — this is fully disclosed and doesn't change the cost to you. We don't charge separate advisory fees.",
   },
 ];
