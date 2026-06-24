@@ -1,9 +1,20 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, BarChart2 } from "lucide-react";
+import { Menu, X, BarChart2, MessageCircle, LayoutDashboard } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import Button from "../ui/Button";
 import logoPNG from "../../assets/Logo.png";
+
+const socialLinks = [
+  { Icon: FaInstagram, href: "https://www.instagram.com/radds.capital/", label: "Instagram" },
+  { Icon: FaLinkedin, href: "https://in.linkedin.com/company/radds-capital", label: "LinkedIn" },
+  { Icon: FaFacebook, href: "https://www.facebook.com/mymoneygrowswithradds/", label: "Facebook" },
+  { Icon: FaXTwitter, href: "#", label: "Twitter / X" }, // TODO: add link once available
+  // { Icon: MessageCircle, href: "https://whatsapp.com/channel/0029VakDgcoIyPtUCoTAYw17", label: "WhatsApp Channel" },
+  // { Icon: LayoutDashboard, href: "https://raddsenterprises.investwell.app/app/#/broker/dashboard", label: "Investwell Dashboard" },
+];
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -113,6 +124,22 @@ export default function Navbar() {
                 </Link>
               );
             })}
+          </div>
+
+          {/* Social icons - desktop only */}
+          <div className="hidden xl:flex items-center gap-1.5 pr-1 border-r border-white/10 mr-2">
+            {socialLinks.map(({ Icon, href, label }, i) => (
+              <a
+                key={i}
+                href={href}
+                target={href !== "#" ? "_blank" : undefined}
+                rel={href !== "#" ? "noopener noreferrer" : undefined}
+                aria-label={label}
+                className="w-7 h-7 rounded-md flex items-center justify-center text-white/90 hover:text-white hover:bg-white/15 transition-all duration-200"
+              >
+                <Icon size={13} />
+              </a>
+            ))}
           </div>
 
           {/* Desktop CTAs */}
@@ -262,6 +289,22 @@ export default function Navbar() {
                 <Button variant="ghost" size="md" href="https://raddsenterprises.investwell.app/app/#/login" className="w-full justify-center">
                   Login
                 </Button>
+
+                {/* Social icons */}
+                <div className="flex items-center justify-center gap-2 pt-2">
+                  {socialLinks.map(({ Icon, href, label }, i) => (
+                    <a
+                      key={i}
+                      href={href}
+                      target={href !== "#" ? "_blank" : undefined}
+                      rel={href !== "#" ? "noopener noreferrer" : undefined}
+                      aria-label={label}
+                      className="w-8 h-8 rounded-lg bg-white/10 border border-white/50 flex items-center justify-center text-white/90 hover:text-white hover:bg-white/35 transition-all duration-200"
+                    >
+                      <Icon size={14} />
+                    </a>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </>

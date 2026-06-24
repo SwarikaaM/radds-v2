@@ -201,17 +201,20 @@ export default function Chatbot() {
                 <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
             </svg>
 
-            {/* Label + notification dot */}
-            <span className="flex items-center gap-1.5 text-white font-dm font-medium text-sm" style={{ whiteSpace: "nowrap" }}>
+            {/* Label + notification dot — hidden on small screens to keep the button compact */}
+            <span className="hidden sm:flex items-center gap-1.5 text-white font-dm font-medium text-sm pr-1" style={{ whiteSpace: "nowrap" }}>
                 Chat with us
-                <span style={{
-                width: "8px", height: "8px", borderRadius: "50%",
-                background: "#25D366",
-                display: "inline-block",
-                boxShadow: "0 0 0 2px white",
-                animation: "pulse-dot 2s ease-in-out infinite",
-                }} />
             </span>
+            <span style={{
+              width: "8px", height: "8px", borderRadius: "50%",
+              background: "#25D366",
+              display: "inline-block",
+              boxShadow: "0 0 0 2px white",
+              animation: "pulse-dot 2s ease-in-out infinite",
+              position: "absolute",
+              top: "-2px",
+              right: "-2px",
+            }} />
             </>
         )}
         </button>

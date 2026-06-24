@@ -17,7 +17,7 @@ const stats = [
   {
     icon: Wallet,
     prefix: "₹",
-    end: 60,
+    end: 100,
     suffix: " Cr+",
     label: "Assets Distributed",
     color: "text-secondary",
@@ -26,7 +26,7 @@ const stats = [
   {
     icon: Award,
     prefix: "",
-    end: 8,
+    end: 20,
     suffix: "+",
     label: "Years Market Experience",
     color: "text-accent",

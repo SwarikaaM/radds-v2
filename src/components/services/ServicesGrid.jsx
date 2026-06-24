@@ -69,18 +69,6 @@ const services = [
     ],
   },
   {
-    title: "Demat Account",
-    slug: "demat-account",
-    icon: "CreditCard",
-    description:
-      "Easy onboarding and secure access to market investments.",
-    benefits: [
-      "Paperless setup",
-      "Safe holdings",
-      "Quick activation",
-    ],
-  },
-  {
     title: "SIP Planning",
     slug: "sip-planning",
     icon: "Repeat",
@@ -93,7 +81,7 @@ const services = [
     ],
   },
   {
-    title: "Tax Planning (ELSS)",
+    title: "Tax Planning",
     slug: "tax-planning",
     icon: "FileText",
     description:
@@ -150,6 +138,18 @@ const services = [
       "Risk assessment",
       "Rebalancing insights",
       "Performance review",
+    ],
+  },
+  {
+    title: "Retirement Planning",
+    slug: "retirement-planning",
+    icon: "Landmark",
+    description:
+      "Curated mutual fund and pension-linked scheme recommendations to help you build a retirement corpus.",
+    benefits: [
+      "Retirement corpus building",
+      "Goal-based SIP recommendations",
+      "Periodic review",
     ],
   },
 ];

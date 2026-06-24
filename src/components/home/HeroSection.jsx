@@ -499,7 +499,7 @@ export default function HeroSection() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.15, duration: 0.5 }}
             >
-              {["100+ Families", "₹60 Cr+ Distributed", "8+ Years"].map((item, i) => (
+              {["100+ Families", "₹100 Cr+ Distributed", "20+ Years"].map((item, i) => (
                 <span key={i} className="flex items-center gap-2">
                   {i > 0 && <span className="w-1 h-1 bg-white/25 rounded-full" />}
                   <span className="text-white/40 text-sm font-mono-num">{item}</span>

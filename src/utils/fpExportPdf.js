@@ -25,10 +25,10 @@ export async function exportPDF(data) {
   const otherInc = data.otherIncome || 0;
   const totalIncome = salary + salary2 + otherInc;
 
-  const expKeys = ["householdExp","rent","emi","healthInsurance","insurance","bills","schoolFees","fuel","personal","existingSip","addExpenses"];
-  const expLabels = ["House Hold Expenses","Rent","EMI","Health Insurance","Insurance","Bills","School Fees","Fuel","Personal","Existing SIP","Additional Expenses"];
+  const expKeys = ["householdExp","rent","healthInsurance","termInsurance","bills","educationFees","fuel","personal","existingSip","addExpenses"];
+  const expLabels = ["House Hold Expenses","Rent / EMI","Health Insurance (Monthly)","Term Insurance (Monthly)","Bills (Electricity, Internet, Cable, etc.)","Education Fees (if any)","Fuel","Personal","Existing SIP","Additional Expenses"];
   const childrenTotal = (data.children || []).reduce((s, c) =>
-    s + (c.education||0) + (c.allowance||0) + (c.holiday||0) + (c.medical||0), 0);
+    s + (c.schoolFees||0) + (c.tuitionFees||0) + (c.extraCurricular||0) + (c.booksStationary||0) + (c.transport||0), 0);
   const totalExpenses = expKeys.reduce((s, k) => s + (data[k] || 0), 0) + childrenTotal;
   const balance = totalIncome - totalExpenses;
 
@@ -52,7 +52,7 @@ export async function exportPDF(data) {
   // Right side
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8);
-  doc.text("AMFI-Registered Mutual Fund Distributor", W - 14, 8, { align: "right" });
+  // doc.text("AMFI-Registered Mutual Fund Distributor", W - 14, 8, { align: "right" });
   doc.text(`Report date: ${planDate}`, W - 14, 14, { align: "right" });
 
   y = 32;
@@ -222,7 +222,7 @@ export async function exportPDF(data) {
     y += 11;
 
     data.children.forEach(child => {
-      const childTotal = (child.education||0)+(child.allowance||0)+(child.holiday||0)+(child.medical||0);
+      const childTotal = (child.schoolFees||0)+(child.tuitionFees||0)+(child.extraCurricular||0)+(child.booksStationary||0)+(child.transport||0);
       doc.setFont("helvetica", "bold");
       doc.setFontSize(9);
       doc.setTextColor(...DARK);
@@ -230,10 +230,11 @@ export async function exportPDF(data) {
       y += 6;
 
       [
-        ["Education", child.education||0],
-        ["Allowance", child.allowance||0],
-        ["Holiday", child.holiday||0],
-        ["Medical", child.medical||0],
+        ["School Fees", child.schoolFees||0],
+        ["Tuition Fees", child.tuitionFees||0],
+        ["Extra-Curricular Activities", child.extraCurricular||0],
+        ["Books/Stationary", child.booksStationary||0],
+        ["Transport", child.transport||0],
       ].filter(([,v]) => v > 0).forEach(([label, val]) => {
         doc.setFont("helvetica", "normal");
         doc.setFontSize(8.5);

@@ -1,12 +1,29 @@
 import { useState, useEffect, useCallback } from "react";
-import { Download, FileText, BarChart2, Plus, Trash2, ChevronDown, ChevronUp, Save, CheckCircle } from "lucide-react";
+import { Download, FileText, BarChart2, Plus, Trash2, ChevronDown, ChevronUp, Save, CheckCircle, Lock, Sparkles } from "lucide-react";
 import { exportXLSX } from "../utils/fpExport";
 import { exportPDF } from "../utils/fpExportPdf";
 import { useNavigate } from "react-router-dom";
 
 import RiskQuestionnaire from "../components/financial-planning/RiskQuestionnaire";
+import Button from "../components/ui/Button";
 
 const STORAGE_KEY = "radds_fp_data";
+
+// ── Wipe any previously saved plan on every fresh page load ───────────
+// This module-level code runs once per hard refresh / new tab / reopened
+// site (since the JS bundle re-executes), but NOT on in-app client-side
+// navigation between routes (the bundle stays loaded, so data persists
+// while the user is actively using the app in one sitting).
+// A sessionStorage flag (cleared only when the browser tab/window fully
+// closes) is used to detect "is this truly a fresh load" vs. a remount
+// caused by routing within the same session.
+if (typeof window !== "undefined") {
+  const freshLoadFlag = sessionStorage.getItem("radds_fp_session_active");
+  if (!freshLoadFlag) {
+    sessionStorage.removeItem(STORAGE_KEY);
+    sessionStorage.setItem("radds_fp_session_active", "1");
+  }
+}
 
 const DISCLAIMER = "Mutual Fund investments are subject to market risks. Read all scheme related documents carefully. Past performance is not indicative of future returns. This report is for planning purposes only and does not constitute investment advice. Radds Capital is an AMFI-Registered Mutual Fund Distributor (ARN-334716 | ARN-292158 | ARN-124053).";
 
@@ -22,11 +39,12 @@ function createDefault() {
     otherIncome: 0,
     householdExp: 0,
     rent: 0,
-    emi: 0,
     healthInsurance: 0,
-    insurance: 0,
+    healthInsuranceAnnual: 0,
+    termInsurance: 0,
+    termInsuranceAnnual: 0,
     bills: 0,
-    schoolFees: 0,
+    educationFees: 0,
     fuel: 0,
     personal: 0,
     existingSip: 0,
@@ -52,6 +70,45 @@ function NumInput({ value, onChange, placeholder = "0", prefix = "₹" }) {
         onFocus={e => { if (e.target.value === "0") setRaw(""); }}
         className="w-full bg-transparent outline-none p-3 pl-1.5 text-sm font-semibold text-[#0D1B2E]"
       />
+    </div>
+  );
+}
+
+// ── Annual-Input / Monthly-Display Input (Health & Term Insurance) ────
+// User types the ANNUAL premium. On blur it's divided by 12 and the MONTHLY
+// figure is displayed in the box. Clicking back in shows the annual figure
+// again for editing. `monthlyValue` / `annualValue` are lifted to parent state.
+function AnnualToMonthlyInput({ annualValue, monthlyValue, onChange, placeholder = "0", prefix = "₹" }) {
+  const [editing, setEditing] = useState(false);
+  const [raw, setRaw] = useState(annualValue === 0 ? "" : String(annualValue));
+
+  useEffect(() => {
+    if (!editing) setRaw(annualValue === 0 ? "" : String(annualValue));
+  }, [annualValue, editing]);
+
+  return (
+    <div className="flex items-center border border-[#D1DDE8] rounded-lg bg-white focus-within:border-[#22568F] focus-within:shadow-[0_0_0_3px_rgba(34,86,143,0.08)] transition-all">
+      <span className="pl-3 text-[#6B7E99] text-sm select-none">{prefix}</span>
+      <input
+        type="text" inputMode="numeric"
+        value={editing ? raw : (monthlyValue === 0 ? "" : String(monthlyValue))}
+        placeholder={placeholder}
+        onFocus={() => { setEditing(true); setRaw(annualValue === 0 ? "" : String(annualValue)); }}
+        onChange={e => {
+          const v = e.target.value;
+          if (v === "" || /^\d*$/.test(v)) setRaw(v);
+        }}
+        onBlur={() => {
+          setEditing(false);
+          const annual = raw === "" ? 0 : Number(raw);
+          const monthly = Math.round(annual / 12);
+          onChange({ annual, monthly });
+        }}
+        className="w-full bg-transparent outline-none p-3 pl-1.5 text-sm font-semibold text-[#0D1B2E]"
+      />
+      <span className="pr-3 text-[#9AABC2] text-[11px] select-none whitespace-nowrap">
+        {editing ? "/yr" : "/mo"}
+      </span>
     </div>
   );
 }
@@ -94,7 +151,7 @@ function TextInput({ value, onChange, placeholder, type = "text" }) {
 export default function FinancialPlanning() {
   const [data, setData] = useState(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      const saved = sessionStorage.getItem(STORAGE_KEY);
       return saved ? { ...createDefault(), ...JSON.parse(saved) } : createDefault();
     } catch { return createDefault(); }
   });
@@ -109,27 +166,27 @@ export default function FinancialPlanning() {
   }, []);
 
   function saveToStorage() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
   }
 
   // Auto-save on change with debounce
   useEffect(() => {
-    const t = setTimeout(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(data)), 1000);
+    const t = setTimeout(() => sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data)), 1000);
     return () => clearTimeout(t);
   }, [data]);
 
   const totalIncome = data.salary + data.salary2 + data.otherIncome;
-  const expenseFields = ["householdExp","rent","emi","healthInsurance","insurance","bills","schoolFees","fuel","personal","existingSip","addExpenses"];
+  const expenseFields = ["householdExp","rent","healthInsurance","termInsurance","bills","educationFees","fuel","personal","existingSip","addExpenses"];
   const childrenTotal = data.children.reduce((s, c) =>
-    s + (c.education||0) + (c.allowance||0) + (c.holiday||0) + (c.medical||0), 0);
+    s + (c.schoolFees||0) + (c.tuitionFees||0) + (c.extraCurricular||0) + (c.booksStationary||0) + (c.transport||0), 0);
   const totalExpenses = expenseFields.reduce((s, k) => s + (data[k] || 0), 0) + childrenTotal;
   const balance = totalIncome - totalExpenses;
 
   // Children helpers
   function addChild() {
-    setData(d => ({ ...d, children: [...d.children, { name: "", age: "", education: 0, allowance: 0, holiday: 0, medical: 0 }] }));
+    setData(d => ({ ...d, children: [...d.children, { name: "", age: "", schoolFees: 0, tuitionFees: 0, extraCurricular: 0, booksStationary: 0, transport: 0 }] }));
   }
   function updateChild(i, field, value) {
     setData(d => ({ ...d, children: d.children.map((c, idx) => idx === i ? { ...c, [field]: value } : c) }));
@@ -152,9 +209,10 @@ export default function FinancialPlanning() {
   }
 
   const expenseLabels = {
-    householdExp: "Household Expenses", rent: "Rent", emi: "EMI",
-    healthInsurance: "Health Insurance", insurance: "Insurance", bills: "Bills",
-    schoolFees: "School Fees", fuel: "Fuel", personal: "Personal",
+    householdExp: "Household Expenses", rent: "Rent / EMI",
+    healthInsurance: "Health Insurance", termInsurance: "Term Insurance",
+    bills: "Bills (Electricity, Internet, Cable, etc.)",
+    educationFees: "Education Fees (if any)", fuel: "Fuel", personal: "Personal",
     existingSip: "Existing SIP", addExpenses: "Additional Expenses",
   };
 
@@ -176,7 +234,7 @@ export default function FinancialPlanning() {
             <h1 className="font-playfair text-3xl md:text-4xl font-bold">Goal & Budget Planner</h1>
           </div>
           <p className="text-white/70 text-base max-w-xl">
-            Fill in your income and expenses below. Your data is saved locally on your device. Export a personalised Excel or PDF report instantly — no login required.
+            Fill in your income and expenses below. Your data is kept only for this browser session and is cleared on refresh or when you close the site. Export a personalised Excel or PDF report instantly — no login required.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <button onClick={() => handleExport("xlsx")} disabled={!!exporting}
@@ -267,11 +325,41 @@ export default function FinancialPlanning() {
         {/* Expenses */}
         <Section title="Monthly Expenses" badge={`₹${totalExpenses.toLocaleString("en-IN")}/mo`}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-5">
-            {expenseFields.map(k => (
-              <Field key={k} label={expenseLabels[k]}>
-                <NumInput value={data[k] || 0} onChange={v => set(k, v)} />
-              </Field>
-            ))}
+            {expenseFields.map(k => {
+              if (k === "healthInsurance") {
+                return (
+                  <Field key={k} label="Health Insurance (annual amount)">
+                    <AnnualToMonthlyInput
+                      annualValue={data.healthInsuranceAnnual || 0}
+                      monthlyValue={data.healthInsurance || 0}
+                      onChange={({ annual, monthly }) => {
+                        setData(d => ({ ...d, healthInsuranceAnnual: annual, healthInsurance: monthly }));
+                        setSaved(false);
+                      }}
+                    />
+                  </Field>
+                );
+              }
+              if (k === "termInsurance") {
+                return (
+                  <Field key={k} label="Term Insurance (annual amount)">
+                    <AnnualToMonthlyInput
+                      annualValue={data.termInsuranceAnnual || 0}
+                      monthlyValue={data.termInsurance || 0}
+                      onChange={({ annual, monthly }) => {
+                        setData(d => ({ ...d, termInsuranceAnnual: annual, termInsurance: monthly }));
+                        setSaved(false);
+                      }}
+                    />
+                  </Field>
+                );
+              }
+              return (
+                <Field key={k} label={expenseLabels[k]}>
+                  <NumInput value={data[k] || 0} onChange={v => set(k, v)} />
+                </Field>
+              );
+            })}
           </div>
         </Section>
 
@@ -279,7 +367,7 @@ export default function FinancialPlanning() {
         <Section title="Children Expenses" badge={data.children.length > 0 ? `${data.children.length} child${data.children.length > 1 ? "ren" : ""}` : undefined}>
           <div className="pt-5 space-y-6">
             {data.children.map((child, i) => {
-              const childTotal = (child.education||0)+(child.allowance||0)+(child.holiday||0)+(child.medical||0);
+              const childTotal = (child.schoolFees||0)+(child.tuitionFees||0)+(child.extraCurricular||0)+(child.booksStationary||0)+(child.transport||0);
               return (
                 <div key={i} className="border border-[#E2EBF5] rounded-xl p-4">
                   <div className="flex items-center justify-between mb-4">
@@ -296,10 +384,11 @@ export default function FinancialPlanning() {
                     <Field label="Age">
                       <TextInput value={child.age} onChange={v => updateChild(i, "age", v)} placeholder="12" />
                     </Field>
-                    <Field label="Education"><NumInput value={child.education||0} onChange={v => updateChild(i,"education",v)} /></Field>
-                    <Field label="Allowance"><NumInput value={child.allowance||0} onChange={v => updateChild(i,"allowance",v)} /></Field>
-                    <Field label="Holiday"><NumInput value={child.holiday||0} onChange={v => updateChild(i,"holiday",v)} /></Field>
-                    <Field label="Medical"><NumInput value={child.medical||0} onChange={v => updateChild(i,"medical",v)} /></Field>
+                    <Field label="School Fees"><NumInput value={child.schoolFees||0} onChange={v => updateChild(i,"schoolFees",v)} /></Field>
+                    <Field label="Tuition Fees"><NumInput value={child.tuitionFees||0} onChange={v => updateChild(i,"tuitionFees",v)} /></Field>
+                    <Field label="Extra-Curricular Activities"><NumInput value={child.extraCurricular||0} onChange={v => updateChild(i,"extraCurricular",v)} /></Field>
+                    <Field label="Books/Stationary"><NumInput value={child.booksStationary||0} onChange={v => updateChild(i,"booksStationary",v)} /></Field>
+                    <Field label="Transport"><NumInput value={child.transport||0} onChange={v => updateChild(i,"transport",v)} /></Field>
                   </div>
                 </div>
               );
@@ -310,6 +399,41 @@ export default function FinancialPlanning() {
             </button>
           </div>
         </Section>
+
+        {/* Locked detailed-analysis upsell card */}
+        <div className="relative rounded-2xl h-48  border border-[#E2EBF5] overflow-hidden">
+          {/* Blurred preview content behind the overlay */}
+          <div className="p-6 blur-sm select-none pointer-events-none" aria-hidden="true">
+            <h3 className="font-semibold text-[#0D1B2E] mb-2">Detailed Goal Analysis</h3>
+            <div className="mt-8 flex flex-col justify-center">
+              <p>
+                Connect to our team<br></br>
+                And get to know more about how your finances can be<br></br>
+                managed for a better portfolio.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+              <div className="h-20 bg-[#F4F8FC] rounded-xl" />
+              <div className="h-20 bg-[#F4F8FC] rounded-xl" />
+              <div className="h-20 bg-[#F4F8FC] rounded-xl" />
+            </div>
+            <div className="h-32 bg-[#F4F8FC] rounded-xl mt-4" />
+          </div>
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-white/30 flex flex-col items-center justify-center gap-3 text-center px-6">
+            <div className="w-11 h-11 rounded-full bg-[#22568F]/10 flex items-center justify-center">
+              <Lock size={20} className="text-[#22568F]" />
+            </div>
+            <p className="font-semibold text-[#0D1B2E] flex items-center gap-1.5">
+              <Sparkles size={15} className="text-[#22568F]" />
+              For more detailed analysis, book a consultation
+            </p>
+            <Button href="/contact#book">
+              Book Consultation
+            </Button>
+          </div>
+        </div>
 
         {/* Export again at bottom */}
         <div className="bg-white rounded-2xl border border-[#E2EBF5] p-6">

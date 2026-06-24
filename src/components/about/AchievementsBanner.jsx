@@ -8,7 +8,7 @@ import {
 const stats = [
   {
     icon: Briefcase,
-    value: "8+",
+    value: "20+",
     label: "Years in Business",
   },
   {
@@ -18,7 +18,7 @@ const stats = [
   },
   {
     icon: Landmark,
-    value: "₹60 Cr+",
+    value: "₹100 Cr+",
     label: "AUM",
   },
   {

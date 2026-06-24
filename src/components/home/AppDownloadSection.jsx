@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import qrOnelink from "../../assets/appQRonelink.png";
 
 function PhoneMockup() {
   return (
@@ -219,9 +220,30 @@ export default function AppDownloadSection() {
             </motion.p>
           </div>
 
-          {/* Right: phone mockup */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right: phone mockup + QR code */}
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-8">
             <PhoneMockup />
+
+            {/* Scan-to-download QR */}
+            <motion.div
+              className="flex flex-col items-center gap-3 bg-white/8 border border-white/15 rounded-2xl px-6 py-6"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="bg-white rounded-xl p-3">
+                <img
+                  src={qrOnelink}
+                  alt="Scan to download the Radds Capital app"
+                  className="w-32 h-32 sm:w-36 sm:h-36 object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-white font-semibold text-sm leading-none">Scan to Download</p>
+                <p className="text-white/40 text-[11px] mt-1">Opens directly in Play Store or App Store</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

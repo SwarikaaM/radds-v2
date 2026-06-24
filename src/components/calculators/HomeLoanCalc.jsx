@@ -36,13 +36,14 @@ export default function HomeLoanCalc() {
   const calc = useMemo(() => {
     // 1. Calculate actual Home Loan EMI dynamically based on user input
     // Formula: EMI = [P x R x (1+R)^N]/[((1+R)^N)-1]
+    // (EMI itself is inherently a monthly-compounding instrument — unchanged.)
     const monthlyLoanRate = (rate / 100) / 12;
     const totalMonths = tenure * 12;
-    
+
     let calculatedEmi = 0;
     if (loanAmt > 0 && monthlyLoanRate > 0 && totalMonths > 0) {
       calculatedEmi = Math.round(
-        (loanAmt * monthlyLoanRate * Math.pow(1 + monthlyLoanRate, totalMonths)) / 
+        (loanAmt * monthlyLoanRate * Math.pow(1 + monthlyLoanRate, totalMonths)) /
         (Math.pow(1 + monthlyLoanRate, totalMonths) - 1)
       );
     }
@@ -51,31 +52,50 @@ export default function HomeLoanCalc() {
     const totalPaid = calculatedEmi * totalMonths;
     const totalInterest = Math.max(0, totalPaid - loanAmt);
 
-    // 3. SIP Math: Fixed 12% p.a. growth assumed for investment
-    const sipRate = 0.12 / 12; 
-    const sipNeeded = totalInterest > 0 && totalMonths > 0
-      ? Math.ceil((totalInterest * sipRate) / ((Math.pow(1 + sipRate, totalMonths) - 1) * (1 + sipRate)))
-      : 0;
+    // 3. SIP Math: Fixed 12% p.a. growth, compounded ANNUALLY (not monthly).
+    // The annual SIP contribution (12 × monthly amount) is added once at the
+    // start of each year, then the whole balance grows by 12% for that year.
+    const annualRate = 0.12;
+
+    // Given an annual contribution amount, compute the final corpus after
+    // `tenure` years of annual compounding (contribution-then-growth, ordinary annuity-due style).
+    function corpusForAnnualContribution(annualContribution) {
+      let bal = 0;
+      for (let yr = 0; yr < tenure; yr++) {
+        bal = (bal + annualContribution) * (1 + annualRate);
+      }
+      return bal;
+    }
+
+    // 4. What-if search: find the smallest monthly SIP whose annually-compounding
+    // corpus is >= totalInterest, then round to the nearest rupee so the
+    // resulting net (corpus − interest) lands as close to zero as possible.
+    let sipNeeded = 0;
+    if (totalInterest > 0 && tenure > 0) {
+      let lo = 0, hi = totalInterest; // monthly SIP search bounds (generous upper bound)
+      for (let i = 0; i < 60; i++) { // binary search, converges well within 60 iterations
+        const mid = (lo + hi) / 2;
+        const corpus = corpusForAnnualContribution(mid * 12);
+        if (corpus < totalInterest) lo = mid; else hi = mid;
+      }
+      sipNeeded = Math.round(hi);
+    }
     const annualSip = sipNeeded * 12;
 
-    // 4. Year-by-year accumulation table (at fixed 12%)
+    // 5. Year-by-year accumulation table (annual compounding @ fixed 12% p.a.)
     let sipOpen = 0;
     const rows = [];
     for (let yr = 1; yr <= tenure; yr++) {
       const openingBalance = sipOpen;
-      for (let m = 0; m < 12; m++) {
-        sipOpen = (sipOpen + sipNeeded) * (1 + sipRate);
-      }
-      const close = sipOpen;
-      const add = annualSip;
-      const growth = close - openingBalance - add;
-      rows.push({ yr, open: openingBalance, add, growth, close });
+      const close = (openingBalance + annualSip) * (1 + annualRate);
+      const growth = close - openingBalance - annualSip;
+      rows.push({ yr, open: openingBalance, add: annualSip, growth, close });
+      sipOpen = close;
     }
 
     const finalCorpus = sipOpen;
-    const net = finalCorpus - totalInterest;
 
-    return { calculatedEmi, totalPaid, totalInterest, sipNeeded, annualSip, rows, finalCorpus, net };
+    return { calculatedEmi, totalPaid, totalInterest, sipNeeded, annualSip, rows, finalCorpus };
   }, [loanAmt, tenure, rate]);
 
   const [exporting, setExporting] = useState(null);
@@ -100,7 +120,7 @@ export default function HomeLoanCalc() {
       }
       r1.getCell(2).font = { bold: true, size: 11, name: "Arial" };
       r1.getCell(2).alignment = { vertical: "middle" };
-      ws.addRow(["AMFI-Registered Mutual Fund Distributor", `Date: ${new Date().toLocaleDateString("en-IN")}`]).getCell(1).font = { italic: true, size: 9, color: { argb: "FF666666" }, name: "Arial" };
+      // ws.addRow(["AMFI-Registered Mutual Fund Distributor", `Date: ${new Date().toLocaleDateString("en-IN")}`]).getCell(1).font = { italic: true, size: 9, color: { argb: "FF666666" }, name: "Arial" };
       ws.addRow([`Loan: ₹${loanAmt.toLocaleString("en-IN")}  |  Rate: ${rate}%  |  Tenure: ${tenure} yrs  |  EMI: ₹${calc.calculatedEmi.toLocaleString("en-IN")}/mo`]).getCell(1).font = { size: 9, name: "Arial" };
       ws.addRow([]);
 
@@ -109,7 +129,7 @@ export default function HomeLoanCalc() {
       sh.getCell(1).font = { bold: true, color: { argb: "FF22568F" }, size: 10, name: "Arial" };
       sh.getCell(1).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFEAF2FF" } };
       ws.addRow([]);
-      [["Total Interest Payable", calc.totalInterest], ["Monthly SIP to Offset Interest", calc.sipNeeded], [`Final SIP Corpus (${tenure} yrs @ 12%)`, calc.finalCorpus], ["Net Benefit (Corpus − Interest)", calc.net]].forEach(([l, v]) => {
+      [["Total Interest Payable", calc.totalInterest], ["Monthly SIP to Offset Interest", calc.sipNeeded], [`Final SIP Corpus (${tenure} yrs @ 12%, Annual Compounding)`, calc.finalCorpus]].forEach(([l, v]) => {
         const r = ws.addRow([l, v]);
         r.getCell(1).font = { bold: true, size: 10, name: "Arial" };
         r.getCell(2).numFmt = "#,##0";
@@ -117,7 +137,7 @@ export default function HomeLoanCalc() {
       ws.addRow([]);
 
       // Table
-      const hdr = ws.addRow(["Year", "Opening Balance", "Annual SIP", "Growth @12%", "Closing Corpus"]);
+      const hdr = ws.addRow(["Year", "Opening Balance", "Annual SIP", "Growth @12% (Annual Compounding)", "Closing Corpus"]);
       hdr.eachCell(c => {
         c.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF22568F" } };
         c.font = { color: { argb: "FFFFFFFF" }, bold: true, size: 10, name: "Arial" };
@@ -164,7 +184,7 @@ export default function HomeLoanCalc() {
       try { doc.addImage(logoUrl, "PNG", 10, 3, 36, 15); }
       catch { doc.setFont("helvetica", "bold"); doc.setFontSize(14); doc.setTextColor(34, 86, 143); doc.text("RADDS CAPITAL", 14, 13); }
       doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(107, 126, 153);
-      doc.text("AMFI-Registered Mutual Fund Distributor", W - 14, 9, { align: "right" });
+      // doc.text("AMFI-Registered Mutual Fund Distributor", W - 14, 9, { align: "right" });
       doc.text(new Date().toLocaleDateString("en-IN"), W - 14, 15, { align: "right" });
       doc.setDrawColor(34, 86, 143); doc.setLineWidth(0.5); doc.line(0, 22, W, 22);
 
@@ -174,8 +194,8 @@ export default function HomeLoanCalc() {
       doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(107, 126, 153);
       doc.text(`Loan: Rs. ${loanAmt.toLocaleString("en-IN")}  |  Rate: ${rate}%  |  Tenure: ${tenure} yrs  |  EMI: Rs. ${calc.calculatedEmi.toLocaleString("en-IN")}/mo`, 14, y); y += 10;
 
-      const boxes = [["Total Interest", calc.totalInterest, [204,0,0]], ["Monthly SIP Needed", calc.sipNeeded, [26,127,60]], ["Final Corpus", calc.finalCorpus, [34,86,143]], ["Net Benefit", calc.net, calc.net >= 0 ? [26,127,60] : [204,0,0]]];
-      const bw = (W - 28 - 12) / 4;
+      const boxes = [["Total Interest", calc.totalInterest, [204,0,0]], ["Monthly SIP Needed", calc.sipNeeded, [26,127,60]], ["Final Corpus", calc.finalCorpus, [34,86,143]]];
+      const bw = (W - 28 - 8) / 3;
       boxes.forEach(([l, v, col], i) => {
         const x = 14 + i * (bw + 4);
         doc.setFillColor(234, 242, 255); doc.roundedRect(x, y, bw, 18, 2, 2, "F");
@@ -188,7 +208,7 @@ export default function HomeLoanCalc() {
 
       autoTable(doc, {
         startY: y,
-        head: [["Year", "Opening Balance", "Annual SIP", "Growth @12%", "Closing Corpus"]],
+        head: [["Year", "Opening Balance", "Annual SIP", "Growth @12% (Annual)", "Closing Corpus"]],
         body: calc.rows.map(r => [r.yr, "Rs. "+Math.round(r.open).toLocaleString("en-IN"), "Rs. "+Math.round(r.add).toLocaleString("en-IN"), "Rs. "+Math.round(r.growth).toLocaleString("en-IN"), "Rs. "+Math.round(r.close).toLocaleString("en-IN")]),
         styles: { fontSize: 8, cellPadding: 2.5 },
         headStyles: { fillColor: [34, 86, 143], textColor: [255, 255, 255], fontStyle: "bold" },
@@ -237,7 +257,7 @@ export default function HomeLoanCalc() {
           {/* Results */}
           <div className="space-y-5">
             {/* Summary cards */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="bg-white rounded-xl border border-[#E2EBF5] p-5">
                 <p className="text-xs text-[#6B7E99] mb-1">Total Interest Payable</p>
                 <p className="text-2xl font-bold text-red-600">{inr(calc.totalInterest)}</p>
@@ -247,26 +267,22 @@ export default function HomeLoanCalc() {
                 <p className="text-2xl font-bold text-green-600">{inr(calc.sipNeeded)}<span className="text-sm font-normal text-[#6B7E99]">/mo</span></p>
               </div>
               <div className="bg-white rounded-xl border border-[#E2EBF5] p-5">
-                <p className="text-xs text-[#6B7E99] mb-1">Final SIP Corpus ({tenure} yrs @ 12%)</p>
+                <p className="text-xs text-[#6B7E99] mb-1">Final SIP Corpus ({tenure} yrs @ 12% p.a., annual compounding)</p>
                 <p className="text-2xl font-bold text-[#22568F]">{inr(calc.finalCorpus)}</p>
-              </div>
-              <div className={`rounded-xl border p-5 ${calc.net >= 0 ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}>
-                <p className="text-xs text-[#6B7E99] mb-1">Net Benefit (Corpus − Interest)</p>
-                <p className={`text-2xl font-bold ${calc.net >= 0 ? "text-green-700" : "text-red-600"}`}>{inr(calc.net)}</p>
               </div>
             </div>
 
             <div className="bg-[#EAF2FF] border border-[#C8DCF5] rounded-xl p-4 flex gap-3">
               <TrendingUp size={18} className="text-[#22568F] flex-shrink-0 mt-0.5" />
               <p className="text-sm text-[#22568F]">
-                By investing <strong>{inr(calc.sipNeeded)}/month</strong> at an assumed 12% p.a. equity return rate, your generated corpus can neutralize the interest costs generated by your <strong>{rate}%</strong> home loan.
+                By investing <strong>{inr(calc.sipNeeded)}/month</strong> at an assumed 12% p.a. equity return rate (compounded annually), your generated corpus can neutralize the interest costs generated by your <strong>{rate}%</strong> home loan.
               </p>
             </div>
 
             {/* Year-by-year table */}
             <div className="bg-white rounded-2xl border border-[#E2EBF5] overflow-hidden">
               <div className="px-5 py-4 border-b border-[#E2EBF5]">
-                <h3 className="font-semibold text-[#0D1B2E] text-sm">SIP Growth Table ({tenure} Years @ Fixed 12% p.a.)</h3>
+                <h3 className="font-semibold text-[#0D1B2E] text-sm">SIP Growth Table ({tenure} Years @ 12% p.a., Annual Compounding)</h3>
               </div>
               <div className="overflow-auto max-h-72">
                 <table className="w-full text-xs">
@@ -311,7 +327,7 @@ export default function HomeLoanCalc() {
                 Important Disclaimers:
               </p>
               <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Home Loan Rate vs. Investment Return:</strong> The Home Loan calculations dynamically adjust based on your current input parameter. The parallel mutual fund SIP growth rate is strictly simulated at a fixed benchmark rate of 12% p.a.</li>
+                <li><strong>Home Loan Rate vs. Investment Return:</strong> The Home Loan EMI calculations dynamically adjust based on your current input parameters and compound monthly, as is standard for loans. The parallel mutual fund SIP growth is simulated at a fixed benchmark rate of 12% p.a., compounded annually.</li>
                 <li><strong>No Guaranteed Outcomes:</strong> Real-world mutual fund products are subject to market risks. Actual investment returns fluctuate over time and are not guaranteed.</li>
                 <li><strong>Taxation Not Included:</strong> This calculation does not factor in components like Capital Gains Tax (LTCG) on investment withdrawals or Income Tax deductions under Section 24(b) for home loan interest payments.</li>
               </ul>

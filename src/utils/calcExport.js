@@ -69,9 +69,9 @@ export async function exportCalcXLSX({ title, summaryKeys, results, tableColumns
   r1.getCell(2).font = { bold: true, size: 12, name: "Arial" };
   r1.getCell(2).alignment = { vertical: "middle" };
 
-  const r2 = ws.addRow(["AMFI-Registered Mutual Fund Distributor", `Date: ${new Date().toLocaleDateString("en-IN")}`]);
-  r2.getCell(1).font = { italic: true, size: 9, color: { argb: "FF666666" }, name: "Arial" };
-  r2.getCell(2).alignment = { horizontal: "right" };
+  // const r2 = ws.addRow(["AMFI-Registered Mutual Fund Distributor", `Date: ${new Date().toLocaleDateString("en-IN")}`]);
+  // r2.getCell(1).font = { italic: true, size: 9, color: { argb: "FF666666" }, name: "Arial" };
+  // r2.getCell(2).alignment = { horizontal: "right" };
   ws.addRow([]);
 
   // Summary section
@@ -137,7 +137,7 @@ export async function exportCalcPDF({ title, summaryKeys, results, tableColumns,
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8);
   doc.setTextColor(...GREY);
-  doc.text("AMFI-Registered Mutual Fund Distributor", W - 14, 9, { align: "right" });
+  // doc.text("AMFI-Registered Mutual Fund Distributor", W - 14, 9, { align: "right" });
   doc.text(`Generated: ${new Date().toLocaleDateString("en-IN")}`, W - 14, 15, { align: "right" });
   // Blue separator line under header
   doc.setDrawColor(...BLUE);
