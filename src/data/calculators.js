@@ -105,55 +105,6 @@ export const calculatorCategories = [
   "Insurance",
 ];
 
-
-// 
-
-
-// export const calculators = [
-//   {
-//     id: "sip",
-//     title: "SIP Calculator",
-//     description: "Find out how much your monthly SIP can grow over time.",
-//     icon: "TrendingUp",
-//     slug: "sip",
-//   },
-//   {
-//     id: "swp",
-//     title: "SWP Calculator",
-//     description: "Plan regular withdrawals from your mutual fund corpus.",
-//     icon: "ArrowDownCircle",
-//     slug: "swp",
-//   },
-//   {
-//     id: "cost-of-delay",
-//     title: "Cost of Delay SIP",
-//     description: "See how starting late impacts your wealth journey.",
-//     icon: "Clock",
-//     slug: "cost-of-delay",
-//   },
-//   {
-//     id: "lumpsum",
-//     title: "Lumpsum Calculator",
-//     description: "Calculate returns on one-time investments at different rates.",
-//     icon: "DollarSign",
-//     slug: "lumpsum",
-//   },
-//   {
-//     id: "stepup-sip",
-//     title: "Step-up SIP Calculator",
-//     description: "Model wealth growth when you increase your SIP annually.",
-//     icon: "ArrowUpRight",
-//     slug: "stepup-sip",
-//   },
-//   {
-//     id: "one-time",
-//     title: "One Time Investment",
-//     description: "Estimate the future value of a single large investment.",
-//     icon: "Zap",
-//     slug: "one-time",
-//   },
-// ];
-
 // 3 new calculators
 export const extraCalculators = [
   {
@@ -183,7 +134,7 @@ export const extraCalculators = [
   {
     id: "term-insurance",
     slug: "term-insurance",
-    title: "Term Insurance Planner",
+    title: "Term Cover SIP Offset Tool",
     description: "Offset your term insurance premiums by running a parallel SIP.",
     shortDescription: "Invest the equivalent of your term insurance premium in a SIP — see how the corpus can cover total premiums paid over the policy tenure.",
     icon: "Shield",

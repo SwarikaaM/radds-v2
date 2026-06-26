@@ -1,47 +1,15 @@
-import { Users, Wallet, Award, Star } from "lucide-react";
+import { Users, Wallet, PiggyBank, Award, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import Counter from "../ui/Counter";
 import ScrollReveal from "../ui/ScrollReveal";
 import SectionHeader from "../ui/SectionHeader";
 
 const stats = [
-  {
-    icon: Users,
-    prefix: "",
-    end: 1000,
-    suffix: "+",
-    label: "Happy Clients",
-    color: "text-primary",
-    bg: "bg-primary/8",
-  },
-  {
-    icon: Wallet,
-    prefix: "₹",
-    end: 100,
-    suffix: " Cr+",
-    label: "Assets Distributed",
-    color: "text-secondary",
-    bg: "bg-secondary/8",
-  },
-  {
-    icon: Award,
-    prefix: "",
-    end: 20,
-    suffix: "+",
-    label: "Years Market Experience",
-    color: "text-accent",
-    bg: "bg-accent/8",
-  },
-  {
-    icon: Star,
-    prefix: "",
-    end: 4.9,
-    suffix: "★",
-    label: "Average Client Rating",
-    color: "text-warning",
-    bg: "bg-warning/8",
-    decimals: 1,
-  },
+  { icon: Users, prefix: "", end: 1000, suffix: "+", label: "Happy Clients", color: "text-primary", bg: "bg-primary/8" },
+  { icon: Wallet, prefix: "₹", end: 100, suffix: " Cr+", label: "Assets Distributed", color: "text-secondary", bg: "bg-secondary/8" },
+  { icon: PiggyBank, prefix: "₹", end: 1, suffix: " Cr+", label: "Monthly SIP Book", color: "text-success", bg: "bg-success/8" },
+  { icon: Award, prefix: "", end: 20, suffix: "+", label: "Years Market Experience", color: "text-accent", bg: "bg-accent/8" },
+  { icon: Star, prefix: "", end: 4.9, suffix: "★", label: "Average Client Rating", color: "text-warning", bg: "bg-warning/8", decimals: 1 },
 ];
 
 export default function TrustStats() {
@@ -54,7 +22,7 @@ export default function TrustStats() {
           className="mb-14"
         />
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-5 mb-10">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (

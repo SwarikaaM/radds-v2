@@ -25,7 +25,7 @@ const steps = [
   {
     number: "04",
     icon: TrendingUp,
-    title: "Grow With Us",
+    title: "Stay Invested",
     description: "We review your mutual fund investments periodically and suggest adjustments based on market conditions and scheme performance. You stay informed; your investments stay on track.",
   },
 ];

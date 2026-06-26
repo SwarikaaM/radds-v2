@@ -32,7 +32,7 @@ export default function ServiceDetail() {
         <ServiceRisks service={service} />
         <ServiceFAQ service={service} />
         <RelatedServices service={service} />
-        <ServiceCTA />
+        <ServiceCTA service={service} />
       </main>
     </>
   );

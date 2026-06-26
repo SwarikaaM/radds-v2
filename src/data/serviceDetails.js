@@ -47,6 +47,9 @@ export const serviceDetails = {
       { question: "Can I withdraw anytime?", answer: "Most open-ended funds allow redemption at any time." },
     ],
     related: ["sip-planning", "goal-based-planning", "portfolio-review"],
+    // mutual-funds
+    ctaHeadline: "Ready to put your money to work?",
+    ctaSubtext: "Get a shortlist of mutual funds matched to your goals — talk to us before you invest another rupee.",
   },
 
   "life-health-insurance": {
@@ -85,6 +88,9 @@ export const serviceDetails = {
       { question: "When should I buy insurance?", answer: "The earlier you buy, the lower premiums generally are." },
     ],
     related: ["goal-based-planning", "portfolio-review", "retirement-planning"],
+    // life-health-insurance
+    ctaHeadline: "Don't wait for a reason to need this.",
+    ctaSubtext: "The cheapest day to get covered is today. Let's find the right plan while you still qualify for it.",
   },
 
   "equity-shares": {
@@ -123,6 +129,9 @@ export const serviceDetails = {
       { question: "Should beginners invest in stocks?", answer: "Beginners often start with diversified strategies first." },
     ],
     related: ["mutual-funds", "portfolio-review", "sip-planning"],
+     // equity-shares
+    ctaHeadline: "Ready to own it, not just watch it?",
+    ctaSubtext: "Get direct market access through our broking partner — built for investors ready to participate.",
   },
 
   "nps": {
@@ -155,6 +164,9 @@ export const serviceDetails = {
     ],
     faqs: [],
     related: ["retirement-planning", "goal-based-planning", "portfolio-review"],
+    // nps
+    ctaHeadline: "Your pension won't build itself.",
+    ctaSubtext: "Start your NPS contribution now, while you still have the most working years left to build it.",
   },
 
   "fixed-deposits-bonds": {
@@ -187,6 +199,9 @@ export const serviceDetails = {
     ],
     faqs: [],
     related: ["retirement-planning", "portfolio-review", "goal-based-planning"],
+    // fixed-deposits-bonds
+    ctaHeadline: "Some money just needs to be safe.",
+    ctaSubtext: "Talk to us about parking your near-term goals or emergency fund in capital-safe options.", 
   },
 
   "sip-planning": {
@@ -225,6 +240,9 @@ export const serviceDetails = {
       { question: "How long should I continue?", answer: "Longer durations generally improve outcomes." },
     ],
     related: ["mutual-funds", "goal-based-planning", "portfolio-review"],
+    // sip-planning
+    ctaHeadline: "Ready to stop waiting for the 'right time'?",
+    ctaSubtext: "Set up a SIP this week and let the habit do the heavy lifting from here.",  
   },
 
   "tax-planning": {
@@ -257,6 +275,9 @@ export const serviceDetails = {
     ],
     faqs: [],
     related: ["mutual-funds", "sip-planning", "goal-based-planning"],
+    // tax-planning
+    ctaHeadline: "Don't let March catch you off guard.",
+    ctaSubtext: "Plan your 80C investments now and make tax season a non-event.", 
   },
 
   "retirement-planning": {
@@ -289,6 +310,9 @@ export const serviceDetails = {
     ],
     faqs: [],
     related: ["nps", "goal-based-planning", "mutual-funds"],
+    // retirement-planning
+    ctaHeadline: "The best time to start was years ago. The next best time is now.",
+    ctaSubtext: "Get a retirement corpus number to work toward, and a plan to get there.",  
   },
 
   "goal-based-planning": {
@@ -321,6 +345,9 @@ export const serviceDetails = {
     ],
     faqs: [],
     related: ["sip-planning", "mutual-funds", "portfolio-review"],
+    // goal-based-planning
+    ctaHeadline: "Give every goal a plan, not just a wish.",
+    ctaSubtext: "Map your next big goal to a real investment roadmap — let's start with one goal today.",
   },
 
   "portfolio-review": {

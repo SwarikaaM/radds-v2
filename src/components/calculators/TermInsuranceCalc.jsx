@@ -56,10 +56,10 @@ export default function TermInsuranceCalc() {
     setExporting("xlsx");
     try {
       const wb = new ExcelJS.Workbook();
-      const ws = wb.addWorksheet("Term Insurance Planner");
+      const ws = wb.addWorksheet("Term Cover SIP Offset Tool");
 
       // Row 1 — height 35
-      const r1 = ws.addRow(["", "Term Insurance Planner — Premium vs SIP Corpus"]);
+      const r1 = ws.addRow(["", "Term Cover SIP Offset Tool — Premium vs SIP Corpus"]);
       ws.getRow(1).height = 35;
       try {
         const imgResp = await fetch(logoUrl);
@@ -144,7 +144,7 @@ export default function TermInsuranceCalc() {
 
       let y = 32;
       doc.setFont("helvetica", "bold"); doc.setFontSize(16); doc.setTextColor(13, 27, 46);
-      doc.text("Term Insurance Planner", 14, y); y += 7;
+      doc.text("Term Cover SIP Offset Tool", 14, y); y += 7;
       doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(107, 126, 153);
       doc.text(`Premium: Rs.${premium.toLocaleString("en-IN")}/yr  |  SIP: Rs.${sipAmt.toLocaleString("en-IN")}/mo  |  Tenure: ${tenure} yrs  |  Rate: ${growthRate}%`, 14, y); y += 10;
 
@@ -189,7 +189,7 @@ export default function TermInsuranceCalc() {
             <div className="w-10 h-10 bg-[#22568F]/10 rounded-xl flex items-center justify-center">
               <Shield size={20} className="text-[#22568F]" />
             </div>
-            <h1 className="font-playfair text-3xl font-bold text-[#0D1B2E]">Term Insurance Planner</h1>
+            <h1 className="font-playfair text-3xl font-bold text-[#0D1B2E]">Term Cover SIP Offset Tool</h1>
           </div>
           <p className="text-[#6B7E99]">Invest a monthly SIP equal to a portion of your premium. See how the corpus can offset total premiums paid over the policy tenure.</p>
         </div>

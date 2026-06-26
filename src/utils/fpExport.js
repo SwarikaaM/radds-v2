@@ -34,8 +34,8 @@ export async function exportXLSX(data) {
   const otherInc  = data.otherIncome || 0;
   const totalIncome = salary + salary2 + otherInc;
 
-  const expKeys   = ["householdExp","rent","healthInsurance","termInsurance","bills","educationFees","fuel","personal","existingSip","addExpenses"];
-  const expLabels = ["House Hold Exp","Rent / EMI","Health Insurance (Monthly)","Term Insurance (Monthly)","Bills (Electricity, Internet, Cable, etc.)","Education Fees (if any)","Fuel","Personal","Existing SIP","Add Expenses"];
+  const expKeys   = ["householdExp","rent","healthInsurance","termInsurance","bills","educationFees","fuel","personal","loanEmi","domesticHelp","existingSip","addExpenses"];
+const expLabels = ["House Hold Exp","Rent / EMI","Health Insurance (Monthly)","Term Insurance (Monthly)","Bills (Electricity, Internet, Cable, etc.)","Education Fees (if any)","Fuel","Personal","Other EMIs (Credit Card/Car/Personal)","Domestic Help (Maid/Driver/Cook)","Existing SIP","Add Expenses"];
   const childrenTotal = (data.children || []).reduce((s, c) =>
     s + (c.schoolFees||0) + (c.tuitionFees||0) + (c.extraCurricular||0) + (c.booksStationary||0) + (c.transport||0), 0);
   const totalExpenses = expKeys.reduce((s, k) => s + (data[k] || 0), 0) + childrenTotal;

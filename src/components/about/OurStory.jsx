@@ -7,62 +7,41 @@ export default function OurStory() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
             <div>
-              <p className="text-primary font-semibold uppercase tracking-wider mb-3">
-                Our Story
-              </p>
-
+              <p className="text-primary font-semibold uppercase tracking-wider mb-3">Who We Are</p>
               <h2 className="font-playfair text-5xl font-bold mb-8 text-[#0D1B2E]">
-                Helping Investors Build Wealth With Confidence
+                An AMFI-Registered Mutual Fund Distribution Practice
               </h2>
-
               <p className="text-[#6B7E99] mb-6 leading-relaxed">
-                Radds Capital was founded with a simple belief:
-                investing should be accessible,
-                transparent, and centered around the client.
+                Radds Capital is an AMFI-registered Mutual Fund Distributor (ARN holder) based out of India,
+                helping individuals and families access mutual funds, insurance, and other investment
+                products through a single, organised point of contact.
               </p>
-
               <p className="text-[#6B7E99] mb-8 leading-relaxed">
-                We help individuals and families make
-                smarter financial decisions through
-                mutual fund investments, insurance distribution,
-                retirement-focused SIPs, and ongoing
-                distributor support.
+                We distribute schemes across multiple AMCs and insurers — we do not manufacture or
+                guarantee any product, and all mutual fund investments are subject to market risk.
+                Our role is to make the process of investing simpler, more transparent, and easier to act on.
               </p>
-
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-semibold text-xl mb-2">
-                    Mission
-                  </h3>
+                  <h3 className="font-semibold text-xl mb-2">What We Do</h3>
                   <p className="text-[#6B7E99]">
-                    Empower clients with clear,
-                    practical financial guidance.
+                    Help clients select, execute, and stay invested in mutual funds, SIPs, insurance,
+                    NPS, and fixed-income products suited to their goals and risk profile.
                   </p>
                 </div>
-
                 <div>
-                  <h3 className="font-semibold text-xl mb-2">
-                    Vision
-                  </h3>
+                  <h3 className="font-semibold text-xl mb-2">Who We Serve</h3>
                   <p className="text-[#6B7E99]">
-                    Become the most trusted mutual fund
-                    distribution partner for Indian families.
+                    Salaried professionals, business owners, and families across India looking for a
+                    long-term, organised approach to building their investment portfolio.
                   </p>
                 </div>
               </div>
-
-              <blockquote className="border-l-4 border-primary pl-5 mt-10 italic text-xl text-[#0D1B2E]">
-                “Investment guidance should be transparent,
-                personal, and built around the life you want.”
-              </blockquote>
             </div>
           </ScrollReveal>
-
           <ScrollReveal>
             <div className="h-[500px] rounded-2xl bg-[#F4F8FC] border border-[#E2EBF5] flex items-center justify-center">
-              <span className="text-[#6B7E99]">
-                Office / Team Image Placeholder
-              </span>
+              <span className="text-[#6B7E99]">Office / Team Image Placeholder</span>
             </div>
           </ScrollReveal>
         </div>

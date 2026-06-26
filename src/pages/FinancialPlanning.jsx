@@ -47,6 +47,8 @@ function createDefault() {
     educationFees: 0,
     fuel: 0,
     personal: 0,
+    loanEmi: 0,
+    domesticHelp: 0,
     existingSip: 0,
     addExpenses: 0,
     children: [],
@@ -178,7 +180,7 @@ export default function FinancialPlanning() {
   }, [data]);
 
   const totalIncome = data.salary + data.salary2 + data.otherIncome;
-  const expenseFields = ["householdExp","rent","healthInsurance","termInsurance","bills","educationFees","fuel","personal","existingSip","addExpenses"];
+  const expenseFields = ["householdExp","rent","healthInsurance","termInsurance","bills","educationFees","fuel","personal","loanEmi","domesticHelp","existingSip","addExpenses"];
   const childrenTotal = data.children.reduce((s, c) =>
     s + (c.schoolFees||0) + (c.tuitionFees||0) + (c.extraCurricular||0) + (c.booksStationary||0) + (c.transport||0), 0);
   const totalExpenses = expenseFields.reduce((s, k) => s + (data[k] || 0), 0) + childrenTotal;
@@ -213,6 +215,7 @@ export default function FinancialPlanning() {
     healthInsurance: "Health Insurance", termInsurance: "Term Insurance",
     bills: "Bills (Electricity, Internet, Cable, etc.)",
     educationFees: "Education Fees (if any)", fuel: "Fuel", personal: "Personal",
+    loanEmi: "Other EMIs (Credit Card/Car/Personal)", domesticHelp: "Domestic Help (Maid/Driver/Cook)",
     existingSip: "Existing SIP", addExpenses: "Additional Expenses",
   };
 

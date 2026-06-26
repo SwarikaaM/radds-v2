@@ -34,7 +34,7 @@ export default function BlogPreview() {
           <SectionHeader
             eyebrow="Insights"
             title="Financial Insights & Market Updates"
-            subtitle="Practical reads on markets, tax, and personal finance."
+            subtitle="Expert takes on markets, tax, and money management."
             align="left"
             className="mb-0 max-w-lg"
           />
