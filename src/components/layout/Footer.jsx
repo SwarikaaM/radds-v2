@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, MessageCircle, LayoutDashboard } from "lucide-react";
@@ -5,6 +6,7 @@ import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import logoPNG from "../../assets/Logo.png";
 import MFDisclosure from "../ui/MFDisclosure";
+import PrivacyPolicyModal from "../legal/PrivacyPolicyModal";
 
 const socialLinks = [
   { Icon: FaInstagram, href: "https://www.instagram.com/radds.capital/", label: "Instagram" },
@@ -17,17 +19,17 @@ const socialLinks = [
 
 const productLinks = [
   { label: "Mutual Funds", path: "/services/mutual-funds" },
-  { label: "Life & Health Insurance", path: "/services/insurance" },
-  { label: "Equity", path: "/services/equity" },
-  { label: "NPS / Retirement Planning", path: "/services/nps-retirement" },
-  { label: "FD / Bonds", path: "/services/fd-bonds" },
+  { label: "Life & Health Insurance", path: "/services/life-health-insurance" },
+  { label: "Equity", path: "/services/equity-shares" },
+  { label: "NPS", path: "/services/nps" },
+  { label: "FD / Bonds", path: "/services/fixed-deposits-bonds" },
 ];
 
 const serviceLinks = [
   { label: "SIP Planning", path: "/services/sip-planning" },
   { label: "Tax Planning", path: "/services/tax-planning" },
   { label: "Retirement Planning", path: "/services/retirement-planning" },
-  { label: "Goal-Based Planning", path: "/services/goal-planning" },
+  { label: "Goal-Based Planning", path: "/services/goal-based-planning" },
   { label: "Portfolio Review", path: "/services/portfolio-review" },
 ];
 
@@ -42,6 +44,8 @@ const companyLinks = [
 ];
 
 export default function Footer() {
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+
   return (
     <footer className="bg-dark text-white">
       <MFDisclosure />
@@ -188,9 +192,13 @@ export default function Footer() {
             © 2026 Radds Capital. All rights reserved. AMFI-registered Mutual Fund Distributor.
           </p>
           <div className="flex items-center gap-4">
-            <Link to="/privacy-policy" className="text-white/35 hover:text-white/60 text-xs transition-colors">
+            <a
+              href="#"
+              onClick={(e) => { e.preventDefault(); setPrivacyOpen(true); }}
+              className="text-white/35 hover:text-white/60 text-xs transition-colors"
+            >
               Privacy Policy
-            </Link>
+            </a>
             <a href="#" className="text-white/35 hover:text-white/60 text-xs transition-colors">
               Terms of Use
             </a>
@@ -208,6 +216,8 @@ export default function Footer() {
           </p>
         </div> 
       </div>
+
+      <PrivacyPolicyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </footer>
   );
 }

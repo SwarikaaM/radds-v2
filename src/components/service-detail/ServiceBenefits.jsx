@@ -17,7 +17,7 @@ const icons = [
 
 export default function ServiceBenefits({ service }) {
   return (
-    <section className="py-24">
+    <section className="py-16">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader title="Key Benefits" />
 

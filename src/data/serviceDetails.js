@@ -2,7 +2,6 @@ import {
   TrendingUp,
   Shield,
   BarChart3,
-  CreditCard,
   Repeat,
   FileText,
   Landmark,
@@ -14,440 +13,226 @@ import {
 export const serviceDetails = {
   "mutual-funds": {
     name: "Mutual Funds",
-    tagline: "Professional investing made simple.",
+    tagline: "Time in the market beats timing the market.",
     icon: TrendingUp,
-
     description:
-      "Mutual funds pool money from many investors and invest across a diversified portfolio. They are designed to help investors build wealth over time without having to select and manage individual securities.",
-
+      "Every year you stay out of the market is a year of growth you don't get back. Mutual funds let you put your money to work — diversified, professionally managed, and built around how much risk you're actually comfortable with — instead of leaving it idle while everyone else's money compounds.",
     steps: [
       "Understand your financial goals",
       "Assess your risk profile",
       "Select suitable mutual funds",
       "Monitor and review periodically",
     ],
-
     benefits: [
-      {
-        title: "Diversification",
-        description: "Spread investments across multiple assets.",
-      },
-      {
-        title: "Professional Management",
-        description: "Managed by experienced fund managers.",
-      },
-      {
-        title: "Flexible Investing",
-        description: "Start small through SIPs.",
-      },
-      {
-        title: "Goal Alignment",
-        description: "Choose funds matching your objectives.",
-      },
+      { title: "Don't Put All Eggs in One Basket", description: "Your money is spread across many companies and sectors, so one bad bet doesn't sink you." },
+      { title: "Skip the Guesswork", description: "Experienced fund managers track the market daily so you don't have to." },
+      { title: "Start With What You Have", description: "No large lump sum needed — begin with a SIP and grow it as your income grows." },
+      { title: "Built Around Your Goal", description: "The fund mix is chosen for what you're saving for, not a one-size-fits-all pick." },
     ],
-
     audience: [
-      {
-        title: "Young Professional",
-        description: "Building long-term wealth early.",
-      },
-      {
-        title: "Family Planner",
-        description: "Saving for education or major goals.",
-      },
-      {
-        title: "Long-Term Investor",
-        description: "Focused on wealth creation over years.",
-      },
+      { title: "The 25-Year-Old Who Hasn't Started", description: "Every year you wait costs you years of compounding you can't buy back later." },
+      { title: "The Parent Watching the Clock", description: "School fees and college costs are coming whether you've saved for them or not." },
+      { title: "The Saver Tired of FD Returns", description: "If inflation is quietly eating your savings, it's time your money worked harder." },
     ],
-
     risks: [
       "Market volatility can affect returns.",
       "Returns are not guaranteed.",
       "Short-term losses are possible.",
     ],
-
     faqs: [
-      {
-        question: "What is a mutual fund?",
-        answer:
-          "A professionally managed investment vehicle that pools money from multiple investors.",
-      },
-      {
-        question: "Can I start with a small amount?",
-        answer:
-          "Yes, many SIPs start from ₹500 per month.",
-      },
-      {
-        question: "Are mutual funds safe?",
-        answer:
-          "They are regulated but remain subject to market risk.",
-      },
-      {
-        question: "How often should I review investments?",
-        answer:
-          "At least once or twice a year.",
-      },
-      {
-        question: "Can I withdraw anytime?",
-        answer:
-          "Most open-ended funds allow redemption at any time.",
-      },
+      { question: "What is a mutual fund?", answer: "A professionally managed investment vehicle that pools money from multiple investors." },
+      { question: "Can I start with a small amount?", answer: "Yes, many SIPs start from ₹500 per month." },
+      { question: "Are mutual funds safe?", answer: "They are regulated but remain subject to market risk." },
+      { question: "How often should I review investments?", answer: "At least once or twice a year." },
+      { question: "Can I withdraw anytime?", answer: "Most open-ended funds allow redemption at any time." },
     ],
-
     related: ["sip-planning", "goal-based-planning", "portfolio-review"],
   },
 
   "life-health-insurance": {
     name: "Life & Health Insurance",
-    tagline: "Protect your family and financial future.",
+    tagline: "Cover is cheap until the day you actually need it.",
     icon: Shield,
-
     description:
-      "Insurance helps reduce financial stress caused by unforeseen events such as illness, hospitalization, disability, or loss of income. Proper coverage protects both your family and long-term goals.",
-
+      "Nobody plans to get sick or worse — that's exactly the problem. One serious diagnosis, one hospital stay, or one income lost overnight can erase years of careful saving. Insurance is the one thing that's easy and affordable to get while you're healthy, and the hardest thing to get once you're not. Get it now, while the door is still open.",
     steps: [
       "Assess coverage requirements",
       "Compare suitable plans",
       "Complete application process",
       "Review coverage periodically",
     ],
-
     benefits: [
-      {
-        title: "Family Protection",
-        description: "Financial support for dependents.",
-      },
-      {
-        title: "Medical Coverage",
-        description: "Protection from healthcare expenses.",
-      },
-      {
-        title: "Peace of Mind",
-        description: "Reduced financial uncertainty.",
-      },
-      {
-        title: "Long-Term Security",
-        description: "Safeguard future financial plans.",
-      },
+      { title: "Your Family Isn't Left to Figure It Out", description: "If something happens to you, your family doesn't also have to face a financial crisis." },
+      { title: "One Hospital Bill Won't Undo Years of Saving", description: "Medical costs are rising every year — cover protects the wealth you've already built." },
+      { title: "Sleep Easier", description: "Knowing the worst-case is financially covered changes how you live the everyday case." },
+      { title: "Lock In a Lower Premium Now", description: "Premiums only go up with age and health issues — the cheapest day to buy is today." },
     ],
-
     audience: [
-      {
-        title: "Working Professional",
-        description: "Protecting income and dependents.",
-      },
-      {
-        title: "Family Planner",
-        description: "Securing family financial stability.",
-      },
-      {
-        title: "Business Owner",
-        description: "Managing financial risks effectively.",
-      },
+      { title: "The Sole Earner", description: "If your income stops, does everything your family depends on stop with it?" },
+      { title: "The Parent", description: "Your children's future shouldn't depend on nothing ever going wrong." },
+      { title: "The Business Owner", description: "Personal and business risk are more connected than most owners realise." },
     ],
-
     risks: [
       "Insufficient coverage may leave protection gaps.",
       "Policy terms vary significantly.",
       "Delayed disclosure can impact claims.",
     ],
-
     faqs: [
-      {
-        question: "Why do I need life insurance?",
-        answer:
-          "It provides financial protection to your family if something happens to you.",
-      },
-      {
-        question: "How much coverage should I have?",
-        answer:
-          "Coverage should align with income, liabilities, and family needs.",
-      },
-      {
-        question: "What is health insurance?",
-        answer:
-          "It helps cover hospitalization and medical expenses.",
-      },
-      {
-        question: "Can I have multiple policies?",
-        answer:
-          "Yes, many individuals maintain multiple policies.",
-      },
-      {
-        question: "When should I buy insurance?",
-        answer:
-          "The earlier you buy, the lower premiums generally are.",
-      },
+      { question: "Why do I need life insurance?", answer: "It provides financial protection to your family if something happens to you." },
+      { question: "How much coverage should I have?", answer: "Coverage should align with income, liabilities, and family needs." },
+      { question: "What is health insurance?", answer: "It helps cover hospitalization and medical expenses." },
+      { question: "Can I have multiple policies?", answer: "Yes, many individuals maintain multiple policies." },
+      { question: "When should I buy insurance?", answer: "The earlier you buy, the lower premiums generally are." },
     ],
-
-    related: ["goal-based-planning", "portfolio-review", "nps-retirement"],
+    related: ["goal-based-planning", "portfolio-review", "retirement-planning"],
   },
 
   "equity-shares": {
-    name: "Equity & Shares",
-    tagline: "Participate directly in business growth.",
+    name: "Equity",
+    tagline: "Stop watching other people's portfolios grow.",
     icon: BarChart3,
-
     description:
-      "Equity investing involves purchasing ownership in companies through stock markets. It offers higher growth potential but also comes with higher volatility.",
-
+      "Every time a company you admire grows, someone who owns its shares grows with it — and someone who doesn't, watches. Direct equity gives you ownership in the businesses actually driving India's growth, through our broking partner, for investors ready to participate in that growth rather than just read about it.",
     steps: [
       "Define investment objectives",
       "Open a trading account",
       "Explore investment opportunities via our broking partner",
       "Monitor your holdings",
     ],
-
     benefits: [
-      {
-        title: "Growth Potential",
-        description: "Opportunity for substantial wealth creation.",
-      },
-      {
-        title: "Ownership",
-        description: "Participate in company success.",
-      },
-      {
-        title: "Liquidity",
-        description: "Buy and sell on exchanges.",
-      },
-      {
-        title: "Dividend Income",
-        description: "Potential additional cash flow.",
-      },
+      { title: "Own the Growth, Don't Just Watch It", description: "Direct ownership means the upside is yours, not someone else's." },
+      { title: "Built for the Long Game", description: "Equity has historically rewarded patience more than any other asset class." },
+      { title: "Liquidity When You Need It", description: "Buy and sell on the exchange — your capital isn't locked away." },
+      { title: "Income Beyond Price Growth", description: "Many companies pay dividends — a second stream on top of capital appreciation." },
     ],
-
     audience: [
-      {
-        title: "Aggressive Investor",
-        description: "Seeking long-term capital appreciation.",
-      },
-      {
-        title: "Market Enthusiast",
-        description: "Interested in direct investing.",
-      },
-      {
-        title: "Experienced Investor",
-        description: "Comfortable with market volatility.",
-      },
+      { title: "The Investor Ready to Go Direct", description: "If you understand markets and want more control, mutual funds alone may feel limiting." },
+      { title: "The Long-Term Wealth Builder", description: "Comfortable riding out short-term noise for long-term gain." },
+      { title: "The Hands-On Investor", description: "Wants to actually follow and understand what they own." },
     ],
-
     risks: [
       "Higher market volatility.",
       "Potential capital loss.",
       "Requires ongoing monitoring.",
     ],
-
     faqs: [
-      {
-        question: "Are stocks risky?",
-        answer:
-          "Yes, stock prices fluctuate and can result in losses.",
-      },
-      {
-        question: "Can stocks beat inflation?",
-        answer:
-          "Historically, equities have outpaced inflation over long periods.",
-      },
-      {
-        question: "How much should I invest?",
-        answer:
-          "It depends on goals, income, and risk tolerance.",
-      },
-      {
-        question: "Do stocks provide regular income?",
-        answer:
-          "Some companies distribute dividends.",
-      },
-      {
-        question: "Should beginners invest in stocks?",
-        answer:
-          "Beginners often start with diversified strategies first.",
-      },
+      { question: "Are stocks risky?", answer: "Yes, stock prices fluctuate and can result in losses." },
+      { question: "Can stocks beat inflation?", answer: "Historically, equities have outpaced inflation over long periods." },
+      { question: "How much should I invest?", answer: "It depends on goals, income, and risk tolerance." },
+      { question: "Do stocks provide regular income?", answer: "Some companies distribute dividends." },
+      { question: "Should beginners invest in stocks?", answer: "Beginners often start with diversified strategies first." },
     ],
-
-    related: ["mutual-funds", "portfolio-review", "demat-account"],
+    related: ["mutual-funds", "portfolio-review", "sip-planning"],
   },
 
-  "demat-account": {
-    name: "Demat Account",
-    tagline: "Your gateway to modern investing.",
-    icon: CreditCard,
-
+  "nps": {
+    name: "NPS",
+    tagline: "Build your retirement corpus with NPS.",
+    icon: Landmark,
     description:
-      "A Demat account stores shares and securities electronically, making investing convenient, secure, and paperless.",
-
+      "The salary stops the day you retire — but your expenses don't. NPS is a government-backed pension product that turns small, regular contributions today into a structured retirement corpus and income tomorrow, while you're still earning to fund it.",
     steps: [
-      "Choose a provider",
-      "Submit KYC documents",
-      "Complete verification",
-      "Start investing",
+      "Understand NPS account types (Tier I / Tier II)",
+      "Choose your asset allocation",
+      "Make regular contributions",
+      "Review your allocation periodically",
     ],
-
     benefits: [
-      {
-        title: "Paperless Holdings",
-        description: "Secure electronic storage.",
-      },
-      {
-        title: "Convenience",
-        description: "Easy management of investments.",
-      },
-      {
-        title: "Fast Transactions",
-        description: "Quick settlement process.",
-      },
-      {
-        title: "Security",
-        description: "Reduced risk of physical certificates.",
-      },
+      { title: "A Pension You Actually Control", description: "Government-backed, but the contribution pace is yours to set." },
+      { title: "Tax Benefits Today", description: "Potential tax advantages under applicable sections while you save." },
+      { title: "Income When the Salary Stops", description: "Annuity options designed to pay you after you retire." },
+      { title: "Among the Lowest-Cost Options", description: "More of your contribution stays invested, not eaten by fees." },
     ],
-
     audience: [
-      {
-        title: "New Investor",
-        description: "Starting investment journey.",
-      },
-      {
-        title: "Stock Investor",
-        description: "Buying and holding shares.",
-      },
-      {
-        title: "Mutual Fund Investor",
-        description: "Managing digital investments.",
-      },
+      { title: "The Early Starter", description: "The earlier the first contribution, the smaller every contribution after it needs to be." },
+      { title: "The Mid-Career Professional", description: "Still time to build a meaningful corpus — but the window is closing." },
+      { title: "The Pre-Retiree", description: "The last few years before retirement are for fine-tuning, not starting from zero." },
     ],
-
     risks: [
-      "Annual maintenance charges may apply.",
-      "Trading without research can be risky.",
-      "Account security should be maintained.",
+      "Returns are market-linked and not guaranteed.",
+      "Partial withdrawal rules apply.",
+      "Annuitization is mandatory on a portion at maturity.",
     ],
+    faqs: [],
+    related: ["retirement-planning", "goal-based-planning", "portfolio-review"],
+  },
 
-    faqs: [
-      {
-        question: "Is a Demat account mandatory?",
-        answer:
-          "Yes, for holding listed securities electronically.",
-      },
-      {
-        question: "Can I have multiple Demat accounts?",
-        answer:
-          "Yes, subject to regulations.",
-      },
-      {
-        question: "What documents are needed?",
-        answer:
-          "PAN, Aadhaar, and address proof are commonly required.",
-      },
-      {
-        question: "How long does opening take?",
-        answer:
-          "Often completed within a few days.",
-      },
-      {
-        question: "Are shares stored physically?",
-        answer:
-          "No, they are held electronically.",
-      },
+  "fixed-deposits-bonds": {
+    name: "Fixed Deposits & Bonds",
+    tagline: "Not every rupee should be fighting for growth.",
+    icon: Lock,
+    description:
+      "Chasing returns on every rupee you have is how people end up exposed when they can least afford it. Some money — your emergency fund, a near-term goal, a senior parent's savings — needs to simply be safe and predictable. Fixed deposits and bonds are where that money belongs.",
+    steps: [
+      "Assess income needs",
+      "Choose suitable products",
+      "Allocate funds",
+      "Monitor maturity schedule",
     ],
-
-    related: ["equity-shares", "mutual-funds", "portfolio-review"],
+    benefits: [
+      { title: "Predictable, Not a Guessing Game", description: "You know roughly what you'll get and when." },
+      { title: "Your Principal Stays Protected", description: "Built for capital preservation, not capital risk." },
+      { title: "Steady Interest Income", description: "Useful for anyone who needs regular, dependable payouts." },
+      { title: "A Counterbalance to Riskier Holdings", description: "Stability that lets the rest of your portfolio take calculated risks." },
+    ],
+    audience: [
+      { title: "The Risk-Averse Saver", description: "Wants growth on their terms — slow, steady, and certain." },
+      { title: "The Retiree Needing Income Now", description: "Can't afford to wait out a market downturn." },
+      { title: "Anyone Parking Money for a Near-Term Goal", description: "A goal 1–3 years away shouldn't be sitting in volatile assets." },
+    ],
+    risks: [
+      "Inflation may reduce real returns.",
+      "Interest rates may change.",
+      "Some bonds carry credit risk.",
+    ],
+    faqs: [],
+    related: ["retirement-planning", "portfolio-review", "goal-based-planning"],
   },
 
   "sip-planning": {
     name: "SIP Planning",
-    tagline: "Invest consistently toward future goals.",
+    tagline: "The investors who win are the ones who never stopped.",
     icon: Repeat,
-
     description:
-      "Systematic Investment Plans allow you to invest fixed amounts regularly and build wealth through disciplined investing.",
-
+      "Most people lose money in markets not by investing badly, but by waiting for the 'right time' and never starting — or by stopping the moment things get volatile. A SIP removes that decision entirely. The same amount, on the same date, every month, regardless of how you feel about the market that day.",
     steps: [
       "Define goals",
       "Choose investment amount",
       "Select suitable funds",
       "Track progress",
     ],
-
     benefits: [
-      {
-        title: "Discipline",
-        description: "Build investing habits.",
-      },
-      {
-        title: "Affordability",
-        description: "Start with small amounts.",
-      },
-      {
-        title: "Compounding",
-        description: "Long-term wealth creation.",
-      },
-      {
-        title: "Consistency",
-        description: "Invest regularly regardless of market levels.",
-      },
+      { title: "Removes the Guesswork", description: "No need to time the market — your SIP buys through every high and low automatically." },
+      { title: "Starts Where You Are", description: "Begin with what you can afford today; scale it up as your income grows." },
+      { title: "Builds the Habit, Not Just the Corpus", description: "Consistency compounds — in your discipline and in your money." },
+      { title: "Smooths Out Market Swings", description: "Rupee cost averaging means volatility works for you over time, not against you." },
     ],
-
     audience: [
-      {
-        title: "First-Time Investor",
-        description: "Starting wealth creation.",
-      },
-      {
-        title: "Salary Earner",
-        description: "Monthly investment planning.",
-      },
-      {
-        title: "Goal Seeker",
-        description: "Building future financial security.",
-      },
+      { title: "The First-Time Investor", description: "Don't know where to start? A SIP is the simplest first step there is." },
+      { title: "The Salaried Professional", description: "Turn one fixed deduction into a habit you barely notice and a corpus you will." },
+      { title: "Anyone Who's Tried and Stopped Before", description: "If you've started and quit before, this is built to make stopping the hard part." },
     ],
-
     risks: [
       "Returns depend on market performance.",
       "Stopping SIPs frequently may impact goals.",
       "Short-term volatility remains possible.",
     ],
-
     faqs: [
-      {
-        question: "What is SIP?",
-        answer:
-          "A method of investing fixed amounts regularly into mutual funds.",
-      },
-      {
-        question: "Can I stop SIP anytime?",
-        answer:
-          "Yes, SIPs are generally flexible.",
-      },
-      {
-        question: "Does SIP guarantee returns?",
-        answer:
-          "No, returns depend on markets.",
-      },
-      {
-        question: "Can I increase SIP amount?",
-        answer:
-          "Yes, many funds support step-up SIPs.",
-      },
-      {
-        question: "How long should I continue?",
-        answer:
-          "Longer durations generally improve outcomes.",
-      },
+      { question: "What is SIP?", answer: "A method of investing fixed amounts regularly into mutual funds." },
+      { question: "Can I stop SIP anytime?", answer: "Yes, SIPs are generally flexible." },
+      { question: "Does SIP guarantee returns?", answer: "No, returns depend on markets." },
+      { question: "Can I increase SIP amount?", answer: "Yes, many funds support step-up SIPs." },
+      { question: "How long should I continue?", answer: "Longer durations generally improve outcomes." },
     ],
-
     related: ["mutual-funds", "goal-based-planning", "portfolio-review"],
   },
 
   "tax-planning": {
-    name: "Tax Planning (ELSS)",
-    tagline: "Save taxes while building wealth.",
+    name: "Tax Planning",
+    tagline: "That tax is getting paid either way.",
     icon: FileText,
     description:
-      "ELSS and tax-saving investments help reduce taxable income while supporting long-term financial goals.",
+      "Every March, a chunk of your income disappears into taxes — that part is non-negotiable. What is negotiable is whether that money also builds your wealth on the way out the door. Tax-saving instruments turn a mandatory outflow into an investment that's working for you.",
     steps: [
       "Review tax liabilities",
       "Identify eligible deductions",
@@ -455,15 +240,15 @@ export const serviceDetails = {
       "Review annually",
     ],
     benefits: [
-      { title: "Tax Savings", description: "Reduce tax burden legally." },
-      { title: "Wealth Creation", description: "Invest while saving taxes." },
-      { title: "Efficient Planning", description: "Better financial outcomes." },
-      { title: "Goal Support", description: "Align tax-saving choices with your goals." },
+      { title: "Money That Was Leaving Anyway, Now Working", description: "Redirect what you'd pay in tax into something that grows." },
+      { title: "Shortest Lock-In Among 80C Options", description: "ELSS typically ties up your money for less time than other tax-saving choices." },
+      { title: "Wealth Creation, Not Just Tax Saving", description: "Equity-linked exposure means growth potential alongside the deduction." },
+      { title: "One Less Scramble in March", description: "Plan it through the year instead of a last-minute rush before the deadline." },
     ],
     audience: [
-      { title: "Salary Earner", description: "Optimizing annual taxes." },
-      { title: "Professional", description: "Balancing growth and tax savings." },
-      { title: "Investor", description: "Seeking tax-efficient returns." },
+      { title: "The Salaried Employee", description: "Watching deductions reduce take-home pay every month? This claws some back." },
+      { title: "The High-Bracket Earner", description: "The higher your slab, the more a missed deduction actually costs you." },
+      { title: "The Last-Minute Filer", description: "If March 31st always catches you off guard, a plan now avoids the scramble." },
     ],
     risks: [
       "Tax laws can change.",
@@ -474,76 +259,44 @@ export const serviceDetails = {
     related: ["mutual-funds", "sip-planning", "goal-based-planning"],
   },
 
-  "nps-retirement": {
-    name: "NPS / Retirement Planning",
-    tagline: "Build a financially independent retirement.",
+  "retirement-planning": {
+    name: "Retirement Planning",
+    tagline: "The years to prepare are fewer than you think.",
     icon: Landmark,
     description:
-      "Retirement planning helps create a sustainable income stream for life after active employment.",
+      "Retirement doesn't feel urgent until it's close — and by then, the years that would have made it easiest to prepare are already gone. This is curated mutual fund and pension-linked scheme guidance built around your retirement timeline, started now while time is still the one advantage that's free.",
     steps: [
-      "Estimate retirement needs",
-      "Assess current savings",
-      "Build retirement portfolio",
-      "Review annually",
+      "Understand your retirement goal and timeline",
+      "Assess your current investments",
+      "Get curated mutual fund / NPS scheme suggestions",
+      "Review and rebalance periodically",
     ],
     benefits: [
-      { title: "Retirement Corpus", description: "Build long-term wealth." },
-      { title: "Tax Benefits", description: "Potential tax advantages." },
-      { title: "Regular Income", description: "Support retirement lifestyle." },
-      { title: "Long-Term Focus", description: "Structured planning approach." },
+      { title: "A Number to Actually Aim For", description: "Stop guessing — work toward a real target corpus." },
+      { title: "Curated, Not Random", description: "Mutual fund and pension-linked options matched to your retirement horizon." },
+      { title: "Tax-Efficient Where Possible", description: "Schemes chosen with potential tax advantages in mind." },
+      { title: "Reviewed as Retirement Gets Closer", description: "The plan adjusts as your timeline shortens, not after it's too late." },
     ],
     audience: [
-      { title: "Young Professional", description: "Starting early." },
-      { title: "Mid-Career Individual", description: "Growing retirement savings." },
-      { title: "Pre-Retiree", description: "Preparing retirement income." },
+      { title: "The 30-Something Who Hasn't Started", description: "The single biggest cost of waiting is the compounding you forfeit." },
+      { title: "The Mid-Career Saver", description: "Still enough runway to build a meaningful corpus — if it starts now." },
+      { title: "The Pre-Retiree Fine-Tuning the Final Stretch", description: "Less time for risk, more need for a clear, realistic number." },
     ],
     risks: [
-      "Inflation may reduce purchasing power.",
-      "Late planning may require larger investments.",
-      "Market-linked products can fluctuate.",
+      "Inflation may reduce purchasing power over time.",
+      "Starting late may require larger contributions.",
+      "Market-linked schemes can fluctuate in value.",
     ],
     faqs: [],
-    related: ["goal-based-planning", "portfolio-review", "mutual-funds"],
-  },
-
-  "fixed-deposits-bonds": {
-    name: "Fixed Deposits & Bonds",
-    tagline: "Stability with steady income potential.",
-    icon: Lock,
-    description:
-      "Fixed-income products provide relatively stable returns and are commonly used for capital preservation.",
-    steps: [
-      "Assess income needs",
-      "Choose suitable products",
-      "Allocate funds",
-      "Monitor maturity schedule",
-    ],
-    benefits: [
-      { title: "Stability", description: "Lower volatility." },
-      { title: "Predictability", description: "Known return expectations." },
-      { title: "Capital Preservation", description: "Protect principal." },
-      { title: "Income Generation", description: "Regular interest earnings." },
-    ],
-    audience: [
-      { title: "Conservative Investor", description: "Seeking stability." },
-      { title: "Retiree", description: "Looking for income." },
-      { title: "Risk-Averse Saver", description: "Preserving capital." },
-    ],
-    risks: [
-      "Inflation may reduce real returns.",
-      "Interest rates may change.",
-      "Some bonds carry credit risk.",
-    ],
-    faqs: [],
-    related: ["nps-retirement", "portfolio-review", "goal-based-planning"],
+    related: ["nps", "goal-based-planning", "mutual-funds"],
   },
 
   "goal-based-planning": {
     name: "Goal-Based Planning",
-    tagline: "Invest with purpose and direction.",
+    tagline: "Your goals don't come with a payment plan. This does.",
     icon: Target,
     description:
-      "Goal-based planning aligns investments with specific milestones such as education, home purchase, travel, or retirement.",
+      "A child's education, a wedding, a down payment — none of these arrive with an invoice you can budget for in advance. They just arrive, and the money either is there or it isn't. Goal-based planning maps your investments directly to each milestone, so 'I hope it's enough' is replaced with an actual number and a plan to reach it.",
     steps: [
       "Define goals",
       "Estimate future costs",
@@ -551,15 +304,15 @@ export const serviceDetails = {
       "Track progress regularly",
     ],
     benefits: [
-      { title: "Clarity", description: "Clear investment roadmap." },
-      { title: "Focus", description: "Avoid random investing." },
-      { title: "Better Decisions", description: "Prioritize goals effectively." },
-      { title: "Progress Tracking", description: "Measure advancement easily." },
+      { title: "Every Goal Gets Its Own Plan", description: "Education, a home, a wedding — each tracked on its own timeline, not lumped together." },
+      { title: "Replaces Guessing With a Number", description: "Know roughly what you'll need and whether you're on pace for it." },
+      { title: "Keeps You From Random Investing", description: "Every rupee invested is working toward something specific." },
+      { title: "Progress You Can Actually See", description: "Track advancement instead of wondering if you're behind." },
     ],
     audience: [
-      { title: "Young Professional", description: "Planning future milestones." },
-      { title: "Family Planner", description: "Managing multiple goals." },
-      { title: "Retirement Planner", description: "Preparing long-term objectives." },
+      { title: "The Parent Planning Ahead", description: "Education costs rise every year — waiting only makes the number bigger." },
+      { title: "The Couple Saving for a Home", description: "A down payment goal needs a plan, not just good intentions." },
+      { title: "Anyone Juggling Multiple Goals at Once", description: "Education, a wedding, retirement — all at the same time needs structure, not chaos." },
     ],
     risks: [
       "Unrealistic assumptions may affect outcomes.",
@@ -572,10 +325,10 @@ export const serviceDetails = {
 
   "portfolio-review": {
     name: "Portfolio Review",
-    tagline: "Ensure your investments stay aligned.",
+    tagline: "The fund that worked 5 years ago may be costing you now.",
     icon: PieChart,
     description:
-      "Portfolio reviews help identify gaps, rebalance allocations, and improve alignment between investments and financial goals.",
+      "Markets change. Fund managers change. Your own goals change. The portfolio you built years ago was right for who you were then — but nobody's checking whether it's still right for who you are now. A periodic review catches what's quietly underperforming or drifting from your goals, before it costs you more than a check-up would have.",
     steps: [
       "Analyze current holdings",
       "Assess risk exposure",
@@ -583,15 +336,15 @@ export const serviceDetails = {
       "Implement recommendations",
     ],
     benefits: [
-      { title: "Risk Management", description: "Identify concentration risks." },
-      { title: "Better Allocation", description: "Review your mutual fund mix." },
-      { title: "Performance Review", description: "Evaluate progress." },
-      { title: "Goal Alignment", description: "Stay on track." },
+      { title: "Catch Underperformers Early", description: "Spot funds quietly lagging before years go by unnoticed." },
+      { title: "Rebalance Toward Your Goals", description: "Review your mutual fund mix against where you actually want to end up." },
+      { title: "Know Where You Really Stand", description: "An honest evaluation of progress, not just a quarterly statement glance." },
+      { title: "Identify Concentration Risk", description: "Find out if you're more exposed to one sector or fund house than you realised." },
     ],
     audience: [
-      { title: "Existing Investor", description: "Reviewing current portfolio." },
-      { title: "High-Net-Worth Individual", description: "Managing complexity." },
-      { title: "Retirement Planner", description: "Ensuring readiness." },
+      { title: "The Investor Who Hasn't Checked in Years", description: "If you can't remember your last review, that's the clearest sign you need one." },
+      { title: "The High-Net-Worth Individual", description: "More holdings mean more places for something to quietly go wrong." },
+      { title: "Anyone Approaching a Major Goal", description: "The closer the goal, the more a misaligned portfolio actually costs you." },
     ],
     risks: [
       "Past performance may not continue.",

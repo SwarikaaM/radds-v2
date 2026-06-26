@@ -3,10 +3,10 @@ import ScrollReveal from "../ui/ScrollReveal";
 
 const rows = [
   ["Mutual Funds", "Long-term investors", "5–15 Years", "Moderate"],
-  ["Equity & Shares", "Growth seekers", "7+ Years", "High"],
+  ["Equity", "Growth seekers", "7+ Years", "High"],
   ["SIP Planning", "Goal-based investing", "3–20 Years", "Moderate"],
-  ["Insurance", "Family protection", "10+ Years", "Low"],
-  ["NPS", "Retirement goals", "15–30 Years", "Moderate"],
+  ["Life & Health Insurance", "Family protection", "10+ Years", "Low"],
+  ["NPS", "Retirement corpus building", "15–30 Years", "Moderate"],
   ["FDs & Bonds", "Capital preservation", "1–7 Years", "Low"],
 ];
 

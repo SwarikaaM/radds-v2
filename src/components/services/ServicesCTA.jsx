@@ -3,7 +3,7 @@ import ScrollReveal from "../ui/ScrollReveal";
 
 export default function ServicesCTA() {
   return (
-    <section className="py-24 bg-[#0D1B2E]">
+    <section className="py-164 bg-[#0D1B2E]">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <ScrollReveal>
           <h2 className="font-playfair text-4xl md:text-5xl text-white font-bold mb-5">

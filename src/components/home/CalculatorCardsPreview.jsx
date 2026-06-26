@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { TrendingUp, ArrowDownCircle, Clock, DollarSign, ArrowUpRight, Zap, ChevronLeft, ChevronRight } from "lucide-react";
+import { TrendingUp, ArrowDownCircle, Clock, Wallet, ArrowUpRight, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeader from "../ui/SectionHeader";
 import { calculators } from "../../data/calculators";
 
-const iconMap = { TrendingUp, ArrowDownCircle, Clock, DollarSign, ArrowUpRight, Zap };
+const iconMap = { TrendingUp, ArrowDownCircle, Clock, Wallet, ArrowUpRight, Zap };
 
 const palette = [
   { bg: "bg-primary/8", text: "text-primary", border: "rgba(34,86,143,0.22)" },

@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import SectionHeader from "../ui/SectionHeader";
 import ScrollReveal from "../ui/ScrollReveal";
 import SIPGrowthChart from "./SIPGrowthChart";
@@ -332,6 +334,14 @@ export default function FeaturedCalculator() {
         <p className="text-textmuted text-[11px] text-center mt-3">
           *Illustrative calculation based on the return rate you enter. Mutual Fund investments are subject to market risks; actual returns may vary.
         </p>
+      </div>
+      <div className="mt-8 text-center">
+        <Link
+          to="/calculators"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors"
+        >
+          View All Calculators <ArrowUpRight size={14} />
+        </Link>
       </div>
     </section>
   );

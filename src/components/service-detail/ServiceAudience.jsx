@@ -3,7 +3,7 @@ import SectionHeader from "../ui/SectionHeader";
 
 export default function ServiceAudience({ service }) {
   return (
-    <section className="py-24 bg-[#F4F8FC]">
+    <section className="py-16 bg-[#F4F8FC]">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader title="Who Is This For?" />
 

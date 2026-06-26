@@ -15,6 +15,7 @@ import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetails";
 import Learning from "./pages/Learning";
 import FinancialPlanning from "./pages/FinancialPlanning";
+// import Admin from "./pages/Admin";
 import ErrorPage from "./pages/ErrorPage";
 import Chatbot from "./components/ui/Chatbot";
 
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/learning" element={<Learning />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/admin" element={<Admin />} /> */}
         <Route path="*" element={<ErrorPage code={404} />} />
       </Routes>
       <Footer />

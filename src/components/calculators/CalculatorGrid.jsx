@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   TrendingUp, ArrowDownCircle, Clock,
-  DollarSign, ArrowUpRight, Zap,
+  Wallet, ArrowUpRight, Zap,
   ChevronRight, Tag, SlidersHorizontal,
 } from "lucide-react";
 import ScrollReveal from "../ui/ScrollReveal";
@@ -11,7 +11,7 @@ const iconMap = {
   TrendingUp,
   ArrowDownCircle,
   Clock,
-  DollarSign,
+  Wallet,
   ArrowUpRight,
   Zap,
 };

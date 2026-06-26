@@ -3,7 +3,6 @@ import { swpConfig, calcSWP, buildSWPChartData } from "../calculators/swp";
 import { costOfDelayConfig, calcCostOfDelay, buildCostOfDelayChartData } from "../calculators/costOfDelaySip";
 import { lumpsumConfig, calcLumpsum, buildLumpsumChartData } from "../calculators/lumpsum";
 import { stepUpSIPConfig, calcStepUpSIP, buildStepUpSIPChartData } from "../calculators/stepUpSip";
-import { oneTimeConfig, calcOneTime, buildOneTimeChartData } from "../calculators/oneTimeInvestment";
 import { getInvestmentCapacity } from "../utils/calculatorDefaults";
 
 /**
@@ -56,11 +55,6 @@ export const calculatorRegistry = {
     ...stepUpSIPConfig,
     compute: (vals) => calcStepUpSIP(vals.initialMonthly, vals.annualRate, vals.years, vals.annualStepUp),
     buildChartData: (vals) => buildStepUpSIPChartData(vals.initialMonthly, vals.annualRate, vals.years, vals.annualStepUp),
-  },
-  "one-time-investment": {
-    ...oneTimeConfig,
-    compute: (vals) => calcOneTime(vals.principal, vals.annualRate, vals.years),
-    buildChartData: (vals) => buildOneTimeChartData(vals.principal, vals.annualRate, vals.years),
   },
 };
 

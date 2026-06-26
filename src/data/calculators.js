@@ -67,7 +67,7 @@ export const calculators = [
     shortDescription:
       "Calculate the future value of a one-time investment at different return rates and horizons.",
 
-    icon: "DollarSign",
+    icon: "Wallet",
     category: "Lumpsum",
     route: "/calculators/lumpsum",
     inputsSummary:
@@ -92,26 +92,6 @@ export const calculators = [
     inputsSummary:
       "Starting SIP · Return · Duration · Annual Step-up %",
     bestFor: "Salaried professionals expecting yearly raises",
-  },
-
-  {
-    id: "one-time-investment",
-    slug: "one-time-investment",
-    title: "One Time Investment",
-
-    description:
-      "Estimate the future value of a single large investment.",
-
-    shortDescription:
-      "Estimate the future value of a single large investment with compounding over your chosen horizon.",
-
-    icon: "Zap",
-    category: "Lumpsum",
-    route: "/calculators/one-time-investment",
-    inputsSummary:
-      "Investment amount · Annual return · Duration",
-    bestFor:
-      "Planning a single strategic deployment of capital",
   },
 ];
 

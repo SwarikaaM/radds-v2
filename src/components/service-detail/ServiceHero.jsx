@@ -5,7 +5,7 @@ export default function ServiceHero({ service }) {
   const Icon = service.icon;
 
   return (
-    <section className="bg-[#0D1B2E] text-white pt-32 pb-20">
+    <section className="bg-[#0D1B2E] text-white pt-28 pb-14">
       <div className="max-w-7xl mx-auto px-6">
         <ScrollReveal>
           <div className="max-w-4xl">
