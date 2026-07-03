@@ -10,7 +10,7 @@ export default {
         lightbg: "#F4F8FC",
         surface: "#FFFFFF",
         textprimary: "#0D1B2E",
-        textmuted: "#6B7E99",
+        textmuted: "#54687F",
         accent: "#39C3EF",
         success: "#1DB954",
         warning: "#F5A623",

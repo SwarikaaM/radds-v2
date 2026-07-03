@@ -9,7 +9,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
     <div className="bg-dark/95 border border-white/15 rounded-card p-3.5 shadow-xl text-xs min-w-[160px]">
-      <p className="text-white/50 mb-2 font-medium">Year {label}</p>
+      <p className="text-white/55 mb-2 font-medium">Year {label}</p>
       {payload.map((p, i) => (
         <div key={i} className="flex items-center justify-between gap-4 mb-1">
           <span className="flex items-center gap-1.5" style={{ color: p.color }}>

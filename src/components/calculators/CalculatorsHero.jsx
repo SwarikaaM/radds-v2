@@ -92,7 +92,7 @@ export default function CalculatorsHero() {
                 </div>
                 <div className="text-left">
                   <p className="text-white font-mono-num font-semibold text-sm leading-none">{value}</p>
-                  <p className="text-white/40 text-[11px] mt-0.5">{label}</p>
+                  <p className="text-white/60 text-[11px] mt-0.5">{label}</p>
                 </div>
               </div>
             </div>

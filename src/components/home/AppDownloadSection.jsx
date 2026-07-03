@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import qrOnelink from "../../assets/appQRonelink.png";
 
@@ -72,7 +73,7 @@ function PhoneMockup() {
                 transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
               />
             </div>
-            <p className="text-white/30 text-[8px] mt-1 font-mono-num">68% to goal</p>
+            <p className="text-white/50 text-[8px] mt-1 font-mono-num">68% to goal</p>
           </div>
 
           {/* Quick actions */}
@@ -80,7 +81,7 @@ function PhoneMockup() {
             {["SIP", "Calculator", "Profile"].map((label, i) => (
               <div key={i} className="rounded-lg bg-white/5 border border-white/8 py-2 flex flex-col items-center gap-1">
                 <div className="w-4 h-4 rounded bg-primary/30" />
-                <span className="text-white/40 text-[8px]">{label}</span>
+                <span className="text-white/50 text-[8px]">{label}</span>
               </div>
             ))}
           </div>
@@ -210,7 +211,7 @@ export default function AppDownloadSection() {
             </div>
 
             <motion.p
-              className="text-white/25 text-xs"
+              className="text-white/50 text-xs"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -241,7 +242,7 @@ export default function AppDownloadSection() {
               </div>
               <div className="text-center">
                 <p className="text-white font-semibold text-sm leading-none">Scan to Download</p>
-                <p className="text-white/40 text-[11px] mt-1">Opens directly in Play Store or App Store</p>
+                <p className="text-white/55 text-[11px] mt-1">Opens directly in Play Store or App Store</p>
               </div>
             </motion.div>
           </div>

@@ -65,9 +65,9 @@ export default function FinalCTA() {
             {[
               "No-Obligation First Call",
               "No Commitment Required",
-              "600+ Families Trust Us",
+              "1000+ Clients Trust Us",
             ].map((item, i) => (
-              <span key={i} className="flex items-center gap-2 text-white/35 text-xs">
+              <span key={i} className="flex items-center gap-2 text-white/50 text-xs">
                 <span className="w-1.5 h-1.5 bg-accent/60 rounded-full flex-shrink-0" />
                 {item}
               </span>

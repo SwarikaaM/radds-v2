@@ -22,24 +22,24 @@ export default function TrustStats() {
           className="mb-14"
         />
 
-        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-5 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5 mb-10">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (
               <ScrollReveal key={i} delay={i * 0.1}>
                 <motion.div
-                  className="bg-white rounded-card p-6 shadow-sm border border-[#E2EBF5] text-center cursor-default"
+                  className="bg-white rounded-card p-4 sm:p-6 shadow-sm border border-[#E2EBF5] text-center cursor-default"
                   whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(34,86,143,0.10)", borderColor: "rgba(34,86,143,0.2)" }}
                   transition={{ duration: 0.2 }}
                 >
                   <motion.div
-                    className={`w-12 h-12 ${stat.bg} rounded-xl flex items-center justify-center mx-auto mb-4`}
+                    className={`w-10 h-10 sm:w-12 sm:h-12 ${stat.bg} rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4`}
                     whileHover={{ scale: 1.08 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Icon size={22} className={stat.color} />
+                    <Icon size={20} className={stat.color} />
                   </motion.div>
-                  <div className={`text-3xl font-bold mb-1.5 ${stat.color}`}>
+                  <div className={`text-xl sm:text-3xl font-bold mb-1 sm:mb-1.5 whitespace-nowrap ${stat.color}`}>
                     <Counter
                       prefix={stat.prefix}
                       end={stat.end}

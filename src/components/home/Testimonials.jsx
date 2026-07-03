@@ -58,7 +58,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         <SectionHeader
           eyebrow="Client Stories"
-          title="Trusted By Families Across India"
+          title="Trusted By Clients Across India"
           subtitle="Real results from real people, across every stage of their financial journey."
         />
       </div>

@@ -47,11 +47,11 @@ function DreamStat({ icon: Icon, iconColor, iconBg, label, sublabel, target, suf
         <Icon size={20} style={{ color: iconColor }} />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-white/50 text-[11px] font-medium mb-0.5">{label}</p>
+        <p className="text-white/85 text-xs font-semibold mb-1 leading-snug">{label}</p>
         <p className="text-white font-mono-num font-bold text-lg leading-tight">
           {fmtINR(val)}{suffix}
         </p>
-        <p className="text-white/35 text-[10px] mt-0.5">{sublabel}</p>
+        <p className="text-white/75 text-[12px] mt-0.5">{sublabel}</p>
       </div>
     </motion.div>
     
@@ -117,7 +117,7 @@ const LOOP_MS = 9500;
 const STEP_MS = [0, 1200, 2000, 2500, 3400, 4000, 4500, 5200, 6000, 6600, 7200, 7800];
 const STRIPS = [
   { label: "Retirement Corpus", val: "₹4.2 Cr",  bg: "#16a34a" },
-  { label: "Child Education",   val: "₹55 L",    bg: "#ca8a04" },
+  { label: "Child's Education",   val: "₹55 L",    bg: "#ca8a04" },
   { label: "Monthly SIP",       val: "₹15,000",  bg: "#1e293b" },
 ];
 const BTNS = ["Retirement", "Education", "Tax Saving", "More"];
@@ -360,9 +360,9 @@ function PhoneWithSatellites({ loopKey }) {
             <div className="w-6 h-6 rounded-lg bg-accent/10 flex items-center justify-center">
               <Users size={12} className="text-accent" />
             </div>
-            <span className="text-[10px] font-semibold text-slate-600">Families Guided</span>
+            <span className="text-[10px] font-semibold text-slate-600">Clients Guided</span>
           </div>
-          <p className="text-lg font-bold text-slate-900 font-mono-num">100+</p>
+          <p className="text-lg font-bold text-slate-900 font-mono-num">1000+</p>
           <p className="text-[9px] text-slate-400 mt-0.5">SIP ₹15K · 15 yrs</p>
         </SatCard>
       </div>
@@ -445,14 +445,29 @@ export default function HeroSection() {
             </motion.p>
 
             {/* Dream stat cards */}
+            <p className="text-white/60 text-sm font-medium">
+              Here's what a monthly SIP could grow into for different life goals:
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {DREAM_STATS.map((s, i) => (
                 <DreamStat key={s.label} {...s} delay={0.35 + i * 0.12} active={statsActive} />
               ))}
             </div>
+            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
+  <div className="flex items-center gap-3 min-w-0">
+    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+      <TrendingUp size={16} className="text-accent" />
+    </div>
+    <div className="min-w-0">
+      <p className="text-white text-[13px] font-semibold leading-tight">How compounding does the heavy lifting</p>
+      <p className="text-white/50 text-[10px] leading-tight">Stay invested 25 years and grow far more than you put in.</p>
+    </div>
+  </div>
+  <p className="text-accent font-mono-num font-bold text-base flex-shrink-0 ml-2">+₹3.75 Cr</p>
+</div>
 
             <motion.p
-              className="text-white/30 text-xs"
+              className="text-white/50 text-xs"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.1, duration: 0.5 }}
@@ -499,10 +514,10 @@ export default function HeroSection() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.15, duration: 0.5 }}
             >
-              {["100+ Families", "₹100 Cr+ Distributed", "20+ Years"].map((item, i) => (
+              {["1000 Clients", "₹100 Cr+ Distributed", "20+ Years"].map((item, i) => (
                 <span key={i} className="flex items-center gap-2">
                   {i > 0 && <span className="w-1 h-1 bg-white/25 rounded-full" />}
-                  <span className="text-white/40 text-sm font-mono-num">{item}</span>
+                  <span className="text-white/55 text-sm font-mono-num">{item}</span>
                 </span>
               ))}
             </motion.div>
@@ -567,8 +582,8 @@ export default function HeroSection() {
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           className="flex flex-col items-center gap-1"
         >
-          <span className="text-white/20 text-xs">Scroll to explore</span>
-          <ChevronRight size={15} className="text-white/20 rotate-90" />
+          <span className="text-white/30 text-xs">Scroll to explore</span>
+          <ChevronRight size={15} className="text-white/30 rotate-90" />
         </motion.div>
       </div>
     </section>

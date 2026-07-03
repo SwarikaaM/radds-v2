@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, BarChart2, MessageCircle, LayoutDashboard } from "lucide-react";
+import { Menu, X, BarChart2, ChevronDown, ArrowUpRight} from "lucide-react";
 import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Button from "../ui/Button";
@@ -16,17 +16,20 @@ const socialLinks = [
   // { Icon: LayoutDashboard, href: "https://raddsenterprises.investwell.app/app/#/broker/dashboard", label: "Investwell Dashboard" },
 ];
 
-const navLinks = [
+const primaryLinks = [
   { label: "Home", path: "/" },
   { label: "Calculators", path: "/calculators" },
   { label: "Services", path: "/services" },
   { label: "Contact", path: "/contact" },
+];
+const resourceLinks = [
   { label: "Careers", path: "/careers" },
   { label: "About", path: "/about" },
   { label: "Learning", path: "/learning" },
   { label: "Blog", path: "/blog" },
   { label: "FAQ", path: "/faq" },
 ];
+const navLinks = [...primaryLinks, ...resourceLinks];
 
 function StoreBadge({ store, initial }) {
   const isAndroid = store === "android";
@@ -73,6 +76,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const [resourcesOpen, setResourcesOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -104,7 +108,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => {
+            {primaryLinks.map((link) => {
               const isActive = link.path === "/" ? location.pathname === "/" : location.pathname.startsWith(link.path);
               return (
                 <Link
@@ -124,22 +128,36 @@ export default function Navbar() {
                 </Link>
               );
             })}
-          </div>
 
-          {/* Social icons - desktop only */}
-          <div className="hidden xl:flex items-center gap-1.5 pr-1 border-r border-white/10 mr-2">
-            {socialLinks.map(({ Icon, href, label }, i) => (
-              <a
-                key={i}
-                href={href}
-                target={href !== "#" ? "_blank" : undefined}
-                rel={href !== "#" ? "noopener noreferrer" : undefined}
-                aria-label={label}
-                className="w-7 h-7 rounded-md flex items-center justify-center text-white/90 hover:text-white hover:bg-white/15 transition-all duration-200"
+            <div
+              className="relative"
+              onMouseEnter={() => setResourcesOpen(true)}
+              onMouseLeave={() => setResourcesOpen(false)}
+            >
+              <button
+                className={`flex items-center gap-1 px-2 py-2 text-sm font-medium rounded transition-all duration-200 ${
+                  resourceLinks.some((l) => location.pathname.startsWith(l.path))
+                    ? "text-accent bg-white/5" : "text-white/70 hover:text-white hover:bg-white/6"
+                }`}
               >
-                <Icon size={13} />
-              </a>
-            ))}
+                Resources <ChevronDown size={14} className={`transition-transform ${resourcesOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence>
+                {resourcesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-1 w-44 bg-dark border border-white/10 rounded-lg shadow-xl overflow-hidden py-1"
+                  >
+                    {resourceLinks.map((link) => (
+                      <Link key={link.path} to={link.path} className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/6 transition-colors">
+                        {link.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Desktop CTAs */}
@@ -147,17 +165,12 @@ export default function Navbar() {
             {/* Financial Planning CTA - Fluid Liquid Border */}
             <Link
               to="/financial-planning"
-              className="group relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-white text-sm font-semibold transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(239,68,68,0.4)]"
+              className="group relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-white text-sm font-semibold transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95 shadow-[0_4px_16px_rgba(57,195,239,0.35)]"
             >
-              {/* Ultra-bright rotating gradient element that spills out past the boundary */}
-              <span className="absolute inset-[-300%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,#ff4500,#ff007f,#00f0ff,#ff4500)]" />
-              
-              {/* Dark Inner Mask - Keeps the center clean while revealing a thick glowing border track */}
+              <span className="absolute inset-[-300%] animate-[spin_9s_linear_infinite] bg-[conic-gradient(from_0deg,#22568F,#39C3EF,#2389AF,#22568F)]" />
               <span className="absolute inset-[2px] bg-slate-950 rounded-[6px] group-hover:bg-slate-900 transition-colors" />
-
-              {/* Content explicitly layered above the background track */}
-              <BarChart2 size={14} className="relative z-10 text-cyan-400 group-hover:rotate-12 transition-transform" />
-              <span className="relative z-10 bg-gradient-to-r from-amber-200 to-rose-300 bg-clip-text text-transparent group-hover:from-white group-hover:to-white">
+              <BarChart2 size={14} className="relative z-10 text-accent group-hover:rotate-12 transition-transform" />
+              <span className="relative z-10 bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent group-hover:from-white group-hover:to-white">
                 Goal & Budget Planner
               </span>
             </Link>
@@ -249,37 +262,21 @@ export default function Navbar() {
                 >
                   <Link
                     to="/financial-planning"
-                    className={`group relative block p-[2px] rounded-xl overflow-hidden transition-all duration-300 shadow-[0_4px_25px_rgba(239,68,68,0.35)] ${
-                      location.pathname === "/financial-planning" 
-                        ? "scale-[1.02] shadow-[0_4px_30px_rgba(0,240,255,0.3)]" 
-                        : ""
+                    className={`group relative block p-[2px] rounded-xl overflow-hidden transition-all duration-300 shadow-[0_4px_20px_rgba(57,195,239,0.3)] ${
+                      location.pathname === "/financial-planning" ? "scale-[1.02]" : ""
                     }`}
                   >
-                    {/* Ultra-bright rotating gradient background frame */}
-                    <span className={`absolute inset-[-300%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,#ff4500,#ff007f,#00f0ff,#ff4500)] ${
-                      location.pathname === "/financial-planning" ? "[animation-duration:2s]" : ""
+                    <span className={`absolute inset-[-200%] animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_0deg,#22568F,#39C3EF,#2389AF,#22568F)] ${
+                      location.pathname === "/financial-planning" ? "[animation-duration:2.5s]" : ""
                     }`} />
-                    
-                    {/* Dark Inner Mask - Isolates button container from mobile nav blending */}
                     <div className={`relative px-6 py-3.5 rounded-[10px] flex items-center justify-between transition-colors duration-300 ${
-                      location.pathname === "/financial-planning"
-                        ? "bg-slate-900"
-                        : "bg-slate-950 group-hover:bg-slate-900"
+                      location.pathname === "/financial-planning" ? "bg-slate-900" : "bg-slate-950 group-hover:bg-slate-900"
                     }`}>
-                      {/* Text Label with Dynamic Active State Highlighting */}
-                      <span className={`text-sm font-semibold transition-all bg-clip-text text-transparent ${
-                        location.pathname === "/financial-planning"
-                          ? "bg-gradient-to-r from-cyan-400 to-amber-200"
-                          : "bg-gradient-to-r from-amber-200 to-rose-300 group-hover:from-white group-hover:to-white"
-                      }`}>
+                      <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">
                         Goal & Budget Planner
                       </span>
-
-                      {/* Dynamic indicator badge instead of just a flat left-border line */}
                       <span className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                        location.pathname === "/financial-planning" 
-                          ? "bg-cyan-400 animate-ping shadow-[0_0_10px_#00f0ff]" 
-                          : "bg-rose-500 opacity-60 group-hover:opacity-100 group-hover:scale-125"
+                        location.pathname === "/financial-planning" ? "bg-accent animate-ping shadow-[0_0_10px_#39C3EF]" : "bg-accent/60 group-hover:opacity-100 group-hover:scale-125"
                       }`} />
                     </div>
                   </Link>

@@ -188,27 +188,27 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-5 pt-5 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-white/35 text-xs text-center sm:text-left">
+          <p className="text-white/50 text-xs text-center sm:text-left">
             © 2026 Radds Capital. All rights reserved. AMFI-registered Mutual Fund Distributor.
           </p>
           <div className="flex items-center gap-4">
             <a
               href="#"
               onClick={(e) => { e.preventDefault(); setPrivacyOpen(true); }}
-              className="text-white/35 hover:text-white/60 text-xs transition-colors"
+              className="text-white/50 hover:text-white/60 text-xs transition-colors"
             >
               Privacy Policy
             </a>
-            <a href="#" className="text-white/35 hover:text-white/60 text-xs transition-colors">
+            <a href="#" className="text-white/50 hover:text-white/60 text-xs transition-colors">
               Terms of Use
             </a>
-            <a href="#" className="text-white/35 hover:text-white/60 text-xs transition-colors">
+            <a href="#" className="text-white/50 hover:text-white/60 text-xs transition-colors">
               Disclaimer
             </a>
           </div>
         </div>
         <div className="mt-4 pt-4 border-t border-white/5">
-          <p className="text-white/45 text-[10px] leading-relaxed text-center">
+          <p className="text-white/50 text-[10px] leading-relaxed text-center">
             Mutual Fund investments are subject to market risks. Read all scheme related documents carefully. 
             Past performance is not indicative of future returns. Radds Capital is an AMFI-Registered Mutual Fund Distributor, 
             not a SEBI Registered Investment Adviser. Incidental advice/guidance provided is limited to mutual fund scheme selection 
