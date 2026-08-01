@@ -101,7 +101,7 @@ export const calculators = [
     shortDescription:
       "See how much you'll need at retirement, adjusted for inflation, and how big a gap (if any) you need to close.",
     icon: "PiggyBank",
-    category: "Retirement Planning",
+    category: "Retirement",
     route: "/calculators/retirement",
     inputsSummary: "Current age · Retirement age · Expenses · Existing corpus",
     bestFor: "Anyone planning how much they need to retire comfortably",
@@ -114,7 +114,7 @@ export const calculatorCategories = [
   "Withdrawals",
   "Lumpsum",
   "Goal Planning",
-  "Retirement Planning",
+  "Retirement",
   "Loan Planning",
   "Insurance",
 ];
