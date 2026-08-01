@@ -288,26 +288,29 @@
     "author": "Radds Research",
     "date": "March 10, 2026",
     "readTime": "5 min read",
-    "featured": false,
+    "featured": true,
     "published": true,
     "createdAt": "2026-03-10T00:00:00.000Z",
-    "updatedAt": "2026-03-10T00:00:00.000Z",
+    "updatedAt": "2026-08-01T18:20:04.568Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/22568F?text=Retirement",
     "content": [
       {
         "id": "time-is-your-greatest-asset",
         "heading": "Time Is Your Greatest Asset",
-        "body": "Starting early allows compounding to do most of the heavy lifting."
+        "body": "Starting early allows compounding to do most of the heavy lifting.",
+        "points": []
       },
       {
         "id": "smaller-contributions-required",
         "heading": "Smaller Contributions Required",
-        "body": "The earlier you start, the less money you typically need to invest each month."
+        "body": "The earlier you start, the less money you typically need to invest each month.",
+        "points": []
       },
       {
         "id": "build-confidence-for-future",
         "heading": "Build Confidence For The Future",
-        "body": "Early planning reduces uncertainty and provides greater financial flexibility."
+        "body": "Early planning reduces uncertainty and provides greater financial flexibility.",
+        "points": []
       }
     ]
   }
