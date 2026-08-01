@@ -282,7 +282,7 @@
   {
     "id": 9,
     "slug": "retirement-planning-early",
-    "category": "Goal Planning",
+    "category": "Goal Based",
     "title": "Why Retirement Planning Should Start Earlier Than You Think",
     "excerpt": "The earlier you begin, the easier retirement becomes.",
     "author": "Radds Research",
@@ -291,7 +291,7 @@
     "featured": true,
     "published": true,
     "createdAt": "2026-03-10T00:00:00.000Z",
-    "updatedAt": "2026-08-01T18:20:04.568Z",
+    "updatedAt": "2026-08-01T18:20:25.399Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/22568F?text=Retirement",
     "content": [
       {
