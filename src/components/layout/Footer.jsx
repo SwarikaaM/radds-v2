@@ -201,7 +201,7 @@ export default function Footer() {
               Privacy Policy
             </a>
             <a href="#" className="text-white/50 hover:text-white/60 text-xs transition-colors">
-              Terms of Use
+              Disclosure
             </a>
             <a href="#" className="text-white/50 hover:text-white/60 text-xs transition-colors">
               Disclaimer
