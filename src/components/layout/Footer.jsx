@@ -7,6 +7,24 @@ import { FaXTwitter } from "react-icons/fa6";
 import logoPNG from "../../assets/Logo.png";
 import MFDisclosure from "../ui/MFDisclosure";
 import PrivacyPolicyModal from "../legal/PrivacyPolicyModal";
+import DisclaimerModal from "../legal/DisclaimerModal";
+import DisclosureModal from "../legal/DisclosureModal";
+import SidSaiKimModal from "../legal/SidSaiKimModal";
+import nseLogo from "../../assets/logos/nse.png";
+import nismLogo from "../../assets/logos/nism.png";
+import bseStarMfLogo from "../../assets/logos/bse-star-mf.png";
+import bseLogo from "../../assets/logos/bse.png";
+import amfiLogo from "../../assets/logos/amfi.png";
+import mfuLogo from "../../assets/logos/mfu.png";
+
+const regulatoryLogos = [
+  { src: nseLogo, alt: "NSE" },
+  { src: nismLogo, alt: "NISM" },
+  { src: bseStarMfLogo, alt: "BSE StAR MF" },
+  { src: bseLogo, alt: "BSE" },
+  { src: amfiLogo, alt: "AMFI" },
+  { src: mfuLogo, alt: "MFU" },
+];
 
 const socialLinks = [
   { Icon: FaInstagram, href: "https://www.instagram.com/radds.capital/", label: "Instagram" },
@@ -45,6 +63,9 @@ const companyLinks = [
 
 export default function Footer() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [disclosureOpen, setDisclosureOpen] = useState(false);
+  const [disclaimerOpen, setDisclaimerOpen] = useState(false);
+  const [sidSaiKimOpen, setSidSaiKimOpen] = useState(false);
 
   return (
     <footer className="bg-dark text-white">
@@ -179,10 +200,22 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Regulatory logos row */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 py-2">
+          {regulatoryLogos.map((logo) => (
+            <img
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              className="h-7 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
+            />
+          ))}
+        </div>
+
         {/* Registration numbers row */}
         <div className="mt-8 py-5 px-2 border bg-white/10 border-white/15 rounded-card">
           <p className="text-white/60 text-[11px] text-center leading-relaxed font-mono-num">
-            Deven Shah ARN – 124053 &nbsp;|&nbsp; Anjali Shah ARN – 292158 &nbsp;|&nbsp; Deven Shah HUF ARN – 334716 &nbsp;|&nbsp; BSE Regi Code: AP01017901146329 &nbsp;|&nbsp; NSE Registration Code: CM-AP1493473831 , FO-AP1493473831 &nbsp;|&nbsp; PMS Regist No: APRN APRN09418 &nbsp;
+            Deven Shah ARN – 124053 &nbsp;|&nbsp; Anjali Shah ARN – 292158 &nbsp;|&nbsp; Deven Shah HUF ARN – 334716 &nbsp;|&nbsp; BSE Regi Code: AP01017901146329 &nbsp;|&nbsp; NSE (Capital Market, Futures & Options)- AP1493473831 &nbsp;|&nbsp; PMS Regist No: APRN APRN09418 &nbsp;
             {/* |&nbsp; SIF <span className="text-white/25">(to be added)</span> &nbsp;|&nbsp; AIF Registration No <span className="text-white/25">(to be added)</span> */}
           </p>
         </div>
@@ -195,15 +228,31 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <a
               href="#"
+              onClick={(e) => { e.preventDefault(); setSidSaiKimOpen(true); }}
+              className="text-white/50 hover:text-white/60 text-xs transition-colors"
+            >
+              SID/SAI/KIM
+            </a>
+            <a
+              href="#"
               onClick={(e) => { e.preventDefault(); setPrivacyOpen(true); }}
               className="text-white/50 hover:text-white/60 text-xs transition-colors"
             >
               Privacy Policy
             </a>
-            <a href="#" className="text-white/50 hover:text-white/60 text-xs transition-colors">
+            <a 
+              href="#"
+              onClick={(e) => { e.preventDefault(); setDisclosureOpen(true); }}
+              className="text-white/50 hover:text-white/60 text-xs transition-colors"
+            >
               Disclosure
             </a>
-            <a href="#" className="text-white/50 hover:text-white/60 text-xs transition-colors">
+            
+            <a  
+              href="#"
+              onClick={(e) => { e.preventDefault(); setDisclaimerOpen(true); }}
+              className="text-white/50 hover:text-white/60 text-xs transition-colors"
+            >
               Disclaimer
             </a>
           </div>
@@ -219,6 +268,9 @@ export default function Footer() {
       </div>
 
       <PrivacyPolicyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+      <DisclosureModal open={disclosureOpen} onClose={() => setDisclosureOpen(false)} />
+      <DisclaimerModal open={disclaimerOpen} onClose={() => setDisclaimerOpen(false)} />
+      <SidSaiKimModal open={sidSaiKimOpen} onClose={() => setSidSaiKimOpen(false)} />
     </footer>
   );
 }
