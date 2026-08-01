@@ -14,7 +14,7 @@ const offerings = [
   { icon: LineChart, label: "Equity & Demat Services" },
   { icon: Landmark, label: "Fixed Deposits & Bonds" },
   { icon: ReceiptText, label: "Tax-Saving Solutions" },
-  { icon: ClipboardList, label: "Financial Planning Support" },
+  { icon: ClipboardList, label: "Investment Portfolio Reviews" },
 ];
 
 export default function WhatWeDoSection() {

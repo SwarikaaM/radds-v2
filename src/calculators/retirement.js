@@ -141,6 +141,7 @@ export const retirementConfig = {
       step: 1,
       default: 85,
       helper: "Age until which the corpus should last",
+      advanced: true,
     },
     {
       key: "preReturn",
@@ -153,6 +154,7 @@ export const retirementConfig = {
       default: 12,
       decimals: 1,
       helper: "Growth rate while you're still investing",
+      advanced: true,
     },
     {
       key: "postReturn",
@@ -165,6 +167,7 @@ export const retirementConfig = {
       default: 8,
       decimals: 1,
       helper: "Conservative growth rate during retirement",
+      advanced: true,
     },
     {
       key: "inflation",
@@ -177,13 +180,13 @@ export const retirementConfig = {
       default: 6,
       decimals: 1,
       helper: "Long-term average inflation assumption",
+      advanced: true,
     },
   ],
   summaryKeys: [
     { key: "currentCorpus", label: "Existing Corpus (Today)", color: "primary" },
     { key: "requiredCorpus", label: "Required Corpus (at Retirement)", color: "gradient" },
     { key: "shortfall", label: "Corpus Shortfall", color: "warning" },
-    { key: "suggestedMonthlySIP", label: "Suggested Monthly SIP to Close Gap", color: "success" },
   ],
   chartSeries: [
     { key: "corpus", name: "Projected Corpus", color: "#22568F" },

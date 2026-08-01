@@ -173,25 +173,48 @@ export async function exportCalcPDF({ title, summaryKeys, results, tableColumns,
 
   // Year-wise table
   if (chartData?.length) {
+    const columnStyles = {};
+    tableRowKeys.forEach((k, i) => {
+      // Set every column to center alignment
+      columnStyles[i] = { halign: "center" }; 
+    });
+
     autoTable(doc, {
       startY: y,
       head: [tableColumns],
-      body: chartData.map(row => tableRowKeys.map(k =>
-        k === "year" ? row[k] : (typeof row[k] === "number" ? fmtINR(row[k]) : (row[k] ?? "—"))
-      )),
-      styles: { fontSize: 8, font: "helvetica", cellPadding: 2.5 },
-      headStyles: { fillColor: BLUE, textColor: WHITE, fontStyle: "bold", halign: "center" },
+      body: chartData.map(row => 
+        tableRowKeys.map(k => 
+          (k === "year" || k === "age") 
+            ? row[k] 
+            : (typeof row[k] === "number" ? fmtINR(row[k]) : (row[k] ?? "—"))
+        )
+      ),
+      styles: { 
+        fontSize: 8, 
+        font: "helvetica", 
+        cellPadding: 2.5, 
+        halign: "center" // Centers the headers and default cell text
+      },
+      headStyles: { 
+        fillColor: BLUE, 
+        textColor: WHITE, 
+        fontStyle: "bold",
+        halign: "center" // Explicitly ensures header text is centered
+      },
+      columnStyles, // Applies centering to all body data columns
       alternateRowStyles: { fillColor: [248, 250, 252] },
       margin: { left: 14, right: 14 },
       tableWidth: W - 28,
     });
+
     y = doc.lastAutoTable.finalY + 8;
   }
+
 
   // Disclaimer
   const lines = doc.splitTextToSize(DISCLAIMER, W - 28);
   doc.setFont("helvetica", "italic");
-  doc.setFontSize(7);
+  doc.setFontSize(12);
   doc.setTextColor(...GREY);
   if (y + lines.length * 3.5 > doc.internal.pageSize.getHeight() - 10) {
     doc.addPage();

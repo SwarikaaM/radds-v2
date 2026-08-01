@@ -134,9 +134,9 @@ export const faqs = [
   // Consultation
   {
     category: "Consultation",
-    question: "Is the first consultation free?",
+    question: "Is there a fee for the initial conversation?",
     answer:
-      "Yes, an initial conversation to understand your goals comes at no cost. We earn trail commission from AMCs if you choose to invest through us — there's no separate advisory fee.",
+      "There's no separate advisory fee. We are compensated through trail commission paid by AMCs if you choose to invest through us — you don't pay us directly for the initial conversation or scheme guidance.",
   },
   {
     category: "Consultation",

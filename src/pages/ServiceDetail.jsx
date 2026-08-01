@@ -11,6 +11,8 @@ import ServiceRisks from "../components/service-detail/ServiceRisks";
 import ServiceFAQ from "../components/service-detail/ServiceFAQ";
 import RelatedServices from "../components/service-detail/RelatedServices";
 import ServiceCTA from "../components/service-detail/ServiceCTA";
+import ServiceFundCategories from "../components/service-detail/ServiceFundCategories";
+import ServiceWhyChooseUs from "../components/service-detail/ServiceWhyChooseUs";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -28,7 +30,9 @@ export default function ServiceDetail() {
         <ServiceExplanation service={service} />
         <ServiceSteps service={service} />
         <ServiceBenefits service={service} />
+        <ServiceFundCategories service={service} />
         <ServiceAudience service={service} />
+        <ServiceWhyChooseUs service={service} />
         <ServiceRisks service={service} />
         <ServiceFAQ service={service} />
         <RelatedServices service={service} />

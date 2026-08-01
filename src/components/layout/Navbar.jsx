@@ -164,7 +164,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             {/* Financial Planning CTA - Fluid Liquid Border */}
             <Link
-              to="/financial-planning"
+              to="/goal-budget-planner"
               className="group relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-white text-sm font-semibold transition-all duration-300 overflow-hidden hover:scale-105 active:scale-95 shadow-[0_4px_16px_rgba(57,195,239,0.35)]"
             >
               <span className="absolute inset-[-300%] animate-[spin_9s_linear_infinite] bg-[conic-gradient(from_0deg,#22568F,#39C3EF,#2389AF,#22568F)]" />
@@ -261,22 +261,22 @@ export default function Navbar() {
                   className="mx-4 my-2" // Adds safe padding inside your mobile menu drawer
                 >
                   <Link
-                    to="/financial-planning"
+                    to="/goal-budget-planner"
                     className={`group relative block p-[2px] rounded-xl overflow-hidden transition-all duration-300 shadow-[0_4px_20px_rgba(57,195,239,0.3)] ${
-                      location.pathname === "/financial-planning" ? "scale-[1.02]" : ""
+                      location.pathname === "/goal-budget-planner" ? "scale-[1.02]" : ""
                     }`}
                   >
                     <span className={`absolute inset-[-200%] animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_0deg,#22568F,#39C3EF,#2389AF,#22568F)] ${
-                      location.pathname === "/financial-planning" ? "[animation-duration:2.5s]" : ""
+                      location.pathname === "/goal-budget-planner" ? "[animation-duration:2.5s]" : ""
                     }`} />
                     <div className={`relative px-6 py-3.5 rounded-[10px] flex items-center justify-between transition-colors duration-300 ${
-                      location.pathname === "/financial-planning" ? "bg-slate-900" : "bg-slate-950 group-hover:bg-slate-900"
+                      location.pathname === "/goal-budget-planner" ? "bg-slate-900" : "bg-slate-950 group-hover:bg-slate-900"
                     }`}>
                       <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">
                         Goal & Budget Planner
                       </span>
                       <span className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                        location.pathname === "/financial-planning" ? "bg-accent animate-ping shadow-[0_0_10px_#39C3EF]" : "bg-accent/60 group-hover:opacity-100 group-hover:scale-125"
+                        location.pathname === "/goal-budget-planner" ? "bg-accent animate-ping shadow-[0_0_10px_#39C3EF]" : "bg-accent/60 group-hover:opacity-100 group-hover:scale-125"
                       }`} />
                     </div>
                   </Link>

@@ -30,7 +30,7 @@ export default function App() {
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/calculators" element={<Calculators />} />
         <Route path="/calculators/:slug" element={<CalculatorDetail />} />
-        <Route path="/financial-planning" element={<FinancialPlanning />} />
+        <Route path="/goal-budget-planner" element={<FinancialPlanning />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

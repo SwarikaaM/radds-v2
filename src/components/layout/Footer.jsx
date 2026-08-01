@@ -258,7 +258,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-4 pt-4 border-t border-white/5">
-          <p className="text-white/50 text-[10px] leading-relaxed text-center">
+          <p className="text-white/50 text-xs leading-relaxed text-center">
             Mutual Fund investments are subject to market risks. Read all scheme related documents carefully. 
             Past performance is not indicative of future returns. Radds Capital is an AMFI-Registered Mutual Fund Distributor, 
             not a SEBI Registered Investment Adviser. Incidental advice/guidance provided is limited to mutual fund scheme selection 

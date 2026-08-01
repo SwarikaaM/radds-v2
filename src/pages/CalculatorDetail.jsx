@@ -14,6 +14,7 @@ import NetWorthCalc from "../components/calculators/NetWorthCalc";
 import TermInsuranceCalc from "../components/calculators/TermInsuranceCalc";
 import { Download, FileText } from "lucide-react";
 import { exportCalcXLSX, exportCalcPDF } from "../utils/calcExport";
+import RetirementProjectionCard from "../components/calculator-detail/RetirementProjectionCard";
 
 const SPECIAL_SLUGS = {
   "home-loan-interest-free": HomeLoanCalc,
@@ -114,7 +115,11 @@ export default function CalculatorDetail() {
                 />
               </div>
               <div className="p-7 lg:p-8 space-y-7 flex flex-col">
-                <CalculatorSummary summaryKeys={config.summaryKeys} results={results} />
+                {slug === "retirement" ? (
+                  <RetirementProjectionCard results={results} retirementAge={values.retirementAge} />
+                ) : (
+                  <CalculatorSummary summaryKeys={config.summaryKeys} results={results} />
+                )}
                 <CalculatorChart chartData={chartData} chartSeries={config.chartSeries} />
                 <CalculatorYearlyTable
                   tableColumns={config.tableColumns}

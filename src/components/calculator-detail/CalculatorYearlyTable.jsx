@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { formatINR } from "../../utils/format";
 
 function formatCell(val, colKey) {
-  if (colKey === "year") return val;
+  if (colKey === "year" || colKey === "age") return val;
   if (typeof val === "number") return formatINR(val);
   return val ?? "—";
 }

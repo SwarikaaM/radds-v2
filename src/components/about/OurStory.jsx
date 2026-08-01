@@ -1,4 +1,5 @@
 import ScrollReveal from "../ui/ScrollReveal";
+import founderImg from "../../assets/founder.png";
 
 export default function OurStory() {
   return (
@@ -41,8 +42,8 @@ export default function OurStory() {
             </div>
           </ScrollReveal>
           <ScrollReveal>
-            <div className="h-[500px] rounded-2xl bg-[#F4F8FC] border border-[#E2EBF5] flex items-center justify-center">
-              <span className="text-[#6B7E99]">Office / Team Image Placeholder</span>
+            <div className="h-[500px] rounded-2xl overflow-hidden border border-[#E2EBF5]">
+              <img src={founderImg} alt="Deven Shah, Founder, Radds Capital" className="w-full h-full object-cover" />
             </div>
           </ScrollReveal>
         </div>
