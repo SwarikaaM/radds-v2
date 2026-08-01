@@ -15,8 +15,7 @@ export default function BlogPreview() {
 
   useEffect(() => {
     fetchPosts().then((posts) => {
-      const featured = posts.filter((p) => p.featured);
-      setBlogPosts((featured.length > 0 ? featured : posts).slice(0, 8));
+      setBlogPosts(posts.filter((p) => p.featured === true));
     });
   }, []);
 
