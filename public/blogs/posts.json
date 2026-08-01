@@ -10,7 +10,7 @@
     "readTime": "5 min read",
     "coverImage": "https://i.ibb.co/b5GvZhFB/Whats-App-Image-2026-07-07-at-22-35-35-1.jpg",
     "published": true,
-    "featured": true,
+    "featured": false,
     "content": [
       {
         "id": "h",
@@ -27,11 +27,11 @@
         "heading": "test section 2",
         "body": "This is a random text to test",
         "points": [],
-        "callout": "hey"
+        "callout": "hey key"
       }
     ],
     "createdAt": "2026-08-01T15:44:04.533Z",
-    "updatedAt": "2026-08-01T15:50:42.291Z"
+    "updatedAt": "2026-08-01T17:47:39.566Z"
   },
   {
     "id": 1,
