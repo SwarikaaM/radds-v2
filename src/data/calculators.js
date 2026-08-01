@@ -93,6 +93,19 @@ export const calculators = [
       "Starting SIP · Return · Duration · Annual Step-up %",
     bestFor: "Salaried professionals expecting yearly raises",
   },
+  {
+    id: "retirement",
+    slug: "retirement",
+    title: "Retirement Calculator",
+    description: "Find out how large a corpus you'll need at retirement to sustain your lifestyle.",
+    shortDescription:
+      "See how much you'll need at retirement, adjusted for inflation, and how big a gap (if any) you need to close.",
+    icon: "PiggyBank",
+    category: "Goal Planning",
+    route: "/calculators/retirement",
+    inputsSummary: "Current age · Retirement age · Expenses · Existing corpus",
+    bestFor: "Anyone planning how much they need to retire comfortably",
+  },
 ];
 
 export const calculatorCategories = [

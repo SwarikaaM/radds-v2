@@ -6,7 +6,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import logoUrl from "../../assets/Logo.png";
 
-function NumInput({ label, value, onChange, prefix = "₹", suffix = "" }) {
+function NumInput({ label, value, onChange, prefix = "₹", suffix = "", min = 0, max = 999999999 }) {
   const [raw, setRaw] = useState(value === 0 ? "" : String(value));
   return (
     <div>
@@ -15,8 +15,24 @@ function NumInput({ label, value, onChange, prefix = "₹", suffix = "" }) {
         {prefix && <span className="pl-3 text-[#6B7E99] text-sm">{prefix}</span>}
         <input
           type="text" inputMode="numeric" value={raw}
-          onChange={e => { const v = e.target.value; if (v === "" || /^\d*\.?\d*$/.test(v)) { setRaw(v); onChange(v === "" ? 0 : Number(v)); } }}
-          onFocus={e => { if (e.target.value === "0") setRaw(""); }}
+          onChange={e => {
+            const v = e.target.value;
+            // Cap length to 9 digits (+2 decimal) so a fast typist can never
+            // produce an absurdly large number, regardless of what gets appended.
+            if (v === "" || /^\d{0,9}(\.\d{0,2})?$/.test(v)) {
+              setRaw(v);
+              if (v === "") { onChange(0); return; }
+              const num = Number(v);
+              if (!Number.isNaN(num)) onChange(Math.min(max, num));
+            }
+          }}
+          onFocus={e => e.target.select()}
+          onBlur={() => {
+            const num = Number(raw) || 0;
+            const clamped = Math.min(max, Math.max(min, num));
+            setRaw(clamped === 0 ? "" : String(clamped));
+            onChange(clamped);
+          }}
           className="w-full bg-transparent outline-none p-3 pl-1.5 text-sm font-semibold text-[#0D1B2E]"
         />
         {suffix && <span className="pr-3 text-[#6B7E99] text-sm">{suffix}</span>}
@@ -34,18 +50,22 @@ export default function TermInsuranceCalc() {
   const [growthRate, setGrowthRate] = useState(12);
 
   const calc = useMemo(() => {
+    // Never trust the raw input to bound a loop — clamp defensively even
+    // though the input field itself is also clamped.
+    const safeTenure = Math.min(Math.max(Math.round(tenure) || 1, 1), 40);
+
     const rate = growthRate / 100;
     let corpus = 0;
     const rows = [];
-    for (let yr = 1; yr <= tenure; yr++) {
+    for (let yr = 1; yr <= safeTenure; yr++) {
       const annSip = sipAmt * 12;
       const growth = (corpus + annSip) * rate;
       const open = corpus;
       corpus = corpus + annSip + growth;
       rows.push({ yr, premium, open, annSip, growth, close: corpus });
     }
-    const totalPremiums = premium * tenure;
-    const totalSipInvested = sipAmt * 12 * tenure;
+    const totalPremiums = premium * safeTenure;
+    const totalSipInvested = sipAmt * 12 * safeTenure;
     const net = corpus - totalPremiums;
     return { rows, corpus, totalPremiums, totalSipInvested, net };
   }, [premium, sipAmt, tenure, growthRate]);
@@ -198,10 +218,10 @@ export default function TermInsuranceCalc() {
           {/* Inputs */}
           <div className="bg-white rounded-2xl border border-[#E2EBF5] p-6 space-y-5 h-fit">
             <h2 className="font-semibold text-[#0D1B2E]">Policy Parameters</h2>
-            <NumInput label="Annual Premium" value={premium} onChange={setPremium} />
-            <NumInput label="Monthly SIP to Offset" value={sipAmt} onChange={setSipAmt} />
-            <NumInput label="Policy Tenure" value={tenure} onChange={setTenure} prefix="" suffix=" years" />
-            <NumInput label="SIP Growth Rate (p.a.)" value={growthRate} onChange={setGrowthRate} prefix="" suffix="%" />
+            <NumInput label="Annual Premium" value={premium} onChange={setPremium} min={1000} max={2000000} />
+            <NumInput label="Monthly SIP to Offset" value={sipAmt} onChange={setSipAmt} min={100} max={500000} />
+            <NumInput label="Policy Tenure" value={tenure} onChange={setTenure} prefix="" suffix=" years" min={1} max={40} />
+            <NumInput label="SIP Growth Rate (p.a.)" value={growthRate} onChange={setGrowthRate} prefix="" suffix="%" min={1} max={30} />
           </div>
 
           {/* Results */}

@@ -3,6 +3,7 @@ import { swpConfig, calcSWP, buildSWPChartData } from "../calculators/swp";
 import { costOfDelayConfig, calcCostOfDelay, buildCostOfDelayChartData } from "../calculators/costOfDelaySip";
 import { lumpsumConfig, calcLumpsum, buildLumpsumChartData } from "../calculators/lumpsum";
 import { stepUpSIPConfig, calcStepUpSIP, buildStepUpSIPChartData } from "../calculators/stepUpSip";
+import { retirementConfig, calcRetirement, buildRetirementChartData } from "../calculators/retirement";
 import { getInvestmentCapacity } from "../utils/calculatorDefaults";
 
 /**
@@ -55,6 +56,19 @@ export const calculatorRegistry = {
     ...stepUpSIPConfig,
     compute: (vals) => calcStepUpSIP(vals.initialMonthly, vals.annualRate, vals.years, vals.annualStepUp),
     buildChartData: (vals) => buildStepUpSIPChartData(vals.initialMonthly, vals.annualRate, vals.years, vals.annualStepUp),
+  },
+  retirement: {
+    ...retirementConfig,
+    compute: (vals) =>
+      calcRetirement(
+        vals.currentAge, vals.retirementAge, vals.monthlyExpenses, vals.existingCorpus,
+        vals.lifeExpectancy, vals.preReturn, vals.postReturn, vals.inflation
+      ),
+    buildChartData: (vals) =>
+      buildRetirementChartData(
+        vals.currentAge, vals.retirementAge, vals.monthlyExpenses, vals.existingCorpus,
+        vals.lifeExpectancy, vals.preReturn, vals.postReturn, vals.inflation
+      ),
   },
 };
 

@@ -7,7 +7,7 @@ import autoTable from "jspdf-autotable";
 import logoUrl from "../../assets/Logo.png";
 
 
-function NumInput({ label, value, onChange, prefix = "₹", suffix = "" }) {
+function NumInput({ label, value, onChange, prefix = "₹", suffix = "", min = 0, max = 999999999 }) {
   const [raw, setRaw] = useState(value === 0 ? "" : String(value));
   return (
     <div>
@@ -16,8 +16,24 @@ function NumInput({ label, value, onChange, prefix = "₹", suffix = "" }) {
         {prefix && <span className="pl-3 text-[#6B7E99] text-sm">{prefix}</span>}
         <input
           type="text" inputMode="numeric" value={raw}
-          onChange={e => { const v = e.target.value; if (v === "" || /^\d*\.?\d*$/.test(v)) { setRaw(v); onChange(v === "" ? 0 : Number(v)); } }}
-          onFocus={e => { if (e.target.value === "0") setRaw(""); }}
+          onChange={e => {
+            const v = e.target.value;
+            // Cap length to 9 digits (+2 decimal) so a fast typist can never
+            // produce an absurdly large number, regardless of what gets appended.
+            if (v === "" || /^\d{0,9}(\.\d{0,2})?$/.test(v)) {
+              setRaw(v);
+              if (v === "") { onChange(0); return; }
+              const num = Number(v);
+              if (!Number.isNaN(num)) onChange(Math.min(max, num));
+            }
+          }}
+          onFocus={e => e.target.select()}
+          onBlur={() => {
+            const num = Number(raw) || 0;
+            const clamped = Math.min(max, Math.max(min, num));
+            setRaw(clamped === 0 ? "" : String(clamped));
+            onChange(clamped);
+          }}
           className="w-full bg-transparent outline-none p-3 pl-1.5 text-sm font-semibold text-[#0D1B2E]"
         />
         {suffix && <span className="pr-3 text-[#6B7E99] text-sm">{suffix}</span>}
@@ -34,11 +50,15 @@ export default function HomeLoanCalc() {
   const [rate, setRate] = useState(8.5); // Home loan interest rate
 
   const calc = useMemo(() => {
+    // Never trust the raw input to bound a loop — clamp defensively even
+    // though the input field itself is also clamped.
+    const safeTenure = Math.min(Math.max(Math.round(tenure) || 1, 1), 40);
+
     // 1. Calculate actual Home Loan EMI dynamically based on user input
     // Formula: EMI = [P x R x (1+R)^N]/[((1+R)^N)-1]
     // (EMI itself is inherently a monthly-compounding instrument — unchanged.)
     const monthlyLoanRate = (rate / 100) / 12;
-    const totalMonths = tenure * 12;
+    const totalMonths = safeTenure * 12;
 
     let calculatedEmi = 0;
     if (loanAmt > 0 && monthlyLoanRate > 0 && totalMonths > 0) {
@@ -61,7 +81,7 @@ export default function HomeLoanCalc() {
     // `tenure` years of annual compounding (contribution-then-growth, ordinary annuity-due style).
     function corpusForAnnualContribution(annualContribution) {
       let bal = 0;
-      for (let yr = 0; yr < tenure; yr++) {
+      for (let yr = 0; yr < safeTenure; yr++) {
         bal = (bal + annualContribution) * (1 + annualRate);
       }
       return bal;
@@ -71,7 +91,7 @@ export default function HomeLoanCalc() {
     // corpus is >= totalInterest, then round to the nearest rupee so the
     // resulting net (corpus − interest) lands as close to zero as possible.
     let sipNeeded = 0;
-    if (totalInterest > 0 && tenure > 0) {
+    if (totalInterest > 0 && safeTenure > 0) {
       let lo = 0, hi = totalInterest; // monthly SIP search bounds (generous upper bound)
       for (let i = 0; i < 60; i++) { // binary search, converges well within 60 iterations
         const mid = (lo + hi) / 2;
@@ -85,7 +105,7 @@ export default function HomeLoanCalc() {
     // 5. Year-by-year accumulation table (annual compounding @ fixed 12% p.a.)
     let sipOpen = 0;
     const rows = [];
-    for (let yr = 1; yr <= tenure; yr++) {
+    for (let yr = 1; yr <= safeTenure; yr++) {
       const openingBalance = sipOpen;
       const close = (openingBalance + annualSip) * (1 + annualRate);
       const growth = close - openingBalance - annualSip;
@@ -243,9 +263,9 @@ export default function HomeLoanCalc() {
           {/* Inputs */}
           <div className="bg-white rounded-2xl border border-[#E2EBF5] p-6 space-y-5 h-fit">
             <h2 className="font-semibold text-[#0D1B2E]">Loan Parameters</h2>
-            <NumInput label="Loan Amount" value={loanAmt} onChange={setLoanAmt} />
-            <NumInput label="Home Loan Interest Rate (p.a.)" value={rate} onChange={setRate} prefix="" suffix="%" />
-            <NumInput label="Loan Tenure" value={tenure} onChange={setTenure} prefix="" suffix=" years" />
+            <NumInput label="Loan Amount" value={loanAmt} onChange={setLoanAmt} min={100000} max={100000000} />
+            <NumInput label="Home Loan Interest Rate (p.a.)" value={rate} onChange={setRate} prefix="" suffix="%" min={1} max={20} />
+            <NumInput label="Loan Tenure" value={tenure} onChange={setTenure} prefix="" suffix=" years" min={1} max={40} />
             
             {/* Displaying Auto-Calculated EMI */}
             <div className="pt-3 border-t border-dashed border-[#E2EBF5]">

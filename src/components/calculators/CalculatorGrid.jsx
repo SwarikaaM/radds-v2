@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   TrendingUp, ArrowDownCircle, Clock,
-  Wallet, ArrowUpRight, Zap,
+  Wallet, ArrowUpRight, Zap, PiggyBank,
   ChevronRight, Tag, SlidersHorizontal,
 } from "lucide-react";
 import ScrollReveal from "../ui/ScrollReveal";
@@ -14,6 +14,7 @@ const iconMap = {
   Wallet,
   ArrowUpRight,
   Zap,
+  PiggyBank,
 };
 
 const palette = [
