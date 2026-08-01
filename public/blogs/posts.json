@@ -221,26 +221,29 @@
     "author": "Radds Research",
     "date": "April 2, 2026",
     "readTime": "6 min read",
-    "featured": false,
+    "featured": true,
     "published": true,
     "createdAt": "2026-04-02T00:00:00.000Z",
-    "updatedAt": "2026-04-02T00:00:00.000Z",
+    "updatedAt": "2026-08-01T18:18:54.217Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/39C3EF?text=Goals",
     "content": [
       {
         "id": "every-investment-needs-purpose",
         "heading": "Every Investment Needs A Purpose",
-        "body": "Goal-based investing connects money to meaningful outcomes such as education, retirement, and home ownership."
+        "body": "Goal-based investing connects money to meaningful outcomes such as education, retirement, and home ownership.",
+        "points": []
       },
       {
         "id": "better-decision-making",
         "heading": "Better Decision Making",
-        "body": "Investors are less likely to react emotionally when investments are linked to specific objectives."
+        "body": "Investors are less likely to react emotionally when investments are linked to specific objectives.",
+        "points": []
       },
       {
         "id": "track-progress-clearly",
         "heading": "Track Progress Clearly",
-        "body": "Goals make portfolio monitoring more structured and measurable."
+        "body": "Goals make portfolio monitoring more structured and measurable.",
+        "points": []
       }
     ]
   },
