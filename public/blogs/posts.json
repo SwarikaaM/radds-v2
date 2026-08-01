@@ -259,26 +259,29 @@
     "author": "Radds Research",
     "date": "March 21, 2026",
     "readTime": "5 min read",
-    "featured": false,
+    "featured": true,
     "published": true,
     "createdAt": "2026-03-21T00:00:00.000Z",
-    "updatedAt": "2026-03-21T00:00:00.000Z",
+    "updatedAt": "2026-08-01T18:21:22.790Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/1DB954?text=Health+Insurance",
     "content": [
       {
         "id": "buying-based-on-premium-alone",
         "heading": "Buying Based On Premium Alone",
-        "body": "The cheapest policy is not always the most suitable policy."
+        "body": "The cheapest policy is not always the most suitable policy.",
+        "points": []
       },
       {
         "id": "ignoring-waiting-periods",
         "heading": "Ignoring Waiting Periods",
-        "body": "Waiting periods can significantly impact claim eligibility."
+        "body": "Waiting periods can significantly impact claim eligibility.",
+        "points": []
       },
       {
         "id": "not-reviewing-coverage",
         "heading": "Not Reviewing Coverage",
-        "body": "Medical inflation makes periodic policy reviews essential."
+        "body": "Medical inflation makes periodic policy reviews essential.",
+        "points": []
       }
     ]
   },
