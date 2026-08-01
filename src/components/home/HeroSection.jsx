@@ -415,9 +415,9 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
             >
-              <Badge icon={ShieldCheck} variant="white">
+              {/* <Badge icon={ShieldCheck} variant="white">
                 AMFI-Registered Mutual Fund Distributor
-              </Badge>
+              </Badge> */}
             </motion.div>
 
             <motion.div

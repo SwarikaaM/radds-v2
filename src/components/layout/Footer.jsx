@@ -182,7 +182,7 @@ export default function Footer() {
         {/* Registration numbers row */}
         <div className="mt-8 py-5 px-2 border bg-white/10 border-white/15 rounded-card">
           <p className="text-white/60 text-[11px] text-center leading-relaxed font-mono-num">
-            Deven Shah ARN – 124053 &nbsp;|&nbsp; Anjali Shah ARN – 292158 &nbsp;|&nbsp; Deven Shah HUF ARN – 334716 &nbsp;|&nbsp; BSE Regi No <span className="text-white/25">(to be added)</span> &nbsp;|&nbsp; NSE Registration No <span className="text-white/25">(to be added)</span> &nbsp;|&nbsp; PMS Regist No <span className="text-white/25">(to be added)</span> &nbsp;|&nbsp; SIF <span className="text-white/25">(to be added)</span> &nbsp;|&nbsp; AIF Registration No <span className="text-white/25">(to be added)</span>
+            Deven Shah ARN – 124053 &nbsp;|&nbsp; Anjali Shah ARN – 292158 &nbsp;|&nbsp; Deven Shah HUF ARN – 334716 &nbsp;|&nbsp; BSE Regi Code: AP01017901146329 &nbsp;|&nbsp; NSE Registration Code: CM-AP1493473831 , FO-AP1493473831 &nbsp;|&nbsp; PMS Regist No: APRN APRN09418 &nbsp;|&nbsp; SIF <span className="text-white/25">(to be added)</span> &nbsp;|&nbsp; AIF Registration No <span className="text-white/25">(to be added)</span>
           </p>
         </div>
 
