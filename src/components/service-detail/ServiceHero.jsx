@@ -21,9 +21,22 @@ export default function ServiceHero({ service }) {
               {service.tagline}
             </p>
 
-            <Button href="/contact#book">
-              Get Started
-            </Button>
+            <div className="flex flex-wrap gap-3">
+              <Button href="/contact#book">
+                Get Started
+              </Button>
+              {service.externalCta && (
+                <Button
+                  href={service.externalCta.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="outline"
+                  className="!text-white !border-white/40 hover:!bg-white hover:!text-[#0D1B2E]"
+                >
+                  {service.externalCta.label}
+                </Button>
+              )}
+            </div>
           </div>
         </ScrollReveal>
       </div>

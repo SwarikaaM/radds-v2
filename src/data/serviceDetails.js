@@ -119,7 +119,11 @@ export const serviceDetails = {
     icon: BarChart3,
     description:
       "Every time a company you admire grows, someone who owns its shares grows with it — and someone who doesn't, watches. Direct equity gives you ownership in the businesses actually driving India's growth, through our broking partner, for investors ready to participate in that growth rather than just read about it.",
-    steps: [
+    externalCta: {
+      label: "Open a Demat Account",
+      url: "https://register.iiflcapital.com/?E1Code=L5hZBjAbE2xVbHG+SVwywQ==&SourceChannelID=KBWtK3WkgyXc2SanaseYhg==",
+    },
+      steps: [
       "Define investment objectives",
       "Open a trading account",
       "Explore investment opportunities via our broking partner",

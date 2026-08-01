@@ -2,11 +2,14 @@ import { GraduationCap, Briefcase } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
 import SectionHeader from "../ui/SectionHeader";
 import ScrollReveal from "../ui/ScrollReveal";
+import founderImg from "../../assets/founder.png";
+import cofounderImg from "../../assets/cofounder.jpg";
 
 const founders = [
   {
     name: "Deven Shah",
     designation: "Founder",
+    image: founderImg,
     bio: "Deven Shah combines global education with over a decade of corporate experience to bring a structured and disciplined approach to wealth creation.",
     education: [
       "Bachelor of Computer Applications (BCA)",
@@ -19,6 +22,7 @@ const founders = [
   {
     name: "Anjali Shah",
     designation: "Co-Founder",
+    image: cofounderImg,
     bio: "As Co-Founder, Anjali Shah brings deep expertise in wealth management and capital markets, ensuring every client receives a professional, transparent, and relationship-driven experience.",
     education: [
       "MSc in Finance and Investment, Brunel University London, United Kingdom",
@@ -31,23 +35,36 @@ const founders = [
 export default function FoundersSection() {
   return (
     <section className="py-8 bg-[#F4F8FC]">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         <SectionHeader eyebrow="Leadership" title="Meet Our Founders" className="mb-16" />
 
         <div className="grid md:grid-cols-2 gap-8">
           {founders.map((person, i) => (
             <ScrollReveal key={person.name} delay={i * 0.1}>
-              <div className="bg-white rounded-2xl border border-[#E2EBF5] p-8 h-full">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="font-playfair text-2xl font-bold text-[#0D1B2E]">{person.name}</h3>
-                    <p className="text-secondary font-semibold text-sm">{person.designation}</p>
+              <div className="bg-white rounded-2xl border border-[#E2EBF5] h-full">
+                <div className="relative p-6 pb-0">
+                  <div className="h-72 sm:h-80 rounded-xl bg-[#F4F8FC] flex items-center justify-center overflow-hidden">
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      className="max-w-full max-h-full object-contain"
+                    />
                   </div>
-                  <FaLinkedin className="text-primary flex-shrink-0 mt-1" size={18} />
+                  {/* <a
+                    href="#"
+                    className="absolute top-9 right-9 w-9 h-9 rounded-full bg-white/90 backdrop-blur flex items-center justify-center hover:bg-white transition-colors shadow-sm"
+                    aria-label={`${person.name} on LinkedIn`}
+                  >
+                    <FaLinkedin className="text-primary" size={18} />
+                  </a> */}
                 </div>
-                <p className="text-[#6B7E99] leading-relaxed mb-6">{person.bio}</p>
 
-                <div className="mb-5">
+                <div className="p-8">
+                  <h3 className="font-playfair text-2xl font-bold text-[#0D1B2E]">{person.name}</h3>
+                  <p className="text-secondary font-semibold text-sm mb-4">{person.designation}</p>                </div>
+                <p className="text-[#6B7E99] leading-relaxed mb-6 px-4">{person.bio}</p>
+
+                <div className="mb-5 px-4">
                   <div className="flex items-center gap-2 mb-2.5">
                     <GraduationCap size={16} className="text-primary" />
                     <h4 className="font-semibold text-sm text-[#0D1B2E]">Education</h4>
@@ -59,8 +76,8 @@ export default function FoundersSection() {
                   </ul>
                 </div>
 
-                <div>
-                  <div className="flex items-center gap-2 mb-2.5">
+                <div className="mb-6 px-4">
+                  <div className="flex items-center gap-2 mb-2.5 px-0.5">
                     <Briefcase size={16} className="text-primary" />
                     <h4 className="font-semibold text-sm text-[#0D1B2E]">Professional Experience</h4>
                   </div>

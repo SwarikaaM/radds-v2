@@ -6,7 +6,7 @@ export default function ServiceSteps({ service }) {
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeader title="How It Works" />
 
-        <div className="grid md:grid-cols-4 gap-6 mt-12">
+        <div className={`grid md:grid-cols-2 ${service.steps.length % 3 === 0 ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-6 mt-12`}>
           {service.steps.map((step, index) => (
             <div
               key={step}

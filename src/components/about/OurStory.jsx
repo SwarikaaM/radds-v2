@@ -5,7 +5,7 @@ export default function OurStory() {
   return (
     <section className="py-8 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <div>
               <p className="text-primary font-semibold uppercase tracking-wider mb-3">Who We Are</p>
@@ -39,11 +39,6 @@ export default function OurStory() {
                 Our role is to make the process of investing simpler, more transparent, and easier
                 to act on.
               </p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div className="h-[500px] rounded-2xl overflow-hidden border border-[#E2EBF5]">
-              <img src={founderImg} alt="Deven Shah, Founder, Radds Capital" className="w-full h-full object-cover" />
             </div>
           </ScrollReveal>
         </div>
