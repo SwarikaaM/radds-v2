@@ -8,15 +8,15 @@ import {
 
 const stats = [
   { icon: Briefcase, value: "20+", label: "Years in Business" },
-  { icon: Users, value: "1,000+", label: "Clients Served" },
-  { icon: Landmark, value: "₹100 Cr+", label: "AUM" },
+  { icon: Users, value: "1,100+", label: "Clients Served" },
+  { icon: Landmark, value: "₹80 Cr+", label: "AUM" },
   { icon: Wallet, value: "₹1 Cr+", label: "Monthly SIP Book" },
   { icon: Star, value: "4.9★", label: "Client Rating" },
 ];
 
 export default function AchievementsBanner() {
   return (
-    <section className="bg-[#0D1B2E] py-20">
+    <section className="bg-[#0D1B2E] py-8">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {stats.map((item) => {

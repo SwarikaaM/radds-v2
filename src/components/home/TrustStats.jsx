@@ -5,8 +5,8 @@ import ScrollReveal from "../ui/ScrollReveal";
 import SectionHeader from "../ui/SectionHeader";
 
 const stats = [
-  { icon: Users, prefix: "", end: 1000, suffix: "+", label: "Happy Clients", color: "text-primary", bg: "bg-primary/8" },
-  { icon: Wallet, prefix: "₹", end: 100, suffix: " Cr+", label: "Assets Distributed", color: "text-secondary", bg: "bg-secondary/8" },
+  { icon: Users, prefix: "", end: 1100, suffix: "+", label: "Happy Clients", color: "text-primary", bg: "bg-primary/8" },
+  { icon: Wallet, prefix: "₹", end: 80, suffix: " Cr+", label: "Assets Distributed", color: "text-secondary", bg: "bg-secondary/8" },
   { icon: PiggyBank, prefix: "₹", end: 1, suffix: " Cr+", label: "Monthly SIP Book", color: "text-success", bg: "bg-success/8" },
   { icon: Award, prefix: "", end: 20, suffix: "+", label: "Years Market Experience", color: "text-accent", bg: "bg-accent/8" },
   { icon: Star, prefix: "", end: 4.9, suffix: "★", label: "Average Client Rating", color: "text-warning", bg: "bg-warning/8", decimals: 1 },

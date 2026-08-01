@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { TrendingUp, ArrowDownCircle, Clock, Wallet, ArrowUpRight } from "lucide-react";
+import { TrendingUp, ArrowDownCircle, Clock, Wallet, ArrowUpRight,  PiggyBank } from "lucide-react";
 import ScrollReveal from "../ui/ScrollReveal";
 import { calculatorRegistry } from "../../data/calculatorRegistry";
 
@@ -10,6 +10,7 @@ const iconMap = {
   "cost-of-delay-sip": Clock,
   lumpsum: Wallet,
   "step-up-sip": ArrowUpRight,
+  retirement: PiggyBank,
 };
 
 const palette = [
