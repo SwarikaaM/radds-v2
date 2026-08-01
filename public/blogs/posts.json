@@ -8,7 +8,7 @@
     "author": "Radds Research",
     "date": "1 August 2026",
     "readTime": "5 min read",
-    "coverImage": "",
+    "coverImage": "https://placehold.co/1200x700/F4F8FC/1DB954?text=Test",
     "published": true,
     "featured": true,
     "content": [
@@ -24,7 +24,7 @@
       }
     ],
     "createdAt": "2026-08-01T18:10:49.524Z",
-    "updatedAt": "2026-08-01T18:19:23.745Z"
+    "updatedAt": "2026-08-01T18:22:37.980Z"
   },
   {
     "id": 1,
