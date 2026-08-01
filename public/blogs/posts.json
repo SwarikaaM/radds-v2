@@ -1,40 +1,5 @@
 [
   {
-    "id": 10,
-    "slug": "test",
-    "title": "Test",
-    "excerpt": "This is a test blog",
-    "category": "Insurance",
-    "author": "swarika",
-    "date": "1 August 2026",
-    "readTime": "5 min read",
-    "coverImage": "Test Blog",
-    "published": true,
-    "featured": true,
-    "content": [
-      {
-        "id": "t",
-        "heading": "Test section 1",
-        "body": "Test section body \nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore",
-        "points": [
-          "wghh whjygy"
-        ],
-        "callout": ""
-      },
-      {
-        "id": "t",
-        "heading": "Test section 2",
-        "body": "section 2 test body",
-        "points": [
-          "hii hi"
-        ],
-        "callout": "hi"
-      }
-    ],
-    "createdAt": "2026-08-01T14:24:35.525Z",
-    "updatedAt": "2026-08-01T14:32:40.531Z"
-  },
-  {
     "id": 1,
     "slug": "sip-start-at-25",
     "category": "SIP Investing",
