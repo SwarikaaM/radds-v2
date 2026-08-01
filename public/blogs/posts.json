@@ -218,7 +218,7 @@
   {
     "id": 7,
     "slug": "goal-based-investing",
-    "category": "Goal Planning",
+    "category": "Goal Based",
     "title": "Why Goal-Based Investing Works Better Than Random Investing",
     "excerpt": "Align your portfolio with life goals instead of chasing returns.",
     "author": "Radds Research",
@@ -227,7 +227,7 @@
     "featured": true,
     "published": true,
     "createdAt": "2026-04-02T00:00:00.000Z",
-    "updatedAt": "2026-08-01T18:18:54.217Z",
+    "updatedAt": "2026-08-01T18:21:00.778Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/39C3EF?text=Goals",
     "content": [
       {
