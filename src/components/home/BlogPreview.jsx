@@ -1,15 +1,24 @@
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeader from "../ui/SectionHeader";
 import BlogCard from "../blog/BlogCard";
 import { blogPosts } from "../../data/blog";
+import { fetchPosts } from "../../utils/blogUtils";
 
 export default function BlogPreview() {
   const trackRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    fetchPosts().then((posts) => {
+      const featured = posts.filter((p) => p.featured);
+      setBlogPosts((featured.length > 0 ? featured : posts).slice(0, 8));
+    });
+  }, []);
 
   const SCROLL_BY = 380;
 

@@ -3,7 +3,7 @@ import { Plus, Trash2, Edit2, Eye, EyeOff, LogOut, ChevronDown, ChevronUp, Save,
 import { slugify } from "../utils/blogUtils";
 
 const TOKEN_KEY = "radds_admin_token";
-const CATEGORIES = ["SIP Investing", "Market Analysis", "Goal Planning", "Insurance", "Tax Planning", "Mutual Funds", "Financial Planning"];
+const CATEGORIES = ["SIP Investing", "Market Analysis", "Goal Based", "Insurance", "Tax Planning", "Mutual Funds", "Financial"];
 
 // ── Token helpers ────────────────────────────────────────────────────────
 function getToken() {
