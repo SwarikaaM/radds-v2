@@ -68,19 +68,12 @@ export default function BlogCard({
             duration-300
           "
         >
-          <div className="relative">
-            <img
-              src={post.coverImage}
-              alt={post.title}
-              className="
-                h-52
-                w-full
-                object-cover
-              "
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-          </div>
+          {post.coverImage && (
+            <div className="relative">
+              <img src={post.coverImage} alt={post.title} className="h-52 w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            </div>
+          )}
 
           <div className="p-6 flex flex-col flex-1">
             <div className="flex items-center justify-between gap-3 mb-4">

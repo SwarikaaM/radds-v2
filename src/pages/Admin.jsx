@@ -89,7 +89,7 @@ function SectionEditor({ section, index, onChange, onRemove, canRemove }) {
             <label className="text-xs font-medium text-[#6B7E99] block mb-1">Bullet Points (one per line)</label>
             <textarea
               value={(section.points || []).join("\n")}
-              onChange={e => set("points", e.target.value.split("\n").filter(Boolean))}
+              onChange={e => set("points", e.target.value.split("\n"))}
               placeholder="Point 1&#10;Point 2&#10;Point 3" rows={3}
               className="w-full border border-[#D1DDE8] rounded-lg p-2.5 text-sm outline-none focus:border-[#22568F] resize-y font-mono" />
           </div>
@@ -109,6 +109,7 @@ function SectionEditor({ section, index, onChange, onRemove, canRemove }) {
 function PostForm({ initial, onSave, onCancel, saving, error }) {
   const [post, setPost] = useState(initial);
   const [slugManual, setSlugManual] = useState(!!initial.id);
+  const [uploadingImg, setUploadingImg] = useState(false);
 
   const set = (field, val) => setPost(p => ({ ...p, [field]: val }));
 
@@ -127,7 +128,14 @@ function PostForm({ initial, onSave, onCancel, saving, error }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onSave(post);
+    const cleaned = {
+      ...post,
+      content: post.content.map(s => ({
+        ...s,
+        points: (s.points || []).filter(p => p.trim() !== ""),
+      })),
+    };
+    onSave(cleaned);
   }
 
   return (
@@ -177,11 +185,36 @@ function PostForm({ initial, onSave, onCancel, saving, error }) {
         </div>
         <div className="md:col-span-2">
           <label className="text-xs font-medium text-[#6B7E99] block mb-1">
-            Cover Image URL <span className="text-[#9BAAB8]">(leave blank to hide image on post)</span>
+            Cover Image <span className="text-[#9BAAB8]">(leave blank to hide image on post)</span>
           </label>
-          <input value={post.coverImage || ""} onChange={e => set("coverImage", e.target.value)}
-            placeholder="https://... or leave blank"
-            className="w-full border border-[#D1DDE8] rounded-lg p-3 text-sm outline-none focus:border-[#22568F]" />
+          <div className="flex gap-2">
+            <input value={post.coverImage || ""} onChange={e => set("coverImage", e.target.value)}
+              placeholder="Paste URL or upload →"
+              className="flex-1 border border-[#D1DDE8] rounded-lg p-3 text-sm outline-none focus:border-[#22568F]" />
+            <label className="flex-shrink-0 cursor-pointer flex items-center gap-2 border border-[#D1DDE8] rounded-lg px-4 py-3 text-sm text-[#6B7E99] hover:border-[#22568F] hover:text-[#22568F] transition-colors bg-white whitespace-nowrap">
+              {uploadingImg ? <Loader2 size={14} className="animate-spin" /> : "Upload Image"}
+              <input type="file" accept="image/*" className="hidden"
+                onChange={async e => {
+                  const file = e.target.files[0];
+                  if (!file) return;
+                  if (file.size > 5 * 1024 * 1024) { alert("Image must be under 5MB"); return; }
+                  setUploadingImg(true);
+                  try {
+                    const fd = new FormData();
+                    fd.append("image", file);
+                    const res = await fetch("https://api.imgbb.com/1/upload?key=389cd6f40338c9969ad35a3dc4738ec7", {
+                      method: "POST", body: fd,
+                    });
+                    const data = await res.json();
+                    set("coverImage", data.data.url);
+                  } catch { alert("Upload failed. Paste a URL instead."); }
+                  finally { setUploadingImg(false); }
+                }} />
+            </label>
+          </div>
+          {post.coverImage && (
+            <img src={post.coverImage} alt="preview" className="mt-2 h-20 w-auto rounded-lg border border-[#E2EBF5] object-cover" />
+          )}
         </div>
         <div className="md:col-span-2">
           <label className="text-xs font-medium text-[#6B7E99] block mb-1">Excerpt / Summary *</label>
@@ -329,7 +362,7 @@ export default function Admin() {
       showToast(post.id ? "Post updated ✓" : "Post created ✓ — deploying in ~60s");
       setEditing(null);
       // Reload after short delay to allow GitHub commit
-      setTimeout(loadPosts, 3000);
+      setTimeout(loadPosts, 75000);
     } catch (err) {
       setFormError(err.message);
     } finally { setSaving(false); }
@@ -341,7 +374,7 @@ export default function Admin() {
     try {
       await apiFetch("/api/admin-delete", { id: post.id }, token);
       showToast("Post deleted ✓");
-      setTimeout(loadPosts, 3000);
+      setTimeout(loadPosts,75000);
     } catch (err) {
       alert(err.message);
     } finally { setDeleting(null); }
