@@ -192,26 +192,29 @@
     "author": "Radds Research",
     "date": "April 10, 2026",
     "readTime": "5 min read",
-    "featured": false,
+    "featured": true,
     "published": true,
     "createdAt": "2026-04-10T00:00:00.000Z",
-    "updatedAt": "2026-04-10T00:00:00.000Z",
+    "updatedAt": "2026-08-01T18:21:56.370Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/2389AF?text=Insurance",
     "content": [
       {
         "id": "what-is-term-insurance",
         "heading": "What Is Term Insurance",
-        "body": "Term insurance provides pure life cover and financial security for dependents."
+        "body": "Term insurance provides pure life cover and financial security for dependents.",
+        "points": []
       },
       {
         "id": "how-much-cover-is-enough",
         "heading": "How Much Cover Is Enough",
-        "body": "Coverage should account for income replacement, liabilities, and future financial goals."
+        "body": "Coverage should account for income replacement, liabilities, and future financial goals.",
+        "points": []
       },
       {
         "id": "review-regularly",
         "heading": "Review Regularly",
-        "body": "Life circumstances change, so insurance requirements should be reviewed periodically."
+        "body": "Life circumstances change, so insurance requirements should be reviewed periodically.",
+        "points": []
       }
     ]
   },
