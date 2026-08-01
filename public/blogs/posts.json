@@ -8,9 +8,9 @@
     "author": "Radds Research",
     "date": "1 August 2026",
     "readTime": "5 min read",
-    "coverImage": "https://i.ibb.co/8gPkYX75/IMG-20260719-134041-773.webp",
+    "coverImage": "https://i.ibb.co/b5GvZhFB/Whats-App-Image-2026-07-07-at-22-35-35-1.jpg",
     "published": true,
-    "featured": false,
+    "featured": true,
     "content": [
       {
         "id": "h",
@@ -20,11 +20,18 @@
           "point 1",
           "point 2 of test section 1"
         ],
-        "callout": ""
+        "callout": "hi"
+      },
+      {
+        "id": "t",
+        "heading": "test section 2",
+        "body": "This is a random text to test",
+        "points": [],
+        "callout": "hey"
       }
     ],
     "createdAt": "2026-08-01T15:44:04.533Z",
-    "updatedAt": "2026-08-01T15:44:04.533Z"
+    "updatedAt": "2026-08-01T15:50:42.291Z"
   },
   {
     "id": 1,
