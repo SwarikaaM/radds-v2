@@ -11,21 +11,29 @@
     "featured": true,
     "published": true,
     "createdAt": "2026-05-28T00:00:00.000Z",
-    "updatedAt": "2026-05-28T00:00:00.000Z",
+    "updatedAt": "2026-08-01T14:22:28.857Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/22568F?text=SIP+Investing",
     "content": [
       {
         "id": "power-of-starting-early",
         "heading": "The Power of Starting Early",
         "body": "Starting your SIP at 25 gives compounding decades to work in your favor. Even relatively small monthly investments can grow into substantial wealth when given enough time.",
-        "points": ["Compounding rewards patience", "Starting early reduces future contribution pressure", "Small monthly SIPs can create significant wealth"],
+        "points": [
+          "Compounding rewards patience",
+          "Starting early reduces future contribution pressure",
+          "Small monthly SIPs can create significant wealth"
+        ],
         "callout": "Time in the market is often more powerful than timing the market."
       },
       {
         "id": "consistency-matters-more-than-timing",
         "heading": "Consistency Matters More Than Timing",
         "body": "Many investors wait for the perfect market entry point. In reality, consistently investing every month often produces better outcomes than attempting to time the market.",
-        "points": ["Invest regularly", "Avoid emotional investing", "Follow a long-term plan"]
+        "points": [
+          "Invest regularly",
+          "Avoid emotional investing",
+          "Follow a long-term plan"
+        ]
       },
       {
         "id": "long-term-wealth-creation",
@@ -54,13 +62,21 @@
         "id": "understanding-flexi-cap-funds",
         "heading": "Understanding Flexi Cap Funds",
         "body": "Flexi cap funds allow fund managers to allocate capital across large, mid, and small-cap companies without fixed restrictions.",
-        "points": ["Flexible allocation", "Manager-driven decisions", "Can adapt to market conditions"]
+        "points": [
+          "Flexible allocation",
+          "Manager-driven decisions",
+          "Can adapt to market conditions"
+        ]
       },
       {
         "id": "understanding-multi-cap-funds",
         "heading": "Understanding Multi Cap Funds",
         "body": "Multi cap funds require minimum allocations across different market-cap segments, providing balanced exposure.",
-        "points": ["Mandatory diversification", "Balanced allocation", "Exposure across market segments"]
+        "points": [
+          "Mandatory diversification",
+          "Balanced allocation",
+          "Exposure across market segments"
+        ]
       },
       {
         "id": "which-one-is-better",
@@ -85,9 +101,21 @@
     "updatedAt": "2026-04-28T00:00:00.000Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/22568F?text=Markets",
     "content": [
-      {"id": "why-corrections-happen", "heading": "Why Corrections Happen", "body": "Market corrections occur naturally as part of healthy market functioning and valuation adjustments."},
-      {"id": "avoid-emotional-decisions", "heading": "Avoid Emotional Decisions", "body": "Panic selling often leads to poor long-term outcomes. Staying disciplined is usually the better choice."},
-      {"id": "think-long-term", "heading": "Think Long Term", "body": "Successful investing is built on long-term planning rather than reacting to short-term market noise."}
+      {
+        "id": "why-corrections-happen",
+        "heading": "Why Corrections Happen",
+        "body": "Market corrections occur naturally as part of healthy market functioning and valuation adjustments."
+      },
+      {
+        "id": "avoid-emotional-decisions",
+        "heading": "Avoid Emotional Decisions",
+        "body": "Panic selling often leads to poor long-term outcomes. Staying disciplined is usually the better choice."
+      },
+      {
+        "id": "think-long-term",
+        "heading": "Think Long Term",
+        "body": "Successful investing is built on long-term planning rather than reacting to short-term market noise."
+      }
     ]
   },
   {
@@ -105,9 +133,21 @@
     "updatedAt": "2026-04-18T00:00:00.000Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/39C3EF?text=Emergency+Fund",
     "content": [
-      {"id": "why-emergency-funds-matter", "heading": "Why Emergency Funds Matter", "body": "Unexpected expenses can disrupt even the best-laid plans without adequate reserves."},
-      {"id": "how-much-should-you-keep", "heading": "How Much Should You Keep", "body": "Most households should maintain between six and twelve months of essential expenses."},
-      {"id": "where-to-store-it", "heading": "Where To Store It", "body": "Keep emergency funds in liquid and low-risk instruments that are easily accessible."}
+      {
+        "id": "why-emergency-funds-matter",
+        "heading": "Why Emergency Funds Matter",
+        "body": "Unexpected expenses can disrupt even the best-laid plans without adequate reserves."
+      },
+      {
+        "id": "how-much-should-you-keep",
+        "heading": "How Much Should You Keep",
+        "body": "Most households should maintain between six and twelve months of essential expenses."
+      },
+      {
+        "id": "where-to-store-it",
+        "heading": "Where To Store It",
+        "body": "Keep emergency funds in liquid and low-risk instruments that are easily accessible."
+      }
     ]
   },
   {
@@ -125,9 +165,21 @@
     "updatedAt": "2026-04-10T00:00:00.000Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/2389AF?text=Insurance",
     "content": [
-      {"id": "what-is-term-insurance", "heading": "What Is Term Insurance", "body": "Term insurance provides pure life cover and financial security for dependents."},
-      {"id": "how-much-cover-is-enough", "heading": "How Much Cover Is Enough", "body": "Coverage should account for income replacement, liabilities, and future financial goals."},
-      {"id": "review-regularly", "heading": "Review Regularly", "body": "Life circumstances change, so insurance requirements should be reviewed periodically."}
+      {
+        "id": "what-is-term-insurance",
+        "heading": "What Is Term Insurance",
+        "body": "Term insurance provides pure life cover and financial security for dependents."
+      },
+      {
+        "id": "how-much-cover-is-enough",
+        "heading": "How Much Cover Is Enough",
+        "body": "Coverage should account for income replacement, liabilities, and future financial goals."
+      },
+      {
+        "id": "review-regularly",
+        "heading": "Review Regularly",
+        "body": "Life circumstances change, so insurance requirements should be reviewed periodically."
+      }
     ]
   },
   {
@@ -145,9 +197,21 @@
     "updatedAt": "2026-04-02T00:00:00.000Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/39C3EF?text=Goals",
     "content": [
-      {"id": "every-investment-needs-purpose", "heading": "Every Investment Needs A Purpose", "body": "Goal-based investing connects money to meaningful outcomes such as education, retirement, and home ownership."},
-      {"id": "better-decision-making", "heading": "Better Decision Making", "body": "Investors are less likely to react emotionally when investments are linked to specific objectives."},
-      {"id": "track-progress-clearly", "heading": "Track Progress Clearly", "body": "Goals make portfolio monitoring more structured and measurable."}
+      {
+        "id": "every-investment-needs-purpose",
+        "heading": "Every Investment Needs A Purpose",
+        "body": "Goal-based investing connects money to meaningful outcomes such as education, retirement, and home ownership."
+      },
+      {
+        "id": "better-decision-making",
+        "heading": "Better Decision Making",
+        "body": "Investors are less likely to react emotionally when investments are linked to specific objectives."
+      },
+      {
+        "id": "track-progress-clearly",
+        "heading": "Track Progress Clearly",
+        "body": "Goals make portfolio monitoring more structured and measurable."
+      }
     ]
   },
   {
@@ -165,9 +229,21 @@
     "updatedAt": "2026-03-21T00:00:00.000Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/1DB954?text=Health+Insurance",
     "content": [
-      {"id": "buying-based-on-premium-alone", "heading": "Buying Based On Premium Alone", "body": "The cheapest policy is not always the most suitable policy."},
-      {"id": "ignoring-waiting-periods", "heading": "Ignoring Waiting Periods", "body": "Waiting periods can significantly impact claim eligibility."},
-      {"id": "not-reviewing-coverage", "heading": "Not Reviewing Coverage", "body": "Medical inflation makes periodic policy reviews essential."}
+      {
+        "id": "buying-based-on-premium-alone",
+        "heading": "Buying Based On Premium Alone",
+        "body": "The cheapest policy is not always the most suitable policy."
+      },
+      {
+        "id": "ignoring-waiting-periods",
+        "heading": "Ignoring Waiting Periods",
+        "body": "Waiting periods can significantly impact claim eligibility."
+      },
+      {
+        "id": "not-reviewing-coverage",
+        "heading": "Not Reviewing Coverage",
+        "body": "Medical inflation makes periodic policy reviews essential."
+      }
     ]
   },
   {
@@ -185,9 +261,21 @@
     "updatedAt": "2026-03-10T00:00:00.000Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/22568F?text=Retirement",
     "content": [
-      {"id": "time-is-your-greatest-asset", "heading": "Time Is Your Greatest Asset", "body": "Starting early allows compounding to do most of the heavy lifting."},
-      {"id": "smaller-contributions-required", "heading": "Smaller Contributions Required", "body": "The earlier you start, the less money you typically need to invest each month."},
-      {"id": "build-confidence-for-future", "heading": "Build Confidence For The Future", "body": "Early planning reduces uncertainty and provides greater financial flexibility."}
+      {
+        "id": "time-is-your-greatest-asset",
+        "heading": "Time Is Your Greatest Asset",
+        "body": "Starting early allows compounding to do most of the heavy lifting."
+      },
+      {
+        "id": "smaller-contributions-required",
+        "heading": "Smaller Contributions Required",
+        "body": "The earlier you start, the less money you typically need to invest each month."
+      },
+      {
+        "id": "build-confidence-for-future",
+        "heading": "Build Confidence For The Future",
+        "body": "Early planning reduces uncertainty and provides greater financial flexibility."
+      }
     ]
   }
 ]
