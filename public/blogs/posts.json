@@ -122,26 +122,29 @@
     "author": "Radds Research",
     "date": "April 28, 2026",
     "readTime": "6 min read",
-    "featured": false,
+    "featured": true,
     "published": true,
     "createdAt": "2026-04-28T00:00:00.000Z",
-    "updatedAt": "2026-04-28T00:00:00.000Z",
+    "updatedAt": "2026-08-01T18:18:18.520Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/22568F?text=Markets",
     "content": [
       {
         "id": "why-corrections-happen",
         "heading": "Why Corrections Happen",
-        "body": "Market corrections occur naturally as part of healthy market functioning and valuation adjustments."
+        "body": "Market corrections occur naturally as part of healthy market functioning and valuation adjustments.",
+        "points": []
       },
       {
         "id": "avoid-emotional-decisions",
         "heading": "Avoid Emotional Decisions",
-        "body": "Panic selling often leads to poor long-term outcomes. Staying disciplined is usually the better choice."
+        "body": "Panic selling often leads to poor long-term outcomes. Staying disciplined is usually the better choice.",
+        "points": []
       },
       {
         "id": "think-long-term",
         "heading": "Think Long Term",
-        "body": "Successful investing is built on long-term planning rather than reacting to short-term market noise."
+        "body": "Successful investing is built on long-term planning rather than reacting to short-term market noise.",
+        "points": []
       }
     ]
   },
