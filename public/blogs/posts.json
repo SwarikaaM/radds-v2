@@ -4,7 +4,7 @@
     "slug": "test",
     "title": "test",
     "excerpt": "test",
-    "category": "SIP Investing",
+    "category": "Goal Based",
     "author": "Radds Research",
     "date": "1 August 2026",
     "readTime": "5 min read",
@@ -24,7 +24,7 @@
       }
     ],
     "createdAt": "2026-08-01T18:10:49.524Z",
-    "updatedAt": "2026-08-01T18:17:48.898Z"
+    "updatedAt": "2026-08-01T18:19:23.745Z"
   },
   {
     "id": 1,
