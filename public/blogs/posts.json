@@ -1,5 +1,32 @@
 [
   {
+    "id": 10,
+    "slug": "test-blog",
+    "title": "test blog",
+    "excerpt": "testing ",
+    "category": "Goal Planning",
+    "author": "Radds Research",
+    "date": "1 August 2026",
+    "readTime": "5 min read",
+    "coverImage": "https://i.ibb.co/8gPkYX75/IMG-20260719-134041-773.webp",
+    "published": true,
+    "featured": false,
+    "content": [
+      {
+        "id": "h",
+        "heading": "test section 1",
+        "body": "this is the body of test section 1",
+        "points": [
+          "point 1",
+          "point 2 of test section 1"
+        ],
+        "callout": ""
+      }
+    ],
+    "createdAt": "2026-08-01T15:44:04.533Z",
+    "updatedAt": "2026-08-01T15:44:04.533Z"
+  },
+  {
     "id": 1,
     "slug": "sip-start-at-25",
     "category": "SIP Investing",
