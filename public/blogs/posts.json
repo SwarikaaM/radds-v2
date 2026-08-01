@@ -151,7 +151,7 @@
   {
     "id": 5,
     "slug": "emergency-fund-guide",
-    "category": "Goal Planning",
+    "category": "Goal Based",
     "title": "How Much Emergency Fund Do You Really Need?",
     "excerpt": "A practical framework to calculate your ideal emergency reserve.",
     "author": "Radds Research",
@@ -160,23 +160,26 @@
     "featured": false,
     "published": true,
     "createdAt": "2026-04-18T00:00:00.000Z",
-    "updatedAt": "2026-04-18T00:00:00.000Z",
+    "updatedAt": "2026-08-01T18:20:41.218Z",
     "coverImage": "https://placehold.co/1200x700/F4F8FC/39C3EF?text=Emergency+Fund",
     "content": [
       {
         "id": "why-emergency-funds-matter",
         "heading": "Why Emergency Funds Matter",
-        "body": "Unexpected expenses can disrupt even the best-laid plans without adequate reserves."
+        "body": "Unexpected expenses can disrupt even the best-laid plans without adequate reserves.",
+        "points": []
       },
       {
         "id": "how-much-should-you-keep",
         "heading": "How Much Should You Keep",
-        "body": "Most households should maintain between six and twelve months of essential expenses."
+        "body": "Most households should maintain between six and twelve months of essential expenses.",
+        "points": []
       },
       {
         "id": "where-to-store-it",
         "heading": "Where To Store It",
-        "body": "Keep emergency funds in liquid and low-risk instruments that are easily accessible."
+        "body": "Keep emergency funds in liquid and low-risk instruments that are easily accessible.",
+        "points": []
       }
     ]
   },
