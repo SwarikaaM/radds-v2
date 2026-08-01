@@ -10,7 +10,7 @@
     "readTime": "5 min read",
     "coverImage": "https://i.ibb.co/b5GvZhFB/Whats-App-Image-2026-07-07-at-22-35-35-1.jpg",
     "published": true,
-    "featured": false,
+    "featured": true,
     "content": [
       {
         "id": "h",
@@ -31,7 +31,7 @@
       }
     ],
     "createdAt": "2026-08-01T15:44:04.533Z",
-    "updatedAt": "2026-08-01T17:47:39.566Z"
+    "updatedAt": "2026-08-01T17:50:45.937Z"
   },
   {
     "id": 1,
