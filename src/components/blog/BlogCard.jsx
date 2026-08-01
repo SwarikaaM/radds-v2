@@ -29,7 +29,7 @@ const categoryColors = {
     text: "text-accent",
   },
 
-  "Goal Planning": {
+  "Financial Planning": {
     bg: "bg-warning/10",
     text: "text-warning",
   },

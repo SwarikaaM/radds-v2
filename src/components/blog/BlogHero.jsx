@@ -12,7 +12,7 @@ export default function BlogHero() {
           <p className="text-lg text-white/70 max-w-3xl mx-auto">
             Simple, practical writing on markets,
             mutual funds, insurance, tax, and
-            personal finance.
+            financial planning.
           </p>
         </ScrollReveal>
       </div>

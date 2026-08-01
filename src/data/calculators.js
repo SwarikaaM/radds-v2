@@ -110,12 +110,12 @@ export const calculators = [
 
 export const calculatorCategories = [
   "All",
-  "SIP Planning",
+  "SIP",
   "Withdrawals",
   "Lumpsum",
-  "Goal Planning",
+  "Goal",
   "Retirement",
-  "Loan Planning",
+  "Loan",
   "Insurance",
 ];
 

@@ -6,11 +6,11 @@ export default function BlogCTA() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-dark rounded-card p-12 text-center text-white">
           <h2 className="font-playfair text-4xl font-bold mb-4">
-            Want guidance specific to your situation?
+            Want advice specific to your situation?
           </h2>
 
           <p className="text-white/70 mb-8">
-            Speak with our team and
+            Speak with a Radds Capital advisor and
             receive guidance tailored to your goals.
           </p>
 

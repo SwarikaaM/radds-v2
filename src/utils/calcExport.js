@@ -214,7 +214,7 @@ export async function exportCalcPDF({ title, summaryKeys, results, tableColumns,
   // Disclaimer
   const lines = doc.splitTextToSize(DISCLAIMER, W - 28);
   doc.setFont("helvetica", "italic");
-  doc.setFontSize(12);
+  doc.setFontSize(8);
   doc.setTextColor(...GREY);
   if (y + lines.length * 3.5 > doc.internal.pageSize.getHeight() - 10) {
     doc.addPage();

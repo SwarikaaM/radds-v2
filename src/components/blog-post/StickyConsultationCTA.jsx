@@ -13,7 +13,7 @@ export default function StickyConsultationCTA() {
           </h3>
 
           <p className="text-textmuted text-sm leading-7 mb-6">
-            Speak with our team
+            Speak with a Radds Capital advisor
             and receive recommendations
             tailored to your financial goals.
           </p>
