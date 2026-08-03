@@ -8,7 +8,7 @@ import cofounderImg from "../../assets/cofounder.jpg";
 const founders = [
   {
     name: "Deven Shah",
-    designation: "Founder",
+    designation: "Co-Founder",
     image: founderImg,
     bio: "Deven Shah combines global education with over a decade of corporate experience to bring a structured and disciplined approach to wealth creation.",
     education: [
