@@ -12,7 +12,7 @@ export const calculators = [
       "Find out how much your monthly SIP can grow into over time with the power of compounding.",
 
     icon: "TrendingUp",
-    category: "SIP Planning",
+    category: "SIP",
     route: "/calculators/sip",
     inputsSummary: "Monthly amount · Annual return · Duration",
     bestFor: "First-time investors building a habit",
@@ -49,7 +49,7 @@ export const calculators = [
       "See how much potential wealth you could miss out on by delaying your SIP — even by just a few years.",
 
     icon: "Clock",
-    category: "Goal Planning",
+    category: "Goal",
     route: "/calculators/cost-of-delay-sip",
     inputsSummary:
       "Monthly SIP · Return · Horizon · Delay years",
@@ -87,7 +87,7 @@ export const calculators = [
       "Model wealth growth when you increase your SIP amount annually, matching salary increments.",
 
     icon: "ArrowUpRight",
-    category: "SIP Planning",
+    category: "SIP",
     route: "/calculators/step-up-sip",
     inputsSummary:
       "Starting SIP · Return · Duration · Annual Step-up %",
@@ -128,7 +128,7 @@ export const extraCalculators = [
     description: "See how a parallel SIP can offset the interest you pay on your home loan.",
     shortDescription: "Run a SIP alongside your home loan to see how it could grow and help offset the total interest you pay over time.",
     icon: "Home",
-    category: "Loan Planning",
+    category: "Loan",
     route: "/calculators/home-loan-interest-free",
     inputsSummary: "Loan amount · EMI · Tenure · Interest rate",
     bestFor: "Home loan borrowers who invest regularly",
@@ -140,7 +140,7 @@ export const extraCalculators = [
     description: "Add up all your assets and liabilities to know exactly where you stand.",
     shortDescription: "Calculate your true net worth by totalling financial assets, physical assets, and subtracting all liabilities.",
     icon: "PieChart",
-    category: "Goal Planning",
+    category: "Goal",
     route: "/calculators/net-worth",
     inputsSummary: "Financial assets · Physical assets · Liabilities",
     bestFor: "Anyone wanting a clear financial snapshot",
